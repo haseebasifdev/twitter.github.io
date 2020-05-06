@@ -1,35 +1,45 @@
 <template>
   <div class="card">
     <div class="mx-3 mt-2">
-      <div class>
-        <div class="d-flex">
-          <img
-            :src="user.profile"
-            class="mr-2 rounded rounded-circle"
-            width="55px"
-            height="55px"
-            alt
-          />
+      <div class="d-flex">
+        <img :src="user.profile" class="mr-2 rounded rounded-circle" width="55px" height="55px" alt />
 
-          <span class="form-group">
-            <textarea
-              v-model="tweet"
-              cols="60"
-              class="form-control border-0"
-              placeholder="What's happening?"
-              rows="1"
-            ></textarea>
-          </span>
-        </div>
+        <span class="form-group">
+          <textarea
+            v-model="tweet"
+            cols="60"
+            class="form-control border-0"
+            placeholder="What's happening?"
+            rows="1"
+            @keyup.enter="tweetit"
+          ></textarea>
+        </span>
+      </div>
+      <div>
+        <img
+          v-if="picture"
+          :src="picture"
+          width="100%"
+          height="100%"
+          class="img-fluid position-relative p-2"
+          alt
+          srcset
+        />
+        <div
+          v-if="picture"
+          style="bottom:50%;"
+          class="cancel p-2 font-weight-bolder position-absolute ml-3 rounded rounded-circle"
+          @click="cancelpicture"
+        >X</div>
       </div>
       <div class="mt-2">
         <span class="image-upload">
           <label for="file-input" class="file-input text-primary my-auto">
             <i class="far fa-image fa-2x"></i>
           </label>
-          <input id="file-input" type="file" />
+          <input id="file-input" type="file" @change="onFileChange" accept="image/*" />
         </span>
-        <button class="btn btn-primary tweet float-right">Tweet</button>
+        <button class="btn btn-primary tweet float-right" @click="tweetit">Tweet</button>
       </div>
     </div>
   </div>
@@ -41,11 +51,38 @@ export default {
   name: "tweet",
   data() {
     return {
-      tweet: ""
+      tweet: "",
+      picture: ""
     };
   },
   methods: {
-    ...mapActions(["fetchuser"])
+    ...mapActions(["fetchuser"]),
+    onFileChange(e) {
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+      fileReader.onload = e => {
+        this.picture = e.target.result;
+      };
+    },
+    cancelpicture() {
+      this.picture = "";
+    },
+    tweetit() {
+      var data = {
+        tweet: this.tweet,
+        avatar: this.picture
+      };
+      this.picture = "";
+      this.tweet = "";
+      axios
+        .post("/post", data)
+        .then(res => {
+          console.log("Success");
+        })
+        .catch(err => {
+          console.log("unsuccess");
+        });
+    }
   },
   mounted() {
     this.fetchuser();
@@ -79,5 +116,13 @@ textarea {
 }
 button.tweet {
   border-radius: 30px;
+}
+div.cancel:hover {
+  cursor: pointer;
+}
+div.cancel {
+  font-size: 1.2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
 }
 </style>

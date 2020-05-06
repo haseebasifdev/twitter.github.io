@@ -2488,15 +2488,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "tweet",
   data: function data() {
     return {
-      tweet: ""
+      tweet: "",
+      picture: ""
     };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchuser"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchuser"])), {}, {
+    onFileChange: function onFileChange(e) {
+      var _this = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this.picture = e.target.result;
+      };
+    },
+    cancelpicture: function cancelpicture() {
+      this.picture = "";
+    },
+    tweetit: function tweetit() {
+      var data = {
+        tweet: this.tweet,
+        avatar: this.picture
+      };
+      this.picture = "";
+      this.tweet = "";
+      axios.post("/post", data).then(function (res) {
+        console.log("Success");
+      })["catch"](function (err) {
+        console.log("unsuccess");
+      });
+    }
+  }),
   mounted: function mounted() {
     this.fetchuser();
   },
@@ -7184,7 +7222,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.file-input[data-v-4683c2d4] {\n  padding: 10px;\n}\n.file-input[data-v-4683c2d4]:hover {\n  background: rgba(54, 54, 250, 0.1);\n  border-radius: 25px;\n\n  cursor: pointer;\n}\n.image-upload > input[data-v-4683c2d4] {\n  display: none;\n}\n.image-upload[data-v-4683c2d4] {\n  margin-left: 12%;\n}\ntextarea[data-v-4683c2d4]:focus {\n  box-shadow: none;\n}\ntextarea[data-v-4683c2d4] {\n  font-size: 18px;\n}\nbutton.tweet[data-v-4683c2d4] {\n  border-radius: 30px;\n}\n", ""]);
+exports.push([module.i, "\n.file-input[data-v-4683c2d4] {\n  padding: 10px;\n}\n.file-input[data-v-4683c2d4]:hover {\n  background: rgba(54, 54, 250, 0.1);\n  border-radius: 25px;\n\n  cursor: pointer;\n}\n.image-upload > input[data-v-4683c2d4] {\n  display: none;\n}\n.image-upload[data-v-4683c2d4] {\n  margin-left: 12%;\n}\ntextarea[data-v-4683c2d4]:focus {\n  box-shadow: none;\n}\ntextarea[data-v-4683c2d4] {\n  font-size: 18px;\n}\nbutton.tweet[data-v-4683c2d4] {\n  border-radius: 30px;\n}\ndiv.cancel[data-v-4683c2d4]:hover {\n  cursor: pointer;\n}\ndiv.cancel[data-v-4683c2d4] {\n  font-size: 1.2rem;\n  color: white;\n  background: rgba(0, 0, 0, 0.4);\n}\n", ""]);
 
 // exports
 
@@ -61036,49 +61074,98 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "mx-3 mt-2" }, [
-      _c("div", {}, [
-        _c("div", { staticClass: "d-flex" }, [
-          _c("img", {
-            staticClass: "mr-2 rounded rounded-circle",
-            attrs: {
-              src: _vm.user.profile,
-              width: "55px",
-              height: "55px",
-              alt: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "form-group" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.tweet,
-                  expression: "tweet"
-                }
-              ],
-              staticClass: "form-control border-0",
-              attrs: {
-                cols: "60",
-                placeholder: "What's happening?",
-                rows: "1"
-              },
-              domProps: { value: _vm.tweet },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.tweet = $event.target.value
-                }
+      _c("div", { staticClass: "d-flex" }, [
+        _c("img", {
+          staticClass: "mr-2 rounded rounded-circle",
+          attrs: {
+            src: _vm.user.profile,
+            width: "55px",
+            height: "55px",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "form-group" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.tweet,
+                expression: "tweet"
               }
-            })
-          ])
+            ],
+            staticClass: "form-control border-0",
+            attrs: { cols: "60", placeholder: "What's happening?", rows: "1" },
+            domProps: { value: _vm.tweet },
+            on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.tweetit($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.tweet = $event.target.value
+              }
+            }
+          })
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", [
+        _vm.picture
+          ? _c("img", {
+              staticClass: "img-fluid position-relative p-2",
+              attrs: {
+                src: _vm.picture,
+                width: "100%",
+                height: "100%",
+                alt: "",
+                srcset: ""
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.picture
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "cancel p-2 font-weight-bolder position-absolute ml-3 rounded rounded-circle",
+                staticStyle: { bottom: "50%" },
+                on: { click: _vm.cancelpicture }
+              },
+              [_vm._v("X")]
+            )
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-2" }, [
+        _c("span", { staticClass: "image-upload" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { id: "file-input", type: "file", accept: "image/*" },
+            on: { change: _vm.onFileChange }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary tweet float-right",
+            on: { click: _vm.tweetit }
+          },
+          [_vm._v("Tweet")]
+        )
+      ])
     ])
   ])
 }
@@ -61087,24 +61174,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-2" }, [
-      _c("span", { staticClass: "image-upload" }, [
-        _c(
-          "label",
-          {
-            staticClass: "file-input text-primary my-auto",
-            attrs: { for: "file-input" }
-          },
-          [_c("i", { staticClass: "far fa-image fa-2x" })]
-        ),
-        _vm._v(" "),
-        _c("input", { attrs: { id: "file-input", type: "file" } })
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-primary tweet float-right" }, [
-        _vm._v("Tweet")
-      ])
-    ])
+    return _c(
+      "label",
+      {
+        staticClass: "file-input text-primary my-auto",
+        attrs: { for: "file-input" }
+      },
+      [_c("i", { staticClass: "far fa-image fa-2x" })]
+    )
   }
 ]
 render._withStripped = true

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -35,7 +36,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return ($request->avatar);
+        $exploded = explode(',', $request->avatar);
+        $decode = base64_decode($exploded[1]);
+        if (str_contains($exploded[0], 'jpeg')) {
+            $extension = 'jpg';
+        } else {
+            $extension = 'png';
+        };
+        $filename = str_random() . '.' . $extension;
+        $path = public_path() . '\tweet/' . $filename;
+        file_put_contents($path, $decode);
+
+
+        Post::create([
+            'tweet' => request('tweet'),
+            'tweetpicture' => $filename,
+            'user_id' => auth()->user()->id,
+        ]);
+        return public_path();
+        // return ['Success' => 'Post Created Successfully'];
     }
 
     /**
