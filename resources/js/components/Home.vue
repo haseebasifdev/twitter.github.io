@@ -1,7 +1,9 @@
 <template>
   <div class="row">
-    <div class="col-md-7">
-      <tweet></tweet>
+    <div class="col-md-7 border p-0 m-0 border-bottom-0">
+      <tweet class="border-0"></tweet>
+      <div class="bg-light" style=" height:10px"></div>
+      <post class :usertweet="usertweet"></post>
     </div>
     <div class="col-md-5"></div>
   </div>
@@ -19,6 +21,16 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    ...mapActions(["fetchusertweet", "fetchuser", "posttweet"])
+  },
+  mounted() {
+    this.fetchusertweet();
+    this.fetchuser();
+  },
+  computed: {
+    ...mapState(["user", "usertweet"])
   }
 };
 </script>

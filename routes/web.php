@@ -21,5 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/saveprofile', 'HomeController@store')->name('profile');
 Route::get('/user', 'HomeController@user')->name('user');
 Route::post('/post', 'PostController@store')->name('post');
+Route::get('/post', 'PostController@index')->name('getpost');                                                                                                                                                                                                                                           

@@ -10,7 +10,7 @@ class Post extends Model
     public function getTweetpictureAttribute($value)
     {
         if ($value) {
-            return asset('tweet/' + $value);
+            return asset('tweet/' . $value);
         } else {
             return null;
         }

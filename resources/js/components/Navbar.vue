@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav d-block">
           <li class="nav-item my-4">
-            <router-link to="/foo" class="nav-links">
+            <router-link to="/" class="nav-links">
               <i class="fas fa-home fa-lg mr-3"></i>Home
             </router-link>
           </li>

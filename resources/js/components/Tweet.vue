@@ -39,7 +39,10 @@
           </label>
           <input id="file-input" type="file" @change="onFileChange" accept="image/*" />
         </span>
-        <button class="btn btn-primary tweet float-right" @click="tweetit">Tweet</button>
+        <span class="float-right">
+          <span v-if="tweet.length>0" :class="checktweet()">{{tweet.length}}/255</span>
+          <button class="btn btn-primary tweet" @click="tweetit">Tweet</button>
+        </span>
       </div>
     </div>
   </div>
@@ -47,6 +50,7 @@
 
 <script>
 import { mapGetters, mapActions, mapState, mapMutations } from "vuex";
+// import emoji from './emojipicker'
 export default {
   name: "tweet",
   data() {
@@ -56,7 +60,12 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchuser"]),
+    checktweet() {
+      if (this.tweet.length > 255) {
+        return "my-auto mr-4 text-danger";
+      } else return "my-auto mr-4 ";
+    },
+    ...mapActions(["fetchusertweet", "fetchuser"]),
     onFileChange(e) {
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
@@ -68,20 +77,20 @@ export default {
       this.picture = "";
     },
     tweetit() {
-      var data = {
-        tweet: this.tweet,
-        avatar: this.picture
-      };
-      this.picture = "";
-      this.tweet = "";
-      axios
-        .post("/post", data)
-        .then(res => {
-          console.log("Success");
-        })
-        .catch(err => {
-          console.log("unsuccess");
-        });
+      if (this.tweet.length <= 255) {
+        var post = {
+          tweet: this.tweet,
+          avatar: this.picture
+        };
+        var payload = {
+          tweet: post,
+          user: this.user
+        };
+        this.picture = "";
+        this.tweet = "";
+        this.$store.dispatch("posttweet", payload);
+        this.fetchusertweet();
+      }
     }
   },
   mounted() {

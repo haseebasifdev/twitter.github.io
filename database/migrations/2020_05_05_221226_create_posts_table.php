@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('tweet');
-            $table->string('tweetpicture');
+            $table->string('tweetpicture')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

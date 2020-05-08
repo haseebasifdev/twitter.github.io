@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 class PostController extends Controller
 {
@@ -15,7 +17,20 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $post = Post::where("user_id", auth()->user()->id)->latest()->get();
+        // $user = User::find($post[0]->user_id);
+        // return $user;
+        for ($i = 0; $i < $post->count(); $i++) {
+            $user = User::find($post[$i]->user_id);
+            $post[$i] = new Collection([
+                "tweet" => $post[$i],
+                "user" => $user
+            ]);
+            // $post[$i]->push("user", $user);
+            // return $post[$i];
+        }
+        // $i=0;
+        return ($post);
     }
 
     /**
@@ -37,17 +52,21 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // return ($request->avatar);
-        $exploded = explode(',', $request->avatar);
-        $decode = base64_decode($exploded[1]);
-        if (str_contains($exploded[0], 'jpeg')) {
-            $extension = 'jpg';
-        } else {
-            $extension = 'png';
-        };
-        $filename = str_random() . '.' . $extension;
-        $path = public_path() . '\tweet/' . $filename;
-        file_put_contents($path, $decode);
+        if ($request->avatar) {
 
+            $exploded = explode(',', $request->avatar);
+            $decode = base64_decode($exploded[1]);
+            if (str_contains($exploded[0], 'jpeg')) {
+                $extension = 'jpg';
+            } else {
+                $extension = 'png';
+            };
+            $filename = str_random() . '.' . $extension;
+            $path = public_path() . '\tweet/' . $filename;
+            file_put_contents($path, $decode);
+        } else {
+            $filename = null;
+        }
 
         Post::create([
             'tweet' => request('tweet'),

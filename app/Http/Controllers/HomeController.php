@@ -32,4 +32,13 @@ class HomeController extends Controller
         $user = User::find(auth()->id());
         return $user;
     }
+    public function store(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->bio = $request->bio;
+        $user->location = $request->location;
+        $user->website = $request->website;
+        $user->save();
+    }
 }

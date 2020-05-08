@@ -1,12 +1,35 @@
 <template>
-  <div class="card border-left-0 border-right-0">
-    <div class="mx-3 d-flex my-2">
-      <img :src="user.profile" class="mr-2 rounded rounded-circle" width="55px" height="55px"  />
-      <div>
-        <span class=" font-weight-bolder">{{user.name}}</span>
-        <span class=" text-muted">{{'@'+user.username}}</span>
-        <div>Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic veniam veritatis ea aliquid ullam quis quidem quos, odio vel laborum assumenda voluptates molestiae repudiandae fugit in quisquam facere voluptate ratione? adipisicing elit. Provident rem eum nostrum laborum eos numquam blanditiis at quis vel! Quibusdam.</div>
-        <div><img :src="user.profile" width="100%"  alt="" srcset=""></div>
+  <div>
+    <div v-for="data in usertweet" class="my-4 border-bottom">
+      <div class="mx-3 d-flex">
+        <img
+          :src="data.user.profile"
+          class="mr-2 rounded rounded-circle"
+          width="50px"
+          height="50px"
+        />
+        <div>
+          <span class="font-weight-bolder">{{data.user.name}}</span>
+          <span class="text-muted">{{'@'+data.user.username}}</span>
+          <div>{{data.tweet.tweet}}</div>
+          <div>
+            <img :src="data.tweet.tweetpicture" width="100%" class="tweetpic my-2" alt srcset />
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-around mb-2 mx-4">
+        <div>
+          <i class="far fa-comment comment fa-lg p-2"></i>
+        </div>
+        <div>
+          <i class="fas fa-sync-alt sync fa-lg p-2"></i>
+        </div>
+        <div>
+          <i class="far fa-heart heart fa-lg p-2"></i>
+        </div>
+        <div>
+          <i class="fas fa-upload upload fa-lg p-2"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -16,7 +39,7 @@
 import { mapGetters, mapActions, mapState, mapMutations } from "vuex";
 export default {
   name: "post",
-  props: ["user"],
+  props: ["usertweet"],
   data() {
     return {};
   }
@@ -32,5 +55,34 @@ div.userdata {
 div.name {
   font-size: 1.2rem;
   font-family: fantasy;
+}
+img.tweetpic {
+  border-radius: 20px;
+}
+.upload:hover {
+  cursor: pointer;
+  color: red;
+
+  background-color: rgba(255, 0, 0, 0.05);
+  border-radius: 40px;
+}
+.heart:hover {
+  cursor: pointer;
+  color: red;
+  background-color: rgba(255, 0, 0, 0.05);
+  border-radius: 40px;
+}
+.sync:hover {
+  cursor: pointer;
+  color: rgba(107, 255, 210, 0.576);
+
+  background-color: rgba(127, 255, 212, 0.05);
+  border-radius: 40px;
+}
+.comment:hover {
+  cursor: pointer;
+  color: rgba(107, 255, 210, 0.576);
+  background-color: rgba(127, 255, 212, 0.05);
+  border-radius: 40px;
 }
 </style>
