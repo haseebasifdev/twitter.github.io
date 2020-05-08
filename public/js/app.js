@@ -2612,6 +2612,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: _objectSpread({
+    saveprofilepic: function saveprofilepic() {
+      var data = {
+        avatar: this.picture
+      };
+      this.$store.dispatch("saveprofilepicture", data);
+      this.fetchusertweet();
+      this.fetchuser();
+      this.picture = "";
+      $("#profilepic").modal("hide");
+    },
     profilepic: function profilepic() {
       $("#profilepic").modal("show");
     },
@@ -7438,7 +7448,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-3bd692e4] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.8;\n}\ni.ipic[data-v-3bd692e4] {\n  opacity: 0.3;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-3bd692e4] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\n  background: rgba(54, 54, 250, 0.1);\n  border-radius: 25px;\n\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -61263,7 +61273,7 @@ var render = function() {
               _c("img", {
                 staticClass:
                   "rounded rounded-circle bg-white ml-3 p-1 img-profile",
-                attrs: { src: _vm.user.profile, width: "50%", alt: "" }
+                attrs: { src: _vm.user.profile, width: "130px", alt: "" }
               })
             ]
           ),
@@ -61408,7 +61418,21 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(2)
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.saveprofilepic()
+                      }
+                    }
+                  },
+                  [_vm._v("Update")]
+                )
+              ])
             ])
           ]
         )
@@ -61709,18 +61733,6 @@ var staticRenderFns = [
       },
       [_c("i", { staticClass: "far fa-image fa-2x" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Update")]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -78774,6 +78786,42 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       }
 
       return saveprofile;
+    }(),
+    saveprofilepicture: function () {
+      var _saveprofilepicture = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(_ref5, payload) {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref5.commit;
+                _context5.prev = 1;
+                _context5.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/saveprofilepicture', payload);
+
+              case 4:
+                response = _context5.sent;
+                _context5.next = 10;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](1);
+                console.log(_context5.t0);
+
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[1, 7]]);
+      }));
+
+      function saveprofilepicture(_x5, _x6) {
+        return _saveprofilepicture.apply(this, arguments);
+      }
+
+      return saveprofilepicture;
     }()
   }
 }));

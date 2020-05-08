@@ -7,7 +7,7 @@
           <img
             :src="user.profile"
             class="rounded rounded-circle bg-white ml-3 p-1 img-profile"
-            width="50%"
+            width="130px"
             alt
           />
         </div>
@@ -96,7 +96,7 @@
             </span>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-primary" @click="saveprofilepic()">Update</button>
           </div>
         </div>
       </div>
@@ -206,6 +206,17 @@ export default {
     };
   },
   methods: {
+    saveprofilepic() {
+      var data = {
+        avatar: this.picture
+      };
+
+      this.$store.dispatch("saveprofilepicture", data);
+      this.fetchusertweet();
+      this.fetchuser();
+      this.picture = "";
+      $("#profilepic").modal("hide");
+    },
     profilepic() {
       $("#profilepic").modal("show");
     },
@@ -277,9 +288,15 @@ i.ipic:hover {
 }
 i.ipic:hover {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 i.ipic {
-  opacity: 0.3;
+  opacity: 0.6;
+}
+.file-input:hover {
+  background: rgba(54, 54, 250, 0.1);
+  border-radius: 25px;
+
+  cursor: pointer;
 }
 </style>

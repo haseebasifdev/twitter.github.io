@@ -34,7 +34,7 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 const response = await axios.post('/post', payload.tweet);
-                
+
             } catch (err) {
                 console.log(err);
             }
@@ -44,7 +44,17 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 const response = await axios.post('/saveprofile', payload);
-                
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        saveprofilepicture: async ({
+            commit
+        }, payload) => {
+            try {
+                const response = await axios.post('/saveprofilepicture', payload);
+
             } catch (err) {
                 console.log(err);
             }

@@ -41,4 +41,21 @@ class HomeController extends Controller
         $user->website = $request->website;
         $user->save();
     }
+    public function storeprofile(Request $request)
+    {
+        // return ($request->avatar);
+        $exploded = explode(',', $request->avatar);
+        $decode = base64_decode($exploded[1]);
+        if (str_contains($exploded[0], 'jpeg')) {
+            $extension = 'jpg';
+        } else {
+            $extension = 'png';
+        };
+        $filename = str_random() . '.' . $extension;
+        $path = public_path() . '\profiles/' . $filename;
+        file_put_contents($path, $decode);
+        $user = User::find(auth()->id());
+        $user->profile = $filename;
+        $user->save();
+    }
 }

@@ -39,7 +39,7 @@ class User extends Authenticatable
     public function getProfileAttribute($value)
     {
         if ($value) {
-            return asset('images/' + $value);
+            return asset('profiles/' . $value);
         } else {
             return asset('images/download.jpg');
         }
