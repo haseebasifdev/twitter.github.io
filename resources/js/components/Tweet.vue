@@ -17,7 +17,6 @@
       </div>
       <div>
         <img
-          v-if="picture"
           :src="picture"
           width="100%"
           height="100%"
@@ -84,20 +83,21 @@ export default {
       this.picture = "";
     },
     tweetit() {
-      if (this.tweet.length <= 255) {
-          var post = {
-            tweet: this.tweet,
-            avatar: this.picture
-          };
-          var payload = {
-            tweet: post,
-            user: this.user
-          };
-          this.picture = "";
-          this.tweet = "";
-          this.$store.dispatch("posttweet", payload);
-          this.fetchusertweet();
-        
+      if (this.tweet.length <= 255 ) {
+        var post = {
+          tweet: this.tweet,
+          avatar: this.picture
+        };
+        var payload = {
+          tweet: post,
+          user: this.user
+        };
+        this.picture = "";
+        this.tweet = "";
+        this.$store.dispatch("posttweet", payload);
+        this.fetchusertweet();
+
+        $("#tweet").modal("hide");
       }
     }
   },

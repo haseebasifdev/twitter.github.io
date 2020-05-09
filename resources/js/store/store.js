@@ -8,11 +8,15 @@ export default new Vuex.Store({
         user: [],
         usertweet: [],
         alltweet: [],
-        likedpost: ''
+        likedpost: '',
+        commentpostindex: 0
+
     },
     mutations: {
+        setcommentpostindex: (state, index) => state.commentpostindex = index,
         setuser: (state, userdata) => state.user = userdata,
         setusertweet: (state, tweet) => state.usertweet = tweet,
+        setcommentpost: (state, index) => state.usertweet[index].comments++,
         setlikedpost: (state, index) => {
             // console.log(state.usertweet[index].liked)
             if (state.usertweet[index].liked) {
@@ -84,6 +88,27 @@ export default new Vuex.Store({
                 const response = await axios.post('/like', payload);
 
 
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        commentit: async ({
+            commit
+        }, payload) => {
+            try {
+                commit('setcommentpost', payload.index);
+                const response = await axios.post('/comment', payload);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        commentpostindex: async ({
+            commit
+        }, payload) => {
+            try {
+                commit('setcommentpostindex', payload);
             } catch (err) {
                 console.log(err);
             }

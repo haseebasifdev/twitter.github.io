@@ -15,6 +15,11 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav d-block">
+          <li class="mb-4">
+            <router-link to="/" class>
+              <img src="/images/twitter.png" width="60px" class="twitter p-2" style alt srcset />
+            </router-link>
+          </li>
           <li class="nav-item my-4">
             <router-link to="/" class="nav-links">
               <i class="fas fa-home fa-lg mr-3"></i>Home
@@ -70,8 +75,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-body">
-            <!-- <tweet></tweet> -->
+          <div class="modal-body border-0">
+            <!-- <tweet class=" border-0"></tweet> -->
           </div>
         </div>
       </div>
@@ -122,5 +127,11 @@ a.profile-link:hover {
 }
 .router-link-exact-active {
   color: rgb(58, 117, 255, 0.8);
+}
+img.twitter {
+  border-radius: 60px;
+}
+img.twitter:hover {
+  background: rgb(70, 70, 255, 0.1);
 }
 </style>

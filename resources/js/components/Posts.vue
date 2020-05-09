@@ -14,13 +14,20 @@
           <span class="text-muted">{{data.tweet.created_at | date}}</span>
           <div>{{data.tweet.tweet}}</div>
           <div>
-            <img :src="data.tweet.tweetpicture" width="100%" class="tweetpic my-2" alt srcset />
+            <img
+              :src="data.tweet.tweetpicture"
+              width="100%"
+              class="tweetpic my-2 border"
+              alt
+              srcset
+            />
           </div>
         </div>
       </div>
       <div class="d-flex justify-content-around mb-2 mx-4">
         <div>
-          <i class="far fa-comment comment fa-lg p-2"></i>
+          <i class="far fa-comment comment fa-lg p-2" @click="commentmodel(index)"></i>
+          <span v-if="data.comments">{{data.comments}}</span>
         </div>
         <div>
           <i class="fas fa-sync-alt sync fa-lg p-2"></i>
@@ -42,19 +49,26 @@
           <i class="fas fa-upload upload fa-lg p-2"></i>
         </div>
       </div>
+
+      <postcomment :post="usertweet[index]" :indexid="index"></postcomment>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions, mapState, mapMutations } from "vuex";
+import postcomment from "./PostComment";
 export default {
+  components: {
+    postcomment
+  },
   name: "post",
   props: ["usertweet"],
   data() {
     return {};
   },
   methods: {
+    ...mapActions(["fetchusertweet", "fetchuser"]),
     likepost(postid, indexid) {
       var data = {
         post_id: postid,
@@ -63,8 +77,12 @@ export default {
       this.$store.dispatch("likepost", data);
       // console.log(postid, indexid);
       // likepost
+    },
+    commentmodel(index) {
+      this.$store.dispatch("commentpostindex", index);
+      $("#comment").modal("show");
     }
-  }
+  },
 };
 </script>
 <style scoped>

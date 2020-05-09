@@ -23,7 +23,12 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions(["fetchusertweet", "fetchuser", "posttweet"])
+    ...mapActions([
+      "fetchusertweet",
+      "fetchuser",
+      "posttweet",
+      "commentpostindex"
+    ])
   },
   mounted() {
     this.fetchusertweet();

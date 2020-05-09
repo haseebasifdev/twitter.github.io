@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Like;
 use App\Post;
 use App\User;
@@ -25,6 +26,7 @@ class PostController extends Controller
             $user = User::find($post[$i]->user_id);
             $likes = Like::where('post_id', $post[$i]->id)->count();
             $liked = Like::where('post_id', $post[$i]->id)->where('user_id', auth()->id())->exists();
+            $comments = Comment::where('post_id', $post[$i]->id)->count();
             if ($liked) {
                 $liked = true;
             } else {
@@ -34,7 +36,9 @@ class PostController extends Controller
                 "tweet" => $post[$i],
                 "user" => $user,
                 "likes" => $likes,
-                "liked" => $liked
+                "liked" => $liked,
+                "comments" => $comments
+
             ]);
             // $post[$i]->push("user", $user);
             // return $post[$i];
