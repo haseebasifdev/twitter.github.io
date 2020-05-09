@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,9 +23,18 @@ class PostController extends Controller
         // return $user;
         for ($i = 0; $i < $post->count(); $i++) {
             $user = User::find($post[$i]->user_id);
+            $likes = Like::where('post_id', $post[$i]->id)->count();
+            $liked = Like::where('post_id', $post[$i]->id)->where('user_id', auth()->id())->exists();
+            if ($liked) {
+                $liked = true;
+            } else {
+                $liked = false;
+            }
             $post[$i] = new Collection([
                 "tweet" => $post[$i],
-                "user" => $user
+                "user" => $user,
+                "likes" => $likes,
+                "liked" => $liked
             ]);
             // $post[$i]->push("user", $user);
             // return $post[$i];

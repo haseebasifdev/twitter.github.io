@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="data in usertweet" class="my-4 border-bottom">
+    <div v-for="(data,index) in usertweet" class="my-4 border-bottom">
       <div class="mx-3 d-flex">
         <img
           :src="data.user.profile"
@@ -25,7 +25,12 @@
           <i class="fas fa-sync-alt sync fa-lg p-2"></i>
         </div>
         <div>
-          <i class="far fa-heart heart fa-lg p-2"></i>
+          <i
+            v-if="data.liked"
+            class="fas fa-heart heart text-danger fa-lg p-2"
+            @click="likepost(data.tweet.id,index)"
+          > {{data.likes}}</i>
+          <i v-else class="far fa-heart heart fa-lg p-2" @click="likepost(data.tweet.id,index)"> {{data.likes}}</i>
         </div>
         <div>
           <i class="fas fa-upload upload fa-lg p-2"></i>
@@ -42,6 +47,17 @@ export default {
   props: ["usertweet"],
   data() {
     return {};
+  },
+  methods: {
+    likepost(postid, indexid) {
+      var data = {
+        post_id: postid,
+        index: indexid
+      };
+      this.$store.dispatch("likepost", data);
+      // console.log(postid, indexid);
+      // likepost
+    }
   }
 };
 </script>

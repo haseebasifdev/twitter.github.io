@@ -25,4 +25,5 @@ Route::post('/saveprofile', 'HomeController@store')->name('profile');
 Route::post('/saveprofilepicture', 'HomeController@storeprofile')->name('profile');
 Route::get('/user', 'HomeController@user')->name('user');
 Route::post('/post', 'PostController@store')->name('post');
+Route::post('/like', 'LikeController@store')->name('like');
 Route::get('/post', 'PostController@index')->name('getpost');                                                                                                                                                                                                                                           

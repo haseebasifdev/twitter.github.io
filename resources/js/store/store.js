@@ -7,11 +7,28 @@ export default new Vuex.Store({
     state: {
         user: [],
         usertweet: [],
-        alltweet: []
+        alltweet: [],
+        likedpost: ''
     },
     mutations: {
         setuser: (state, userdata) => state.user = userdata,
         setusertweet: (state, tweet) => state.usertweet = tweet,
+        setlikedpost: (state, index) => {
+            // console.log(state.usertweet[index].liked)
+            if (state.usertweet[index].liked) {
+
+                state.usertweet[index].likes--;
+                state.usertweet[index].liked = (!state.usertweet[index].liked);
+
+            } else {
+
+                state.usertweet[index].likes++;
+                state.usertweet[index].liked = (!state.usertweet[index].liked);
+            }
+            console.log(state.usertweet[index].liked, state.usertweet[index].likes)
+            // state.likedpost = post[0];
+            // state.usertweet[index].likes = post[1]
+        },
     },
     actions: {
         async fetchuser({
@@ -54,6 +71,18 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 const response = await axios.post('/saveprofilepicture', payload);
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        likepost: async ({
+            commit
+        }, payload) => {
+            try {
+                commit('setlikedpost', payload.index);
+                const response = await axios.post('/like', payload);
+
 
             } catch (err) {
                 console.log(err);

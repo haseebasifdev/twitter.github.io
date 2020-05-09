@@ -2377,12 +2377,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "post",
   props: ["usertweet"],
   data: function data() {
     return {};
+  },
+  methods: {
+    likepost: function likepost(postid, indexid) {
+      var data = {
+        post_id: postid,
+        index: indexid
+      };
+      this.$store.dispatch("likepost", data); // console.log(postid, indexid);
+      // likepost
+    }
   }
 });
 
@@ -61166,7 +61181,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.usertweet, function(data) {
+    _vm._l(_vm.usertweet, function(data, index) {
       return _c("div", { staticClass: "my-4 border-bottom" }, [
         _c("div", { staticClass: "mx-3 d-flex" }, [
           _c("img", {
@@ -61199,7 +61214,41 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0, true)
+        _c("div", { staticClass: "d-flex justify-content-around mb-2 mx-4" }, [
+          _vm._m(0, true),
+          _vm._v(" "),
+          _vm._m(1, true),
+          _vm._v(" "),
+          _c("div", [
+            data.liked
+              ? _c(
+                  "i",
+                  {
+                    staticClass: "fas fa-heart heart text-danger fa-lg p-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.likepost(data.tweet.id, index)
+                      }
+                    }
+                  },
+                  [_vm._v(" " + _vm._s(data.likes))]
+                )
+              : _c(
+                  "i",
+                  {
+                    staticClass: "far fa-heart heart fa-lg p-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.likepost(data.tweet.id, index)
+                      }
+                    }
+                  },
+                  [_vm._v(" " + _vm._s(data.likes))]
+                )
+          ]),
+          _vm._v(" "),
+          _vm._m(2, true)
+        ])
       ])
     }),
     0
@@ -61210,21 +61259,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "d-flex justify-content-around mb-2 mx-4" },
-      [
-        _c("div", [
-          _c("i", { staticClass: "far fa-comment comment fa-lg p-2" })
-        ]),
-        _vm._v(" "),
-        _c("div", [_c("i", { staticClass: "fas fa-sync-alt sync fa-lg p-2" })]),
-        _vm._v(" "),
-        _c("div", [_c("i", { staticClass: "far fa-heart heart fa-lg p-2" })]),
-        _vm._v(" "),
-        _c("div", [_c("i", { staticClass: "fas fa-upload upload fa-lg p-2" })])
-      ]
-    )
+    return _c("div", [
+      _c("i", { staticClass: "far fa-comment comment fa-lg p-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("i", { staticClass: "fas fa-sync-alt sync fa-lg p-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("i", { staticClass: "fas fa-upload upload fa-lg p-2" })
+    ])
   }
 ]
 render._withStripped = true
@@ -78656,7 +78709,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
   state: {
     user: [],
     usertweet: [],
-    alltweet: []
+    alltweet: [],
+    likedpost: ''
   },
   mutations: {
     setuser: function setuser(state, userdata) {
@@ -78664,6 +78718,19 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     },
     setusertweet: function setusertweet(state, tweet) {
       return state.usertweet = tweet;
+    },
+    setlikedpost: function setlikedpost(state, index) {
+      // console.log(state.usertweet[index].liked)
+      if (state.usertweet[index].liked) {
+        state.usertweet[index].likes--;
+        state.usertweet[index].liked = !state.usertweet[index].liked;
+      } else {
+        state.usertweet[index].likes++;
+        state.usertweet[index].liked = !state.usertweet[index].liked;
+      }
+
+      console.log(state.usertweet[index].liked, state.usertweet[index].likes); // state.likedpost = post[0];
+      // state.usertweet[index].likes = post[1]
     }
   },
   actions: {
@@ -78822,6 +78889,43 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       }
 
       return saveprofilepicture;
+    }(),
+    likepost: function () {
+      var _likepost = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(_ref6, payload) {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit;
+                _context6.prev = 1;
+                commit('setlikedpost', payload.index);
+                _context6.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/like', payload);
+
+              case 5:
+                response = _context6.sent;
+                _context6.next = 11;
+                break;
+
+              case 8:
+                _context6.prev = 8;
+                _context6.t0 = _context6["catch"](1);
+                console.log(_context6.t0);
+
+              case 11:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[1, 8]]);
+      }));
+
+      function likepost(_x7, _x8) {
+        return _likepost.apply(this, arguments);
+      }
+
+      return likepost;
     }()
   }
 }));
