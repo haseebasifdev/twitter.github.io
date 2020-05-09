@@ -2256,6 +2256,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Tweet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tweet */ "./resources/js/components/Tweet.vue");
 //
 //
 //
@@ -2321,8 +2322,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    tweet: _Tweet__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: ["user"],
+  methods: {
+    tweetmodel: function tweetmodel() {
+      console.log("clicked");
+      $("#tweet").modal("show");
+    }
+  },
   mounted: function mounted() {
     console.log("Component mounted.");
   }
@@ -2340,6 +2367,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2615,6 +2648,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2663,10 +2697,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // console.log(this.userdetail);
     },
     saveprofile: function saveprofile() {
-      this.$store.dispatch("saveprofile", this.userdeta);
-      this.fetchusertweet();
-      this.fetchuser();
-      $("#profile").modal("hide");
+      if (this.userdeta.name.length > 0) {
+        this.$store.dispatch("saveprofile", this.userdeta);
+        this.fetchusertweet();
+        this.fetchuser();
+        $("#profile").modal("hide");
+      }
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(["fetchusertweet", "fetchuser"])),
   mounted: function mounted() {
@@ -2763,6 +2799,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.tweet.length > 255) {
         return "my-auto mr-4 text-danger";
       } else return "my-auto mr-4 ";
+    },
+    btndisable: function btndisable() {
+      if (this.tweet || this.picture) {
+        return false;
+      } else {
+        return true;
+      }
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["fetchusertweet", "fetchuser"])), {}, {
     onFileChange: function onFileChange(e) {
@@ -2800,6 +2843,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["user"]))
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/routerset.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/routerset.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -7444,7 +7506,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(107, 255, 210, 0.576);\n\n  background-color: rgba(127, 255, 212, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(107, 255, 210, 0.576);\n  background-color: rgba(127, 255, 212, 0.05);\n  border-radius: 40px;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(107, 255, 210, 0.576);\n\n  background-color: rgba(127, 255, 212, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(129, 251, 215, 0.576);\n  background-color: rgba(127, 255, 212, 0.05);\n  border-radius: 40px;\n}\n", ""]);
 
 // exports
 
@@ -7463,7 +7525,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-3bd692e4] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\n  background: rgba(54, 54, 250, 0.1);\n  border-radius: 25px;\n\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-3bd692e4] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\n  background: rgba(54, 54, 250, 0.1);\n  border-radius: 40px;\n\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -61067,7 +61129,14 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary btn-lg btn-block tweet" },
+                  {
+                    staticClass: "btn btn-primary btn-lg btn-block tweet",
+                    on: {
+                      click: function($event) {
+                        return _vm.tweetmodel()
+                      }
+                    }
+                  },
                   [_vm._v("Tweet")]
                 ),
                 _vm._v(" "),
@@ -61078,7 +61147,9 @@ var render = function() {
           ]
         )
       ]
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -61156,6 +61227,35 @@ var staticRenderFns = [
         _vm._v("More\n          ")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "tweet",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "tweetLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body" })
+            ])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -61198,6 +61298,10 @@ var render = function() {
               _vm._v(_vm._s("@" + data.user.username))
             ]),
             _vm._v(" "),
+            _c("span", { staticClass: "text-muted" }, [
+              _vm._v(_vm._s(_vm._f("date")(data.tweet.created_at)))
+            ]),
+            _vm._v(" "),
             _c("div", [_vm._v(_vm._s(data.tweet.tweet))]),
             _vm._v(" "),
             _c("div", [
@@ -61221,30 +61325,34 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             data.liked
-              ? _c(
-                  "i",
-                  {
+              ? _c("span", [
+                  _c("i", {
                     staticClass: "fas fa-heart heart text-danger fa-lg p-2",
                     on: {
                       click: function($event) {
                         return _vm.likepost(data.tweet.id, index)
                       }
                     }
-                  },
-                  [_vm._v(" " + _vm._s(data.likes))]
-                )
-              : _c(
-                  "i",
-                  {
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(data.likes))
+                  ])
+                ])
+              : _c("span", [
+                  _c("i", {
                     staticClass: "far fa-heart heart fa-lg p-2",
                     on: {
                       click: function($event) {
                         return _vm.likepost(data.tweet.id, index)
                       }
                     }
-                  },
-                  [_vm._v(" " + _vm._s(data.likes))]
-                )
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-dark" }, [
+                    _vm._v(_vm._s(data.likes))
+                  ])
+                ])
           ]),
           _vm._v(" "),
           _vm._m(2, true)
@@ -61581,7 +61689,7 @@ var render = function() {
                               "rounded rounded-circle bg-white ml-3 p-1 img-fluid",
                             attrs: {
                               src: _vm.user.profile,
-                              width: "50%",
+                              width: "130px",
                               alt: ""
                             }
                           })
@@ -61619,7 +61727,13 @@ var render = function() {
                             _vm.$set(_vm.userdeta, "name", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.userdeta.name.length < 1
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v("Name can't be empty")
+                          ])
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
@@ -61757,7 +61871,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
+        [_vm._v("Select Your Picture")]
       ),
       _vm._v(" "),
       _c(
@@ -61781,7 +61895,7 @@ var staticRenderFns = [
     return _c(
       "label",
       {
-        staticClass: "file-input text-primary my-auto",
+        staticClass: "file-input p-3 text-primary my-auto",
         attrs: { for: "file-input" }
       },
       [_c("i", { staticClass: "far fa-image fa-2x" })]
@@ -61905,6 +62019,7 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-primary tweet",
+              attrs: { disabled: _vm.btndisable() },
               on: { click: _vm.tweetit }
             },
             [_vm._v("Tweet")]
@@ -61929,6 +62044,30 @@ var staticRenderFns = [
     )
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/routerset.vue?vue&type=template&id=7fde8a3e&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/routerset.vue?vue&type=template&id=7fde8a3e&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [_c("router-view")], 1)
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -78147,6 +78286,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 Vue.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
+Vue.component('routerset', __webpack_require__(/*! ./components/routerset.vue */ "./resources/js/components/routerset.vue")["default"]);
 Vue.filter('date', function (value) {
   return moment__WEBPACK_IMPORTED_MODULE_2___default()(value).format('MMMM Do YYYY');
 });
@@ -78630,6 +78770,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tweet_vue_vue_type_template_id_4683c2d4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tweet_vue_vue_type_template_id_4683c2d4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/routerset.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/routerset.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _routerset_vue_vue_type_template_id_7fde8a3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routerset.vue?vue&type=template&id=7fde8a3e&scoped=true& */ "./resources/js/components/routerset.vue?vue&type=template&id=7fde8a3e&scoped=true&");
+/* harmony import */ var _routerset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routerset.vue?vue&type=script&lang=js& */ "./resources/js/components/routerset.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _routerset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _routerset_vue_vue_type_template_id_7fde8a3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _routerset_vue_vue_type_template_id_7fde8a3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "7fde8a3e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/routerset.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/routerset.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/routerset.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_routerset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./routerset.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/routerset.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_routerset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/routerset.vue?vue&type=template&id=7fde8a3e&scoped=true&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/routerset.vue?vue&type=template&id=7fde8a3e&scoped=true& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_routerset_vue_vue_type_template_id_7fde8a3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./routerset.vue?vue&type=template&id=7fde8a3e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/routerset.vue?vue&type=template&id=7fde8a3e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_routerset_vue_vue_type_template_id_7fde8a3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_routerset_vue_vue_type_template_id_7fde8a3e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

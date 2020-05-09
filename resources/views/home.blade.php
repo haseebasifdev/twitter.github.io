@@ -19,7 +19,8 @@
 
       </div>
       <div class="col-md-9 col-sm-12 m-0 p-0 ">
-         <router-view ></router-view>
+         <routerset></routerset>
+         {{-- <router-view></router-view> --}}
       </div>
    </div>
 

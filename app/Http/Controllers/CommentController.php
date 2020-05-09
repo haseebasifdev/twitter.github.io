@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Like;
+use App\Comment;
 use Illuminate\Http\Request;
 
-class LikeController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,28 +35,16 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        $like = Like::where('post_id', $request->post_id)->where('user_id', auth()->id());
-
-        if ($like->exists()) {
-            $like->delete();
-        } else {
-            Like::create([
-                'user_id' => auth()->id(),
-                'post_id' => $request->post_id,
-            ]);
-        }
-
-        // $likes = Like::where('user_id', auth()->id())->get();
-        return (["Like" => 'Completed']);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Like  $like
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Like $like)
+    public function show(Comment $comment)
     {
         //
     }
@@ -64,10 +52,10 @@ class LikeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Like  $like
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Like $like)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -76,10 +64,10 @@ class LikeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Like  $like
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Like $like)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -87,10 +75,10 @@ class LikeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Like  $like
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Like $like)
+    public function destroy(Comment $comment)
     {
         //
     }

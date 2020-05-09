@@ -67,7 +67,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Select Your Picture</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -89,7 +89,7 @@
               @click="cancelpicture"
             >X</div>
             <span class="image-upload">
-              <label for="file-input" class="file-input text-primary my-auto">
+              <label for="file-input" class="file-input p-3 text-primary my-auto">
                 <i class="far fa-image fa-2x"></i>
               </label>
               <input id="file-input" type="file" @change="onFileChange" accept="image/*" />
@@ -128,7 +128,7 @@
                   <img
                     :src="user.profile"
                     class="rounded rounded-circle bg-white ml-3 p-1 img-fluid"
-                    width="50%"
+                    width="130px"
                     alt
                   />
                 </div>
@@ -143,6 +143,7 @@
                   aria-describedby="emailHelp"
                   placeholder="Enter Name"
                 />
+                <span v-if="userdeta.name.length<1" class="text-danger">Name can't be empty</span>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Bio</label>
@@ -241,11 +242,13 @@ export default {
       // console.log(this.userdetail);
     },
     saveprofile() {
-      this.$store.dispatch("saveprofile", this.userdeta);
-      this.fetchusertweet();
-      this.fetchuser();
+      if (this.userdeta.name.length > 0) {
+        this.$store.dispatch("saveprofile", this.userdeta);
+        this.fetchusertweet();
+        this.fetchuser();
 
-      $("#profile").modal("hide");
+        $("#profile").modal("hide");
+      }
     },
 
     ...mapActions(["fetchusertweet", "fetchuser"])
@@ -295,7 +298,7 @@ i.ipic {
 }
 .file-input:hover {
   background: rgba(54, 54, 250, 0.1);
-  border-radius: 25px;
+  border-radius: 40px;
 
   cursor: pointer;
 }

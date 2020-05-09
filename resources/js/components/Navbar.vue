@@ -55,17 +55,43 @@
               <i class="fas fa-angle-right fa-lg mr-3"></i>More
             </a>
           </li>
-          <button class="btn btn-primary btn-lg btn-block tweet">Tweet</button>
+          <button class="btn btn-primary btn-lg btn-block tweet" @click="tweetmodel()">Tweet</button>
           <slot></slot>
         </ul>
       </div>
     </nav>
+    <div
+      class="modal fade"
+      id="tweet"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="tweetLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!-- <tweet></tweet> -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import tweet from "./Tweet";
 export default {
+  components: {
+    tweet
+  },
   props: ["user"],
+  methods: {
+    tweetmodel() {
+      console.log("clicked");
+      $("#tweet").modal("show");
+    }
+  },
   mounted() {
     console.log("Component mounted.");
   }

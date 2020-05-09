@@ -11,6 +11,7 @@
         <div>
           <span class="font-weight-bolder">{{data.user.name}}</span>
           <span class="text-muted">{{'@'+data.user.username}}</span>
+          <span class="text-muted">{{data.tweet.created_at | date}}</span>
           <div>{{data.tweet.tweet}}</div>
           <div>
             <img :src="data.tweet.tweetpicture" width="100%" class="tweetpic my-2" alt srcset />
@@ -25,12 +26,17 @@
           <i class="fas fa-sync-alt sync fa-lg p-2"></i>
         </div>
         <div>
-          <i
-            v-if="data.liked"
-            class="fas fa-heart heart text-danger fa-lg p-2"
-            @click="likepost(data.tweet.id,index)"
-          > {{data.likes}}</i>
-          <i v-else class="far fa-heart heart fa-lg p-2" @click="likepost(data.tweet.id,index)"> {{data.likes}}</i>
+          <span v-if="data.liked">
+            <i
+              class="fas fa-heart heart text-danger fa-lg p-2"
+              @click="likepost(data.tweet.id,index)"
+            ></i>
+            <span class="text-danger">{{data.likes}}</span>
+          </span>
+          <span v-else>
+            <i class="far fa-heart heart fa-lg p-2" @click="likepost(data.tweet.id,index)"></i>
+            <span class="text-dark">{{data.likes}}</span>
+          </span>
         </div>
         <div>
           <i class="fas fa-upload upload fa-lg p-2"></i>
@@ -97,7 +103,7 @@ img.tweetpic {
 }
 .comment:hover {
   cursor: pointer;
-  color: rgba(107, 255, 210, 0.576);
+  color: rgba(129, 251, 215, 0.576);
   background-color: rgba(127, 255, 212, 0.05);
   border-radius: 40px;
 }

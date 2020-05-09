@@ -41,7 +41,7 @@
         </span>
         <span class="float-right">
           <span v-if="tweet.length>0" :class="checktweet()">{{tweet.length}}/255</span>
-          <button class="btn btn-primary tweet" @click="tweetit">Tweet</button>
+          <button class="btn btn-primary tweet" @click="tweetit" :disabled="btndisable()">Tweet</button>
         </span>
       </div>
     </div>
@@ -65,6 +65,13 @@ export default {
         return "my-auto mr-4 text-danger";
       } else return "my-auto mr-4 ";
     },
+    btndisable() {
+      if (this.tweet || this.picture) {
+        return false;
+      } else {
+        return true;
+      }
+    },
     ...mapActions(["fetchusertweet", "fetchuser"]),
     onFileChange(e) {
       var fileReader = new FileReader();
@@ -78,18 +85,19 @@ export default {
     },
     tweetit() {
       if (this.tweet.length <= 255) {
-        var post = {
-          tweet: this.tweet,
-          avatar: this.picture
-        };
-        var payload = {
-          tweet: post,
-          user: this.user
-        };
-        this.picture = "";
-        this.tweet = "";
-        this.$store.dispatch("posttweet", payload);
-        this.fetchusertweet();
+          var post = {
+            tweet: this.tweet,
+            avatar: this.picture
+          };
+          var payload = {
+            tweet: post,
+            user: this.user
+          };
+          this.picture = "";
+          this.tweet = "";
+          this.$store.dispatch("posttweet", payload);
+          this.fetchusertweet();
+        
       }
     }
   },
