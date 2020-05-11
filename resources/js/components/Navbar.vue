@@ -26,7 +26,7 @@
             </router-link>
           </li>
           <li class="nav-item my-4">
-            <router-link to="/bar" class="nav-links">
+            <router-link :to="{name:'explore'}" class="nav-links">
               <i class="fas fa-hashtag fa-lg mr-3"></i>Explore
             </router-link>
           </li>
@@ -51,7 +51,11 @@
             </a>
           </li>
           <li class="nav-item my-4">
-            <router-link :to="{name:'profile'}" class="nav-links" href="#">
+            <router-link
+              :to="{name:'profile',params: { username: user.username }}"
+              class="nav-links"
+              href="#"
+            >
               <i class="far fa-user fa-lg mr-3"></i>Profile
             </router-link>
           </li>
@@ -86,6 +90,7 @@
 
 <script>
 import tweet from "./Tweet";
+
 export default {
   components: {
     tweet

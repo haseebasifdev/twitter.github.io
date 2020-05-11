@@ -9,7 +9,8 @@ export default new Vuex.Store({
         usertweet: [],
         alltweet: [],
         likedpost: '',
-        commentpostindex: 0
+        commentpostindex: 0,
+        allusers: []
 
     },
     mutations: {
@@ -17,8 +18,11 @@ export default new Vuex.Store({
         setuser: (state, userdata) => state.user = userdata,
         setusertweet: (state, tweet) => state.usertweet = tweet,
         setcommentpost: (state, index) => state.usertweet[index].comments++,
+        setusers: (state, users) => state.allusers = users,
+        setfolow: (state, index) => {
+            state.allusers[index].following = !state.allusers[index].following
+        },
         setlikedpost: (state, index) => {
-            // console.log(state.usertweet[index].liked)
             if (state.usertweet[index].liked) {
 
                 state.usertweet[index].likes--;
@@ -109,6 +113,38 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 commit('setcommentpostindex', payload);
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        alluser: async ({
+            commit
+        }) => {
+            try {
+                const response = await axios.get('/users');
+                commit('setusers', response.data);
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        follow: async ({
+            commit
+        }, payload) => {
+            try {
+                commit('setfolow', payload.index);
+                const response = await axios.post('/follow',payload);
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        unfollow: async ({
+            commit
+        }, payload) => {
+            try {
+                commit('setfolow', payload.index);
+                const response = await axios.post('/unfollow',payload);
+
             } catch (err) {
                 console.log(err);
             }

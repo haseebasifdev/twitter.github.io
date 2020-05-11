@@ -117,7 +117,7 @@ export default {
         index: this.commentpostindex
       };
       this.tweetreply = "";
-      console.log(data);
+    //   console.log(data);
 
       $("#comment").modal("hide");
       this.$store.dispatch("commentit", data);

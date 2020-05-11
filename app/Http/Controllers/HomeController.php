@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Follow;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
@@ -26,6 +29,20 @@ class HomeController extends Controller
     {
         $user = User::find(auth()->id());
         return view('home', compact('user'));
+    }
+    public function alluser()
+    {
+        $users = User::where('id', "!=", auth()->id())->get();
+        for ($i = 0; $i < $users->count(); $i++) {
+
+            $users[$i] = new Collection([
+                "user" => $users[$i],
+                "following" => Follow::where('user_id', auth()->id())->where('follow_id', $users[$i]->id)->exists(),
+                "follower" => Follow::where('user_id', $users[$i]->id)->where('follow_id', auth()->id())->exists(),
+
+            ]);
+        }
+        return $users;
     }
     public function user()
     {

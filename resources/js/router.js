@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Profile from './components/Profile.vue'
 import Home from './components/Home.vue'
+import Explore from './components/Follow'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
@@ -20,12 +21,16 @@ const routes = [{
         component: Bar
     },
     {
-        path: '/profile',
+        path: '/:username',
         component: Profile,
-        name:'profile'
+        name: 'profile'
+    },
+    {
+        path: '/explore/follow',
+        component: Explore,
+        name: 'explore'
     },
 ]
 export default new VueRouter({
     routes // short for `routes: routes`
 })
-
