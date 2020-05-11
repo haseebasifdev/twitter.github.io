@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <nav class="navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed">
       <button
         class="navbar-toggler"

@@ -2,6 +2,9 @@ import Vue from 'vue';
 import Profile from './components/Profile.vue'
 import Home from './components/Home.vue'
 import Explore from './components/Follow'
+import Follower from './components/Followers'
+import Following from './components/Following'
+import Friend from './components/Friend'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
@@ -23,8 +26,47 @@ const routes = [{
     {
         path: '/:username',
         component: Profile,
-        name: 'profile'
+        name: 'profile',
+        children: [
+            // {
+            //     path: 'follower',
+            //     component: Follower,
+            //     name: 'follower'
+            // },
+            // {
+            //     path: 'following',
+            //     component: Following,
+            //     name: 'following'
+            // },
+        ]
     },
+    {
+        path: '/users',
+        component: Friend,
+        name: 'profileto',
+        children: [
+            {
+                path: 'follower',
+                component: Follower,
+                name: 'follower'
+            },
+            {
+                path: 'following',
+                component: Following,
+                name: 'following'
+            },
+        ]
+    },
+    // {
+    //     path: '/follower',
+    //     component: Follower,
+    //     name: 'follower'
+    // },
+    // {
+    //     path: '/following',
+    //     component: Following,
+    //     name: 'following'
+    // },
     {
         path: '/explore/follow',
         component: Explore,

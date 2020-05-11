@@ -13,6 +13,14 @@ export default new Vuex.Store({
         allusers: []
 
     },
+    getters: {
+        allfollower: state => {
+            return state.allusers.filter(user => user.follower)
+        },
+        allfollowing: state => {
+            return state.allusers.filter(user => user.following)
+        }
+    },
     mutations: {
         setcommentpostindex: (state, index) => state.commentpostindex = index,
         setuser: (state, userdata) => state.user = userdata,
@@ -132,7 +140,7 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 commit('setfolow', payload.index);
-                const response = await axios.post('/follow',payload);
+                const response = await axios.post('/follow', payload);
 
             } catch (err) {
                 console.log(err);
@@ -143,7 +151,7 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 commit('setfolow', payload.index);
-                const response = await axios.post('/unfollow',payload);
+                const response = await axios.post('/unfollow', payload);
 
             } catch (err) {
                 console.log(err);

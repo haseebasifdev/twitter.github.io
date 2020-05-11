@@ -35,7 +35,8 @@ export default {
     this.fetchuser();
   },
   computed: {
-    ...mapState(["user", "usertweet"])
+    ...mapState(["user", "usertweet"]),
+    ...mapGetters(["allfollower", "allfollowing"])
   }
 };
 </script>

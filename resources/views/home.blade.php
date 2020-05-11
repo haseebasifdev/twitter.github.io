@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="" style="margin-left:6%">
+<div class="" style="margin-left:5%">
    <div class="row">
       <div class="col-md-3 col-sm- m-0 p-0 ">
          <navbar :user="{{$user}}">

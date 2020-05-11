@@ -49,10 +49,22 @@
           <i class="fas fa-link text-primary"></i>
           {{user.website}}
         </div>
+        <div class="mb-4">
+          <router-link :to="{name:'follower'}">
+            <span class="font-weight-bolder text-dark">{{allfollowing.length}}</span>
+            <span class="text-muted mr-4">Following</span>
+          </router-link>
+          <router-link :to="{name:'following'}">
+            <span class="font-weight-bolder text-dark">{{allfollower.length}}</span>
+            <span class="text-muted">Followers</span>
+          </router-link>
+        </div>
       </div>
+
       <post class="border-top" :user="user" :usertweet="usertweet"></post>
     </div>
-    <div class="col-md-5 p-0 m-0">
+    <div class="col-md-5">
+      <!-- <router-view :key="$route.path"></router-view> -->
       <!-- <input type="file" id="file" accept="image/*" style="border:none" /> -->
     </div>
     <!-- Modal -->
@@ -251,17 +263,19 @@ export default {
       }
     },
 
-    ...mapActions(["fetchusertweet", "fetchuser"])
+    ...mapActions(["fetchusertweet", "fetchuser", "alluser"])
   },
   mounted() {
     this.fetchusertweet();
     this.fetchuser();
+    this.alluser();
   },
   computed: {
     ...mapState(["user", "usertweet"]),
     ...mapState({
       userdeta: state => state.user
-    })
+    }),
+    ...mapGetters(["allfollower", "allfollowing"])
   }
 };
 </script>

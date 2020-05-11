@@ -39,7 +39,6 @@ class HomeController extends Controller
                 "user" => $users[$i],
                 "following" => Follow::where('user_id', auth()->id())->where('follow_id', $users[$i]->id)->exists(),
                 "follower" => Follow::where('user_id', $users[$i]->id)->where('follow_id', auth()->id())->exists(),
-
             ]);
         }
         return $users;

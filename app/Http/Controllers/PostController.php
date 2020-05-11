@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Follow;
 use App\Like;
 use App\Post;
 use App\User;
@@ -19,7 +20,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::where("user_id", auth()->user()->id)->latest()->get();
+        $follower = Follow::where('user_id', auth()->id())->pluck('follow_id');
+        $follower = $follower->push(auth()->id());
+        // var_dump($follower);
+        $post = Post::whereIn("user_id", $follower)->latest()->get();
         // $user = User::find($post[0]->user_id);
         // return $user;
         for ($i = 0; $i < $post->count(); $i++) {
