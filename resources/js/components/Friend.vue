@@ -93,7 +93,7 @@ button:hover {
 }
 .router-link-exact-active,
 .router-link-active {
-  border-bottom: 1px solid rgba(0, 132, 255, 0.9);
+  border-bottom: 2px solid rgba(0, 132, 255, 0.9);
   color: rgb(0, 0, 0);
 }
 </style>

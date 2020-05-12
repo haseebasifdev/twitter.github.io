@@ -10,7 +10,8 @@ export default new Vuex.Store({
         alltweet: [],
         likedpost: '',
         commentpostindex: 0,
-        allusers: []
+        allusers: [],
+        messages: {}
 
     },
     getters: {
@@ -19,11 +20,19 @@ export default new Vuex.Store({
         },
         allfollowing: state => {
             return state.allusers.filter(user => user.following)
-        }
+        },
+        authusertweet: state => {
+            return state.alltweet.filter(tweet => tweet.user.id == state.user.id)
+        },
     },
     mutations: {
+        finduser: (state, username) => {
+            return state.allusers.filter(user => user.username == username)
+        },
         setcommentpostindex: (state, index) => state.commentpostindex = index,
+        setnewmessage: (state, data) => state.messages.messages.push(data),
         setuser: (state, userdata) => state.user = userdata,
+        setmessageuser: (state, data) => state.messages = data,
         setusertweet: (state, tweet) => state.usertweet = tweet,
         setcommentpost: (state, index) => state.usertweet[index].comments++,
         setusers: (state, users) => state.allusers = users,
@@ -42,8 +51,6 @@ export default new Vuex.Store({
                 state.usertweet[index].liked = (!state.usertweet[index].liked);
             }
             console.log(state.usertweet[index].liked, state.usertweet[index].likes)
-            // state.likedpost = post[0];
-            // state.usertweet[index].likes = post[1]
         },
     },
     actions: {
@@ -152,6 +159,28 @@ export default new Vuex.Store({
             try {
                 commit('setfolow', payload.index);
                 const response = await axios.post('/unfollow', payload);
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        messageuser: async ({
+            commit
+        }, payload) => {
+            try {
+                const response = await axios.post('/allmessage', payload);
+                commit('setmessageuser', response.data);
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        savemessage: async ({
+            commit
+        }, payload) => {
+            try {
+                const response = await axios.post('/savemessage', payload);
+                commit('setnewmessage', payload);
 
             } catch (err) {
                 console.log(err);

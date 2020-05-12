@@ -30,4 +30,6 @@ Route::post('/like', 'LikeController@store')->name('like');
 Route::post('/comment', 'CommentController@store')->name('comment');
 Route::post('/follow', 'FollowController@store')->name('follow');
 Route::post('/unfollow', 'FollowController@destroy')->name('unfollow');
+Route::post('/allmessage', 'MessageController@show')->name('allmessage');
+Route::post('/savemessage', 'MessageController@store')->name('allmessage');
 Route::get('/post', 'PostController@index')->name('getpost');

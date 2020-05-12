@@ -275,7 +275,7 @@ export default {
     ...mapState({
       userdeta: state => state.user
     }),
-    ...mapGetters(["allfollower", "allfollowing"])
+    ...mapGetters(["allfollower", "allfollowing", "authusertweet"])
   }
 };
 </script>

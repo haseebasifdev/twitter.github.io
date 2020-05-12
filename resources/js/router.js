@@ -5,6 +5,8 @@ import Explore from './components/Follow'
 import Follower from './components/Followers'
 import Following from './components/Following'
 import Friend from './components/Friend'
+import Message from './components/Message'
+import MessageFriends from './components/MessageFriends'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
@@ -22,6 +24,16 @@ const routes = [{
     {
         path: '/bar',
         component: Bar
+    },
+    {
+        path: '/message',
+        component: MessageFriends,
+        name: 'message',
+        children: [{
+            path: '/:username',
+            component: Message,
+            name: 'messagebody'
+        }, ]
     },
     {
         path: '/:username',
@@ -44,8 +56,7 @@ const routes = [{
         path: '/users',
         component: Friend,
         name: 'profileto',
-        children: [
-            {
+        children: [{
                 path: 'follower',
                 component: Follower,
                 name: 'follower'

@@ -20,37 +20,37 @@
               <img src="/images/twitter.png" width="60px" class="twitter p-2" style alt srcset />
             </router-link>
           </li>
-          <li class="nav-item my-4">
+          <li class="nav-item my-3">
             <router-link to="/" class="nav-links">
               <i class="fas fa-home fa-lg mr-3"></i>Home
             </router-link>
           </li>
-          <li class="nav-item my-4">
+          <li class="nav-item my-3">
             <router-link :to="{name:'explore'}" class="nav-links">
               <i class="fas fa-hashtag fa-lg mr-3"></i>Explore
             </router-link>
           </li>
-          <li class="nav-item my-4">
+          <li class="nav-item my-3">
             <a class="nav-links" href="#">
               <i class="far fa-bell fa-lg mr-3"></i>Notification
             </a>
           </li>
-          <li class="nav-item my-4">
-            <a class="nav-links" href="#">
+          <li class="nav-item my-3">
+            <router-link :to="{name:'message'}" class="nav-links" >
               <i class="far fa-envelope fa-lg mr-3"></i>Messages
-            </a>
+            </router-link>
           </li>
-          <li class="nav-item my-4">
+          <li class="nav-item my-3">
             <a class="nav-links" href="#">
               <i class="far fa-bookmark fa-lg mr-3"></i>Bookmarks
             </a>
           </li>
-          <li class="nav-item my-4">
+          <li class="nav-item my-3">
             <a class="nav-links" href="#">
               <i class="far fa-list-alt fa-lg mr-3"></i>Lists
             </a>
           </li>
-          <li class="nav-item my-4">
+          <li class="nav-item my-3">
             <router-link
               :to="{name:'profile',params: { username: user.username }}"
               class="nav-links"
@@ -59,7 +59,7 @@
               <i class="far fa-user fa-lg mr-3"></i>Profile
             </router-link>
           </li>
-          <li class="nav-item my-4">
+          <li class="nav-item my-3">
             <a class="nav-links" href="#">
               <i class="fas fa-angle-right fa-lg mr-3"></i>More
             </a>
@@ -112,7 +112,7 @@ export default {
   color: rgba(0, 0, 0, 0.8);
   font-family: Helvetica;
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 50px;
   padding: 10px 10px;
 }
