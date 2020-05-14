@@ -52,7 +52,15 @@ export default {
   },
   computed: {
     ...mapState(["allusers"])
-  }
+  },
+  // created() {
+  //   const to = this.$route.params.username;
+  //   console.log(to);
+  //   Echo.private("message." + to).listen("Message", e => {
+  //     this.$store.commit("setnewmessage", e.message);
+  //     console.log(e.message);
+  //   });
+  // }
 };
 </script>
 <style scoped>
@@ -99,8 +107,7 @@ div.body
   text-decoration: none;
   color: black;
 }
-div.row
-{
-    margin-right: 10%;
+div.row {
+  margin-right: 10%;
 }
 </style>

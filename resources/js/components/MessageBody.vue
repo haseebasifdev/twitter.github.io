@@ -1,6 +1,13 @@
 <template>
   <div class="d-flex my-2 ml-4">
-    <textarea v-model="message" class="px-3" id="area" rows="1" placeholder="Start a new message"></textarea>
+    <textarea
+      v-model="message"
+      class="px-3"
+      id="area"
+      rows="1"
+      placeholder="Start a new message"
+      @keyup.enter="sendmessage()"
+    ></textarea>
     <div class="ml-2">
       <button class="btn btn-sm btn-light" @click="sendmessage()">send</button>
     </div>

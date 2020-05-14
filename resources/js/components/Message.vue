@@ -4,7 +4,13 @@
       <div class="font-weight-bold">{{messages.user.name}}</div>
       <div class="text-muted">{{'@'+messages.user.username}}</div>
     </div>
-    <div class="card-body border-bottom" style="height:520px">
+    <div class="card-body border-bottom overflow-auto" style="max-height:520px">
+      <div
+        class="bg-warning p-2 text-center justify-content-center"
+        v-if="messages.messages.length==0"
+      >
+        <div class="mx-auto">No Chat</div>
+      </div>
       <div v-for="message in messages.messages">
         <div class="row p-2" v-if="message.from==messages.user.id">
           <div class="col-md-12">
@@ -34,7 +40,7 @@
 
 <script>
 import MessageBody from "./MessageBody";
-import { mapActions, mapState, mapGetters } from "vuex";
+import { mapActions, mapState, mapGetters, mapMutations } from "vuex";
 export default {
   components: {
     MessageBody
@@ -43,7 +49,10 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions(["messageuser", "fetchuser"])
+    ...mapActions(["messageuser", "fetchuser", "setmessage"]),
+    ...mapMutations([
+      "setnewmessage" // map `this.increment()` to `this.$store.commit('increment')`
+    ])
   },
 
   mounted() {
@@ -55,6 +64,15 @@ export default {
   },
   computed: {
     ...mapState(["messages", "user"])
+  },
+  created() {
+    const to = this.$route.params.username;
+    console.log("from", from);
+    console.log("to", to);
+    Echo.private("chat." + from).listen("Chat", e => {
+      console.log(e.message.message);
+      this.setnewmessage(e.message);
+    });
   }
 };
 </script>

@@ -179,8 +179,9 @@ export default new Vuex.Store({
             commit
         }, payload) => {
             try {
-                const response = await axios.post('/savemessage', payload);
                 commit('setnewmessage', payload);
+                const response = await axios.post('/savemessage', payload);
+
 
             } catch (err) {
                 console.log(err);
