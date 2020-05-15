@@ -9,6 +9,13 @@ Vue.component('routerset', require('./components/routerset.vue').default);
 Vue.filter('date', function (value) {
     return moment(value).format('MMMM Do YYYY');
 })
+// import VueLocalStorage from 'vue-localstorage'
+
+// Vue.use(VueLocalStorage)
+// Vue.use(VueLocalStorage, {
+//   name: 'ls',
+//   bind: true 
+// })
 import {
     mapActions,
     mapState

@@ -4,7 +4,7 @@
       <div class="font-weight-bold">{{messages.user.name}}</div>
       <div class="text-muted">{{'@'+messages.user.username}}</div>
     </div>
-    <div class="card-body border-bottom overflow-auto" style="max-height:520px">
+    <div class="card-body border-bottom overflow-auto" style="height:520px">
       <div
         class="bg-warning p-2 text-center justify-content-center"
         v-if="messages.messages.length==0"
@@ -70,7 +70,7 @@ export default {
     console.log("from", from);
     console.log("to", to);
     Echo.private("chat." + from).listen("Chat", e => {
-      console.log(e.message.message);
+      // console.log(e.message.message);
       this.setnewmessage(e.message);
     });
   }

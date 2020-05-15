@@ -31,12 +31,12 @@
             </router-link>
           </li>
           <li class="nav-item my-3">
-            <a class="nav-links" href="#">
+            <router-link :to="{name:'notifications'}" class="nav-links" >
               <i class="far fa-bell fa-lg mr-3"></i>Notification
-            </a>
+            </router-link>
           </li>
           <li class="nav-item my-3">
-            <router-link :to="{name:'message'}" class="nav-links" >
+            <router-link :to="{name:'message'}" class="nav-links">
               <i class="far fa-envelope fa-lg mr-3"></i>Messages
             </router-link>
           </li>

@@ -1,29 +1,36 @@
 <template>
   <div>
-    <div v-for="(data,index) in usertweet" class="my-4 border-bottom">
-      <div class="mx-3 d-flex">
-        <img
-          :src="data.user.profile"
-          class="mr-2 rounded rounded-circle"
-          width="50px"
-          height="50px"
-        />
-        <div>
-          <span class="font-weight-bolder">{{data.user.name}}</span>
-          <span class="text-muted">{{'@'+data.user.username}}</span>
-          <span class="text-muted">{{data.tweet.created_at | date}}</span>
-          <div>{{data.tweet.tweet}}</div>
+    <div v-for="(data,index) in usertweet" class="pt-2 border-bottom post">
+      <router-link
+        class="routemain"
+        :to="{name:'showpost',params: { username: data.user.username,id:data.tweet.id }}"
+      >
+        <div class="mx-3 d-flex">
+          <img
+            :src="data.user.profile"
+            class="mr-2 rounded rounded-circle"
+            width="50px"
+            height="50px"
+          />
           <div>
-            <img
-              :src="data.tweet.tweetpicture"
-              width="100%"
-              class="tweetpic my-2 border"
-              alt
-              srcset
-            />
+            <span class="font-weight-bolder">
+              <router-link class="route text-dark" to="/notifications">{{data.user.name}}</router-link>
+            </span>
+            <span class="text-muted">{{'@'+data.user.username}}</span>
+            <span class="text-muted">{{data.tweet.created_at | date}}</span>
+            <div class="text-dark">{{data.tweet.tweet}}</div>
+            <div>
+              <img
+                :src="data.tweet.tweetpicture"
+                width="100%"
+                class="tweetpic my-2 border"
+                alt
+                srcset
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </router-link>
       <div class="d-flex justify-content-around mb-2 mx-4">
         <div>
           <i class="far fa-comment comment fa-lg p-2" @click="commentmodel(index)"></i>
@@ -82,7 +89,7 @@ export default {
       this.$store.dispatch("commentpostindex", index);
       $("#comment").modal("show");
     }
-  },
+  }
 };
 </script>
 <style scoped>
@@ -124,5 +131,12 @@ img.tweetpic {
   color: rgba(129, 251, 215, 0.576);
   background-color: rgba(127, 255, 212, 0.05);
   border-radius: 40px;
+}
+.post:hover {
+  cursor: pointer;
+  background-color: rgba(88, 166, 255, 0.074);
+}
+.routemain {
+  text-decoration: none;
 }
 </style>

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Like;
 use App\Notification;
-use App\Post;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
-class LikeController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,15 @@ class LikeController extends Controller
      */
     public function index()
     {
-        //
+        $notifications = Notification::where('to', auth()->id())->get();
+        for ($i = 0; $i < $notifications->count(); $i++) {
+            $user = User::find($notifications[$i]->from);
+            $notifications[$i] = new Collection([
+                "user" => $user,
+                "notifications" => $notifications[$i],
+            ]);
+        }
+        return $notifications;
     }
 
     /**
@@ -37,34 +45,16 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        $like = Like::where('post_id', $request->post_id)->where('user_id', auth()->id());
-
-        if ($like->exists()) {
-            $like->delete();
-        } else {
-            Like::create([
-                'user_id' => auth()->id(),
-                'post_id' => $request->post_id,
-            ]);
-            $Post = Post::find($request->post_id);
-            Notification::create([
-                'from' => auth()->id(),
-                'to' => $Post->user_id,
-                'type' => 'Like',
-            ]);
-        }
-
-        // $likes = Like::where('user_id', auth()->id())->get();
-        return (["Like" => 'Completed']);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Like  $like
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function show(Like $like)
+    public function show(Notification $notification)
     {
         //
     }
@@ -72,10 +62,10 @@ class LikeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Like  $like
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function edit(Like $like)
+    public function edit(Notification $notification)
     {
         //
     }
@@ -84,10 +74,10 @@ class LikeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Like  $like
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Like $like)
+    public function update(Request $request, Notification $notification)
     {
         //
     }
@@ -95,10 +85,10 @@ class LikeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Like  $like
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Like $like)
+    public function destroy(Notification $notification)
     {
         //
     }

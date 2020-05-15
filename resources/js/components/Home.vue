@@ -3,7 +3,7 @@
     <div class="col-md-7 border p-0 m-0 border-bottom-0">
       <tweet class="border-0"></tweet>
       <div class="bg-light" style=" height:10px"></div>
-      <post class :usertweet="usertweet"></post>
+      <post  :usertweet="usertweet"></post>
     </div>
     <div class="col-md-5"></div>
   </div>
@@ -41,4 +41,5 @@ export default {
 };
 </script>
 <style scoped>
+
 </style>

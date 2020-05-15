@@ -11,7 +11,9 @@ export default new Vuex.Store({
         likedpost: '',
         commentpostindex: 0,
         allusers: [],
-        messages: {}
+        messages: {},
+        notifications: [],
+        tweet: [],
 
     },
     getters: {
@@ -29,7 +31,9 @@ export default new Vuex.Store({
         finduser: (state, username) => {
             return state.allusers.filter(user => user.username == username)
         },
+        settweet: (state, data) => state.tweet = data,
         setcommentpostindex: (state, index) => state.commentpostindex = index,
+        setnotifications: (state, data) => state.notifications = data,
         setnewmessage: (state, data) => state.messages.messages.push(data),
         setuser: (state, userdata) => state.user = userdata,
         setmessageuser: (state, data) => state.messages = data,
@@ -181,6 +185,32 @@ export default new Vuex.Store({
             try {
                 commit('setnewmessage', payload);
                 const response = await axios.post('/savemessage', payload);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        notification: async ({
+            commit
+        }, payload) => {
+            try {
+                const response = await axios.get('/index', payload);
+
+                commit('setnotifications', response.data);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        showtweet: async ({
+            commit
+        }, payload) => {
+            try {
+                const response = await axios.get('/post/' + payload);
+
+                commit('settweet', response.data);
 
 
             } catch (err) {

@@ -33,3 +33,5 @@ Route::post('/unfollow', 'FollowController@destroy')->name('unfollow');
 Route::post('/allmessage', 'MessageController@show')->middleware('auth')->name('allmessage');
 Route::post('/savemessage', 'MessageController@store')->middleware('auth')->name('allmessage');
 Route::get('/post', 'PostController@index')->name('getpost');
+Route::get('/post/{post}', 'PostController@show')->name('getpost');
+Route::get('/index', 'NotificationController@index')->name('getnotification');

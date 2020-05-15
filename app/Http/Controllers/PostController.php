@@ -103,7 +103,29 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        // return $post;   
+
+        $user = User::find($post->user_id);
+        $likes = Like::where('post_id', $post->id)->count();
+        $liked = Like::where('post_id', $post->id)->where('user_id', auth()->id())->exists();
+        $comments = Comment::where('post_id', $post->id)->get();
+        for ($i = 0; $i < $comments->count(); $i++) {
+            $user = User::find($comments[$i]->user_id);
+            $comments[$i] = new Collection([
+                'user' => $user,
+                'comment' => $comments[$i]
+            ]);
+        };
+        $post = new Collection([
+            "tweet" => $post,
+            "user" => $user,
+            "likes" => $likes,
+            "liked" => $liked,
+            "comments" => $comments
+
+        ]);
+
+        return $post;
     }
 
     /**

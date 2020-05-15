@@ -28,6 +28,14 @@ export default {
         message: this.message,
         to: this.messages.user.id
       };
+      // var a = [];
+      // // Parse the serialized data back into an aray of objects
+      // a = JSON.parse(localStorage.getItem("message")) || [];
+      // // Push the new data (whether it be an object or anything else) onto the array
+      // a.push(this.message);
+      // // Alert the array value
+      // // Re-serialize the array back into a string and store it in localStorage
+      // localStorage.setItem("message", JSON.stringify(a));
       this.message = "";
       this.$store.dispatch("savemessage", data);
     },

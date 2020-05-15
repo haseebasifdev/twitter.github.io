@@ -7,6 +7,8 @@ import Following from './components/Following'
 import Friend from './components/Friend'
 import Message from './components/Message'
 import MessageFriends from './components/MessageFriends'
+import Notification from './components/Notification'
+import ShowPost from './components/ShowPost'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
@@ -24,6 +26,16 @@ const routes = [{
     {
         path: '/bar',
         component: Bar
+    },
+    {
+        path: '/notifications',
+        component: Notification,
+        name:'notifications'
+    },
+    {
+        path: '/:username/status/:id',
+        component: ShowPost,
+        name:'showpost'
     },
     {
         path: '/message',
