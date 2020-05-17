@@ -19,19 +19,31 @@ Route::get('/', function () {
 
 
 Auth::routes();
-
+// Home Controller
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/saveprofile', 'HomeController@store')->name('profile');
 Route::post('/saveprofilepicture', 'HomeController@storeprofile')->name('profile');
 Route::get('/user', 'HomeController@user')->name('user');
 Route::get('/users', 'HomeController@alluser')->name('user');
+
+// Post Controller
 Route::post('/post', 'PostController@store')->name('post');
-Route::post('/like', 'LikeController@store')->name('like');
-Route::post('/comment', 'CommentController@store')->name('comment');
-Route::post('/follow', 'FollowController@store')->name('follow');
-Route::post('/unfollow', 'FollowController@destroy')->name('unfollow');
-Route::post('/allmessage', 'MessageController@show')->middleware('auth')->name('allmessage');
-Route::post('/savemessage', 'MessageController@store')->middleware('auth')->name('allmessage');
 Route::get('/post', 'PostController@index')->name('getpost');
 Route::get('/post/{post}', 'PostController@show')->name('getpost');
+
+// Like Controller
+Route::post('/like', 'LikeController@store')->name('like');
+
+// Comment Controller
+Route::post('/comment', 'CommentController@store')->name('comment');
+
+// Follow Controller
+Route::post('/follow', 'FollowController@store')->name('follow');
+Route::post('/unfollow', 'FollowController@destroy')->name('unfollow');
+
+// Message Controller
+Route::post('/allmessage', 'MessageController@show')->middleware('auth')->name('allmessage');
+Route::post('/savemessage', 'MessageController@store')->middleware('auth')->name('allmessage');
+
+// Notification Controller
 Route::get('/index', 'NotificationController@index')->name('getnotification');
