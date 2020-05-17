@@ -3530,6 +3530,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8824,7 +8836,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-3bd692e4] {\r\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\r\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\r\n  font-size: 1.2rem;\r\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\r\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\r\n  background: rgba(54, 54, 250, 0.1);\r\n  border-radius: 40px;\r\n\r\n  cursor: pointer;\n}\nbutton.following:hover span[data-v-3bd692e4] {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  display: none;\n}\nbutton.following[data-v-3bd692e4]:hover {\r\n  background: rgb(219, 28, 28);\r\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-3bd692e4]:hover:before {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  content: \"Unfollow\";\n}\r\n", ""]);
+exports.push([module.i, "\nbutton[data-v-3bd692e4] {\r\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\r\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\r\n  font-size: 1.2rem;\r\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\r\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\r\n  background: rgba(54, 54, 250, 0.1);\r\n  border-radius: 40px;\r\n\r\n  cursor: pointer;\n}\nbutton.following:hover span[data-v-3bd692e4] {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  display: none;\n}\nbutton.following[data-v-3bd692e4]:hover {\r\n  background: rgb(219, 28, 28);\r\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-3bd692e4]:hover:before {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  content: \"Unfollow\";\n}\na.website[data-v-3bd692e4]:hover {\r\n  text-decoration: none;\n}\nspan.message[data-v-3bd692e4] {\r\n  border: 1px solid rgb(52, 130, 255);\n}\nspan.message[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  background-color: rgba(0, 110, 255, 0.1);\n}\r\n", ""]);
 
 // exports
 
@@ -69634,17 +69646,20 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", [
-            _c("i", {
-              staticClass: "fas fa-camera text-white ipic position-absolute",
-              staticStyle: { left: "70px" },
-              on: {
-                click: function($event) {
-                  return _vm.profilepic()
-                }
-              }
-            })
-          ])
+          _vm.showprofile.user.username == _vm.user.username
+            ? _c("div", [
+                _c("i", {
+                  staticClass:
+                    "fas fa-camera text-white ipic position-absolute",
+                  staticStyle: { left: "70px" },
+                  on: {
+                    click: function($event) {
+                      return _vm.profilepic()
+                    }
+                  }
+                })
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", [
@@ -69663,6 +69678,31 @@ var render = function() {
                 [_vm._v("Edit profile")]
               )
             : _c("div", { staticClass: "float-right mr-3 mt-2" }, [
+                _c(
+                  "span",
+                  { staticClass: "message p-2 rounded-circle mx-2" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "route",
+                        attrs: {
+                          to: {
+                            name: "messagebody",
+                            params: { username: _vm.showprofile.user.username }
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "far fa-envelope text-primary fa-lg"
+                        })
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
                 _vm.showprofile.follow
                   ? _c("span", [
                       _c(
@@ -69743,11 +69783,20 @@ var render = function() {
           _vm._v(" "),
           _vm.showprofile.user.website
             ? _c("div", { staticClass: "my-1" }, [
-                _c("i", { staticClass: "fas fa-link text-primary" }),
-                _vm._v(
-                  "\n        " +
-                    _vm._s(_vm.showprofile.user.website) +
-                    "\n      "
+                _c(
+                  "a",
+                  {
+                    staticClass: "website",
+                    attrs: { href: "https://" + _vm.showprofile.user.website }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-link" }),
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(_vm.showprofile.user.website) +
+                        "\n        "
+                    )
+                  ]
                 )
               ])
             : _vm._e(),
@@ -69788,348 +69837,372 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "col-md-5" }),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "profilepic",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "profilepicLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm.picture
-                  ? _c("img", {
-                      staticClass: "img-fluid position-relative p-2",
-                      attrs: {
-                        src: _vm.picture,
-                        width: "100%",
-                        height: "100%",
-                        alt: "",
-                        srcset: ""
-                      }
-                    })
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.picture
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "cancel p-2 font-weight-bolder position-absolute ml-3 rounded rounded-circle",
-                        staticStyle: { bottom: "50%" },
-                        on: { click: _vm.cancelpicture }
-                      },
-                      [_vm._v("X")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("span", { staticClass: "image-upload" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("input", {
-                    attrs: {
-                      id: "file-input",
-                      type: "file",
-                      accept: "image/*"
-                    },
-                    on: { change: _vm.onFileChange }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.saveprofilepic()
-                      }
-                    }
-                  },
-                  [_vm._v("Update")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "profile",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "profileTitle",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
+    _vm.showprofile.user.username == _vm.user.username
+      ? _c(
           "div",
           {
-            staticClass: "modal-dialog modal-dialog-centered overflow-auto",
-            attrs: { role: "document", width: "500px" }
+            staticClass: "modal fade",
+            attrs: {
+              id: "profilepic",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "profilepicLabel",
+              "aria-hidden": "true"
+            }
           },
           [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "span",
-                  {
-                    staticClass: "x text-primary font-weight-bolder",
-                    on: {
-                      click: function($event) {
-                        return _vm.hidemodel()
-                      }
-                    }
-                  },
-                  [_vm._v("X")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title font-weight-bolder",
-                    attrs: { id: "exampleModalLongTitle" }
-                  },
-                  [_vm._v("Edit Profile")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "btn btn-primary btn-sm font-weight-bolder my-auto",
-                    on: {
-                      click: function($event) {
-                        return _vm.saveprofile()
-                      }
-                    }
-                  },
-                  [_vm._v("Save")]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "modal-body overflow-auto",
-                  staticStyle: { height: "500px" }
-                },
-                [
-                  _c("form", [
-                    _c("div", { staticClass: "cover position-relative" }, [
-                      _c("img", {
-                        attrs: {
-                          src: "images/cover.jfif",
-                          width: "100%",
-                          height: "200px",
-                          alt: ""
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "profile position-absolute",
-                          staticStyle: { bottom: "-30%" }
-                        },
-                        [
-                          _c("img", {
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _vm.picture
+                      ? _c("img", {
+                          staticClass: "img-fluid position-relative p-2",
+                          attrs: {
+                            src: _vm.picture,
+                            width: "100%",
+                            height: "100%",
+                            alt: "",
+                            srcset: ""
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.picture
+                      ? _c(
+                          "div",
+                          {
                             staticClass:
-                              "rounded rounded-circle bg-white ml-3 p-1 img-fluid",
-                            attrs: {
-                              src: _vm.user.profile,
-                              width: "130px",
-                              alt: ""
-                            }
-                          })
-                        ]
-                      )
-                    ]),
+                              "cancel p-2 font-weight-bolder position-absolute ml-3 rounded rounded-circle",
+                            staticStyle: { bottom: "50%" },
+                            on: { click: _vm.cancelpicture }
+                          },
+                          [_vm._v("X")]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group userdata" }, [
-                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                        _vm._v("Name")
-                      ]),
+                    _c("span", { staticClass: "image-upload" }, [
+                      _vm._m(1),
                       _vm._v(" "),
                       _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.userdeta.name,
-                            expression: "userdeta.name"
-                          }
-                        ],
-                        staticClass: "form-control",
                         attrs: {
-                          type: "text",
-                          id: "exampleInputEmail1",
-                          "aria-describedby": "emailHelp",
-                          placeholder: "Enter Name"
+                          id: "file-input",
+                          type: "file",
+                          accept: "image/*"
                         },
-                        domProps: { value: _vm.userdeta.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.userdeta, "name", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.userdeta.name.length < 1
-                        ? _c("span", { staticClass: "text-danger" }, [
-                            _vm._v("Name can't be empty")
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                        _vm._v("Bio")
-                      ]),
-                      _vm._v(" "),
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.userdeta.bio,
-                            expression: "userdeta.bio"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "email",
-                          id: "exampleInputEmail1",
-                          "aria-describedby": "emailHelp",
-                          placeholder: "Enter Bio"
-                        },
-                        domProps: { value: _vm.userdeta.bio },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.userdeta, "bio", $event.target.value)
-                          }
-                        }
+                        on: { change: _vm.onFileChange }
                       })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                        _vm._v("Location")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.userdeta.location,
-                            expression: "userdeta.location"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "email",
-                          id: "exampleInputEmail1",
-                          "aria-describedby": "emailHelp",
-                          placeholder: "Your Location"
-                        },
-                        domProps: { value: _vm.userdeta.location },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.userdeta,
-                              "location",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                        _vm._v("Webiste")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.userdeta.website,
-                            expression: "userdeta.website"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "email",
-                          id: "exampleInputEmail1",
-                          "aria-describedby": "emailHelp",
-                          placeholder: "Your Website"
-                        },
-                        domProps: { value: _vm.userdeta.website },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.userdeta,
-                              "website",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                        _vm._v("Birthday")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "pl-3 border rounded py-2" }, [
-                        _vm._v(_vm._s(_vm._f("date")(_vm.user.birthday)))
-                      ])
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.saveprofilepic()
+                          }
+                        }
+                      },
+                      [_vm._v("Update")]
+                    )
                   ])
-                ]
-              )
-            ])
+                ])
+              ]
+            )
           ]
         )
-      ]
-    )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showprofile.user.username == _vm.user.username
+      ? _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "profile",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "profileTitle",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered overflow-auto",
+                attrs: { role: "document", width: "500px" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "x text-primary font-weight-bolder",
+                        on: {
+                          click: function($event) {
+                            return _vm.hidemodel()
+                          }
+                        }
+                      },
+                      [_vm._v("X")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title font-weight-bolder",
+                        attrs: { id: "exampleModalLongTitle" }
+                      },
+                      [_vm._v("Edit Profile")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-primary btn-sm font-weight-bolder my-auto",
+                        on: {
+                          click: function($event) {
+                            return _vm.saveprofile()
+                          }
+                        }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-body overflow-auto",
+                      staticStyle: { height: "500px" }
+                    },
+                    [
+                      _c("form", [
+                        _c("div", { staticClass: "cover position-relative" }, [
+                          _c("img", {
+                            attrs: {
+                              src: "images/cover.jfif",
+                              width: "100%",
+                              height: "200px",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "profile position-absolute",
+                              staticStyle: { bottom: "-30%" }
+                            },
+                            [
+                              _c("img", {
+                                staticClass:
+                                  "rounded rounded-circle bg-white ml-3 p-1 img-fluid",
+                                attrs: {
+                                  src: _vm.user.profile,
+                                  width: "130px",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group userdata" }, [
+                          _c(
+                            "label",
+                            { attrs: { for: "exampleInputEmail1" } },
+                            [_vm._v("Name")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.userdeta.name,
+                                expression: "userdeta.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "exampleInputEmail1",
+                              "aria-describedby": "emailHelp",
+                              placeholder: "Enter Name"
+                            },
+                            domProps: { value: _vm.userdeta.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.userdeta,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.userdeta.name.length < 1
+                            ? _c("span", { staticClass: "text-danger" }, [
+                                _vm._v("Name can't be empty")
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            { attrs: { for: "exampleInputEmail1" } },
+                            [_vm._v("Bio")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.userdeta.bio,
+                                expression: "userdeta.bio"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "email",
+                              id: "exampleInputEmail1",
+                              "aria-describedby": "emailHelp",
+                              placeholder: "Enter Bio"
+                            },
+                            domProps: { value: _vm.userdeta.bio },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.userdeta,
+                                  "bio",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            { attrs: { for: "exampleInputEmail1" } },
+                            [_vm._v("Location")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.userdeta.location,
+                                expression: "userdeta.location"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "email",
+                              id: "exampleInputEmail1",
+                              "aria-describedby": "emailHelp",
+                              placeholder: "Your Location"
+                            },
+                            domProps: { value: _vm.userdeta.location },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.userdeta,
+                                  "location",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            { attrs: { for: "exampleInputEmail1" } },
+                            [_vm._v("Webiste")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.userdeta.website,
+                                expression: "userdeta.website"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "email",
+                              id: "exampleInputEmail1",
+                              "aria-describedby": "emailHelp",
+                              placeholder: "Your Website"
+                            },
+                            domProps: { value: _vm.userdeta.website },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.userdeta,
+                                  "website",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            { attrs: { for: "exampleInputEmail1" } },
+                            [_vm._v("Birthday")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "pl-3 border rounded py-2" },
+                            [_vm._v(_vm._s(_vm._f("date")(_vm.user.birthday)))]
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [

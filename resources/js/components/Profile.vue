@@ -11,7 +11,7 @@
             alt
           />
         </div>
-        <div>
+        <div v-if="showprofile.user.username==user.username">
           <i
             class="fas fa-camera text-white ipic position-absolute"
             @click="profilepic()"
@@ -27,6 +27,14 @@
           @click="profilemodel()"
         >Edit profile</button>
         <div v-else class="float-right mr-3 mt-2">
+          <span class="message p-2 rounded-circle mx-2">
+            <router-link
+              :to="{name:'messagebody',params: { username: showprofile.user.username }}"
+              class="route"
+            >
+              <i class="far fa-envelope text-primary fa-lg"></i>
+            </router-link>
+          </span>
           <span v-if="showprofile.follow">
             <button
               class="btn btn-primary btn-sm px-4 font-weight-bolder following"
@@ -63,8 +71,10 @@
           </div>
         </div>
         <div v-if="showprofile.user.website" class="my-1">
-          <i class="fas fa-link text-primary"></i>
-          {{showprofile.user.website}}
+          <a :href="'https://'+showprofile.user.website" class="website">
+            <i class="fas fa-link"></i>
+            {{showprofile.user.website}}
+          </a>
         </div>
         <div class="mb-4">
           <router-link :to="{name:'following'}">
@@ -86,6 +96,7 @@
     </div>
     <!-- Modal -->
     <div
+      v-if="showprofile.user.username==user.username"
       class="modal fade"
       id="profilepic"
       tabindex="-1"
@@ -132,6 +143,7 @@
     </div>
     <!-- Modal -->
     <div
+      v-if="showprofile.user.username==user.username"
       class="modal fade"
       id="profile"
       tabindex="-1"
@@ -362,5 +374,15 @@ button.following:hover:before {
   /* background: rgb(219, 28, 28);
 border: none; */
   content: "Unfollow";
+}
+a.website:hover {
+  text-decoration: none;
+}
+span.message {
+  border: 1px solid rgb(52, 130, 255);
+}
+span.message:hover {
+  cursor: pointer;
+  background-color: rgba(0, 110, 255, 0.1);
 }
 </style>
