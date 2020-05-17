@@ -1,6 +1,8 @@
 <template>
   <span>
-    <router-view :key="$route.path"></router-view>
+    <transition name="slide">
+      <router-view :key="$route.path"></router-view>
+    </transition>
   </span>
 </template>
 

@@ -17,7 +17,7 @@
               <router-link class="route text-dark" to="/notifications">{{data.user.name}}</router-link>
             </span>
             <span class="text-muted">{{'@'+data.user.username}}</span>
-            <span class="text-muted">{{data.tweet.created_at | date}}</span>
+            <span class="text-muted ml-2">{{data.tweet.created_at | date}}</span>
             <div class="text-dark">{{data.tweet.tweet}}</div>
             <div>
               <img
@@ -82,8 +82,7 @@ export default {
         index: indexid
       };
       this.$store.dispatch("likepost", data);
-      // console.log(postid, indexid);
-      // likepost
+      
     },
     commentmodel(index) {
       this.$store.dispatch("commentpostindex", index);

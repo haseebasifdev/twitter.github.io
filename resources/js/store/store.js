@@ -39,22 +39,36 @@ export default new Vuex.Store({
         setmessageuser: (state, data) => state.messages = data,
         setusertweet: (state, tweet) => state.usertweet = tweet,
         setcommentpost: (state, index) => state.usertweet[index].comments++,
+        setcommentpostuser: (state, data) => {
+            var newdata = {
+                comment: data,
+                user: state.user
+            }
+            state.tweet.comments.push(newdata)
+        },
+
         setusers: (state, users) => state.allusers = users,
         setfolow: (state, index) => {
             state.allusers[index].following = !state.allusers[index].following
         },
         setlikedpost: (state, index) => {
-            if (state.usertweet[index].liked) {
-
-                state.usertweet[index].likes--;
-                state.usertweet[index].liked = (!state.usertweet[index].liked);
+            if (index == -1) {
+                state.tweet.liked = !state.tweet.liked
 
             } else {
 
-                state.usertweet[index].likes++;
-                state.usertweet[index].liked = (!state.usertweet[index].liked);
+                if (state.usertweet[index].liked) {
+
+                    state.usertweet[index].likes--;
+                    state.usertweet[index].liked = (!state.usertweet[index].liked);
+
+                } else {
+
+                    state.usertweet[index].likes++;
+                    state.usertweet[index].liked = (!state.usertweet[index].liked);
+                }
+                console.log(state.usertweet[index].liked, state.usertweet[index].likes)
             }
-            console.log(state.usertweet[index].liked, state.usertweet[index].likes)
         },
     },
     actions: {
@@ -108,7 +122,7 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 commit('setlikedpost', payload.index);
-                const response = await axios.post('/like', payload);
+                await axios.post('/like', payload);
 
 
             } catch (err) {
@@ -119,8 +133,15 @@ export default new Vuex.Store({
             commit
         }, payload) => {
             try {
-                commit('setcommentpost', payload.index);
-                const response = await axios.post('/comment', payload);
+                if (payload.index == -1) {
+
+                    commit('setcommentpostuser', payload);
+
+                } else {
+
+                    commit('setcommentpost', payload.index);
+                }
+                await axios.post('/comment', payload);
 
 
             } catch (err) {

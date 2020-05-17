@@ -3247,8 +3247,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         post_id: postid,
         index: indexid
       };
-      this.$store.dispatch("likepost", data); // console.log(postid, indexid);
-      // likepost
+      this.$store.dispatch("likepost", data);
     },
     commentmodel: function commentmodel(index) {
       this.$store.dispatch("commentpostindex", index);
@@ -3578,6 +3577,159 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3585,13 +3737,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     MessageBody: _MessageBody__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      tweetreply: ""
+    };
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(["showtweet"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(["showtweet", "fetchuser"])), {}, {
+    likepost: function likepost() {
+      var data = {
+        post_id: this.tweet.tweet.id,
+        index: -1
+      };
+      this.$store.dispatch("likepost", data);
+    },
+    commentmodel: function commentmodel() {
+      $("#comment").modal("show");
+    },
+    commentit: function commentit() {
+      var data = {
+        post_id: this.tweet.tweet.id,
+        comment: this.tweetreply,
+        created_at: new Date(),
+        index: -1
+      }; // var currentDate = new Date();
+      // console.log(this.tweet.tweet.created_at);
+      // console.log(currentDate);
+      // var currentDateWithFormat = new Date()
+      //   .toJSON()
+      //   .slice(0, 10)
+      //   .replace(/-/g, "-");
+      // console.log(currentDateWithFormat);
+
+      this.tweetreply = "";
+      $("#comment").modal("hide");
+      this.$store.dispatch("commentit", data);
+    }
+  }),
   mounted: function mounted() {
     this.showtweet(this.$route.params.id);
+    this.fetchuser();
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(["tweet"]))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(["tweet", "user"]))
 });
 
 /***/ }),
@@ -3733,6 +3918,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -8593,7 +8780,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-14865028] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-14865028] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-14865028]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-14865028]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.received[data-v-14865028] {\n  /* background-color: aqua; */\n  border-radius: 1rem;\n  /* padding: 10px 15px; */\n}\n.sender[data-v-14865028] {\n  background-color: rgba(0, 255, 0, 0.664);\n}\n.received[data-v-14865028] {\n  max-width: 60%;\n\n  display: inline-block;\n}\nul[data-v-14865028] {\n  list-style-type: none;\n}\nli.li[data-v-14865028]:hover {\n  background-color: rgba(89, 119, 255, 0.05);\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-14865028] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-14865028] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-14865028]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-14865028]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.received[data-v-14865028] {\n  /* background-color: aqua; */\n  border-radius: 1rem;\n  /* padding: 10px 15px; */\n}\n.sender[data-v-14865028] {\n  background-color: rgba(0, 255, 0, 0.664);\n}\n.received[data-v-14865028] {\n  max-width: 60%;\n\n  display: inline-block;\n}\nul[data-v-14865028] {\n  list-style-type: none;\n}\nli.li[data-v-14865028]:hover {\n  background-color: rgba(89, 119, 255, 0.05);\n  cursor: pointer;\n}\n.tweetpic[data-v-14865028] {\n  border-radius: 15px;\n}\ni.heart[data-v-14865028],\ni.comment[data-v-14865028] {\n  cursor: pointer;\n}\ndiv.modal-content[data-v-14865028] {\n  border-radius: 20px;\n}\ntextarea[data-v-14865028]:focus {\n  box-shadow: none;\n}\ntextarea[data-v-14865028] {\n  font-size: 18px;\n}\n", ""]);
 
 // exports
 
@@ -69101,7 +69288,7 @@ var render = function() {
                     _vm._v(_vm._s("@" + data.user.username))
                   ]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "text-muted" }, [
+                  _c("span", { staticClass: "text-muted ml-2" }, [
                     _vm._v(_vm._s(_vm._f("date")(data.tweet.created_at)))
                   ]),
                   _vm._v(" "),
@@ -69333,7 +69520,7 @@ var render = function() {
             "div",
             { staticClass: "mb-4" },
             [
-              _c("router-link", { attrs: { to: { name: "follower" } } }, [
+              _c("router-link", { attrs: { to: { name: "following" } } }, [
                 _c("span", { staticClass: "font-weight-bolder text-dark" }, [
                   _vm._v(_vm._s(_vm.allfollowing.length))
                 ]),
@@ -69343,7 +69530,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: { name: "following" } } }, [
+              _c("router-link", { attrs: { to: { name: "follower" } } }, [
                 _c("span", { staticClass: "font-weight-bolder text-dark" }, [
                   _vm._v(_vm._s(_vm.allfollower.length))
                 ]),
@@ -69770,17 +69957,348 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "pt-2 border-bottom post border" }, [
+        _c("div", { staticClass: "mx-3 d-flex" }, [
+          _c("img", {
+            staticClass: "mr-2 rounded rounded-circle",
+            attrs: {
+              src: _vm.tweet.user.profile,
+              width: "50px",
+              height: "50px"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "span",
+              { staticClass: "font-weight-bolder" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "route text-dark",
+                    attrs: { to: "/notifications" }
+                  },
+                  [_vm._v(_vm._s(_vm.tweet.user.name))]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-muted" }, [
+              _vm._v(_vm._s("@" + _vm.tweet.user.username))
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-muted ml-2" }, [
+              _vm._v(_vm._s(_vm._f("date")(_vm.tweet.tweet.created_at)))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-dark" }, [
+              _vm._v(_vm._s(_vm.tweet.tweet.tweet))
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-2 mx-4 pb-2" }, [
+          _c("img", {
+            staticClass: "tweetpic my-2 border",
+            attrs: {
+              src: _vm.tweet.tweet.tweetpicture,
+              width: "100%",
+              alt: "",
+              srcset: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("div", [_vm._v(_vm._s(_vm._f("date")(_vm.tweet.created_at)))])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "mb-2 mx-4 justify-content-around py-2 px-2 border-top border-bottom"
+          },
+          [
+            _c("span", {}, [
+              _vm._v(
+                "\n          " +
+                  _vm._s(_vm.tweet.likes) +
+                  "\n          Likes\n        "
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-around mb-2 mx-4" }, [
+          _c("div", [
+            _c("i", {
+              staticClass: "far fa-comment comment fa-lg p-2",
+              on: {
+                click: function($event) {
+                  return _vm.commentmodel()
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", [
+            _vm.tweet.liked
+              ? _c("span", [
+                  _c("i", {
+                    staticClass: "fas fa-heart heart text-danger fa-lg p-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.likepost()
+                      }
+                    }
+                  })
+                ])
+              : _c("span", [
+                  _c("i", {
+                    staticClass: "far fa-heart heart fa-lg p-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.likepost()
+                      }
+                    }
+                  })
+                ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {},
+          _vm._l(_vm.tweet.comments, function(commentdata) {
+            return _c("div", { staticClass: "d-flex border-top py-3 px-3" }, [
+              _c("img", {
+                staticClass: "mr-2 rounded rounded-circle",
+                attrs: {
+                  src: commentdata.user.profile,
+                  width: "50px",
+                  height: "50px"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "span",
+                  { staticClass: "font-weight-bolder" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "route text-dark",
+                        attrs: { to: "/notifications" }
+                      },
+                      [_vm._v(_vm._s(commentdata.user.name))]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-muted" }, [
+                  _vm._v(_vm._s("@" + commentdata.user.username))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-muted ml-2" }, [
+                  _vm._v(_vm._s(_vm._f("date")(commentdata.comment.created_at)))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "text-dark" }, [
+                  _vm._v(_vm._s(commentdata.comment.comment))
+                ])
+              ])
+            ])
+          }),
+          0
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-4" }),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "comment",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "commentLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "ml-3 d-flex" }, [
+                  _c("img", {
+                    staticClass: "mr-2 rounded rounded-circle",
+                    attrs: {
+                      src: _vm.tweet.user.profile,
+                      width: "50px",
+                      height: "50px"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", {}, [
+                    _c("span", { staticClass: "font-weight-bolder" }, [
+                      _vm._v(_vm._s(_vm.tweet.user.name))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "text-muted" }, [
+                      _vm._v(_vm._s("@" + _vm.tweet.user.username))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "text-muted" }, [
+                      _vm._v(_vm._s(_vm._f("date")(_vm.tweet.tweet.created_at)))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(_vm.tweet.tweet.tweet))]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mt-2" }, [
+                      _vm._v("\n                Replying to\n                "),
+                      _c("span", { staticClass: "text-primary" }, [
+                        _vm._v(_vm._s("@" + _vm.tweet.user.username))
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c("div", { staticClass: "mx-3 mt-2" }, [
+                    _c("div", { staticClass: "d-flex" }, [
+                      _c("img", {
+                        staticClass: "mr-2 rounded rounded-circle",
+                        attrs: {
+                          src: _vm.user.profile,
+                          width: "50px",
+                          height: "50px",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "form-group" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.tweetreply,
+                              expression: "tweetreply"
+                            }
+                          ],
+                          staticClass: "form-control border-0",
+                          attrs: {
+                            cols: "60",
+                            placeholder: "Tweet your reply",
+                            rows: "1"
+                          },
+                          domProps: { value: _vm.tweetreply },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.commentit()
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.tweetreply = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div"),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mt-2" }, [
+                      _c("span", { staticClass: "float-right" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary tweet",
+                            on: {
+                              click: function($event) {
+                                return _vm.commentit()
+                              }
+                            }
+                          },
+                          [_vm._v("Reply")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [_vm._v("ShowPost")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" })
+    return _c("div", [
+      _c("i", { staticClass: "fas fa-sync-alt sync fa-lg p-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("i", { staticClass: "fas fa-upload upload fa-lg p-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close text-primary",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ])
   }
 ]
@@ -69945,7 +70463,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("span", [_c("router-view", { key: _vm.$route.path })], 1)
+  return _c(
+    "span",
+    [
+      _c(
+        "transition",
+        { attrs: { name: "slide" } },
+        [_c("router-view", { key: _vm.$route.path })],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -86175,7 +86704,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
 Vue.component('routerset', __webpack_require__(/*! ./components/routerset.vue */ "./resources/js/components/routerset.vue")["default"]);
 Vue.filter('date', function (value) {
-  return moment__WEBPACK_IMPORTED_MODULE_2___default()(value).format('MMMM Do YYYY');
+  return moment__WEBPACK_IMPORTED_MODULE_2___default()(value).calendar();
+});
+Vue.filter('datecomment', function (value) {
+  return moment__WEBPACK_IMPORTED_MODULE_2___default()(value).format('MMMM Do YYYY, h:mm:ss a');
 }); // import VueLocalStorage from 'vue-localstorage'
 // Vue.use(VueLocalStorage)
 // Vue.use(VueLocalStorage, {
@@ -87689,7 +88221,7 @@ var routes = [{
     name: 'messagebody'
   }]
 }, {
-  path: '/:username',
+  path: '/auth/:username',
   component: _components_Profile_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
   name: 'profile',
   children: [// {
@@ -87824,6 +88356,13 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     setcommentpost: function setcommentpost(state, index) {
       return state.usertweet[index].comments++;
     },
+    setcommentpostuser: function setcommentpostuser(state, data) {
+      var newdata = {
+        comment: data,
+        user: state.user
+      };
+      state.tweet.comments.push(newdata);
+    },
     setusers: function setusers(state, users) {
       return state.allusers = users;
     },
@@ -87831,15 +88370,19 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       state.allusers[index].following = !state.allusers[index].following;
     },
     setlikedpost: function setlikedpost(state, index) {
-      if (state.usertweet[index].liked) {
-        state.usertweet[index].likes--;
-        state.usertweet[index].liked = !state.usertweet[index].liked;
+      if (index == -1) {
+        state.tweet.liked = !state.tweet.liked;
       } else {
-        state.usertweet[index].likes++;
-        state.usertweet[index].liked = !state.usertweet[index].liked;
-      }
+        if (state.usertweet[index].liked) {
+          state.usertweet[index].likes--;
+          state.usertweet[index].liked = !state.usertweet[index].liked;
+        } else {
+          state.usertweet[index].likes++;
+          state.usertweet[index].liked = !state.usertweet[index].liked;
+        }
 
-      console.log(state.usertweet[index].liked, state.usertweet[index].likes);
+        console.log(state.usertweet[index].liked, state.usertweet[index].likes);
+      }
     }
   },
   actions: {
@@ -88001,7 +88544,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     }(),
     likepost: function () {
       var _likepost = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(_ref6, payload) {
-        var commit, response;
+        var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
@@ -88013,21 +88556,20 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                 return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/like', payload);
 
               case 5:
-                response = _context6.sent;
-                _context6.next = 11;
+                _context6.next = 10;
                 break;
 
-              case 8:
-                _context6.prev = 8;
+              case 7:
+                _context6.prev = 7;
                 _context6.t0 = _context6["catch"](1);
                 console.log(_context6.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context6.stop();
             }
           }
-        }, _callee6, null, [[1, 8]]);
+        }, _callee6, null, [[1, 7]]);
       }));
 
       function likepost(_x7, _x8) {
@@ -88038,33 +88580,38 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     }(),
     commentit: function () {
       var _commentit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(_ref7, payload) {
-        var commit, response;
+        var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
                 commit = _ref7.commit;
                 _context7.prev = 1;
-                commit('setcommentpost', payload.index);
+
+                if (payload.index == -1) {
+                  commit('setcommentpostuser', payload);
+                } else {
+                  commit('setcommentpost', payload.index);
+                }
+
                 _context7.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/comment', payload);
 
               case 5:
-                response = _context7.sent;
-                _context7.next = 11;
+                _context7.next = 10;
                 break;
 
-              case 8:
-                _context7.prev = 8;
+              case 7:
+                _context7.prev = 7;
                 _context7.t0 = _context7["catch"](1);
                 console.log(_context7.t0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context7.stop();
             }
           }
-        }, _callee7, null, [[1, 8]]);
+        }, _callee7, null, [[1, 7]]);
       }));
 
       function commentit(_x9, _x10) {

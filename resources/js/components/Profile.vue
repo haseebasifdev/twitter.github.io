@@ -50,11 +50,11 @@
           {{user.website}}
         </div>
         <div class="mb-4">
-          <router-link :to="{name:'follower'}">
+          <router-link :to="{name:'following'}">
             <span class="font-weight-bolder text-dark">{{allfollowing.length}}</span>
             <span class="text-muted mr-4">Following</span>
           </router-link>
-          <router-link :to="{name:'following'}">
+          <router-link :to="{name:'follower'}">
             <span class="font-weight-bolder text-dark">{{allfollower.length}}</span>
             <span class="text-muted">Followers</span>
           </router-link>

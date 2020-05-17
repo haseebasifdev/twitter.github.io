@@ -48,7 +48,7 @@ const routes = [{
         }, ]
     },
     {
-        path: '/:username',
+        path: '/auth/:username',
         component: Profile,
         name: 'profile',
         children: [

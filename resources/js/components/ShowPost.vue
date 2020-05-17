@@ -1,7 +1,160 @@
 <template>
   <div class="row">
-    <div class="col-md-8">ShowPost</div>
+    <div class="col-md-8">
+      <div class="pt-2 border-bottom post border">
+        <div class="mx-3 d-flex">
+          <!-- profile -->
+          <img
+            :src="tweet.user.profile"
+            class="mr-2 rounded rounded-circle"
+            width="50px"
+            height="50px"
+          />
+          <div>
+            <span class="font-weight-bolder">
+              <router-link class="route text-dark" to="/notifications">{{tweet.user.name}}</router-link>
+            </span>
+            <span class="text-muted">{{'@'+tweet.user.username}}</span>
+            <span class="text-muted ml-2">{{tweet.tweet.created_at | date}}</span>
+            <div class="text-dark">{{tweet.tweet.tweet}}</div>
+          </div>
+        </div>
+        <!-- end Profile -->
+        <!-- Post -->
+        <div class="mb-2 mx-4 pb-2">
+          <img :src="tweet.tweet.tweetpicture" width="100%" class="tweetpic my-2 border" alt srcset />
+          <div>{{tweet.created_at | date}}</div>
+        </div>
+        <!-- EndPost -->
+        <!-- Likes and other -->
+        <div class="mb-2 mx-4 justify-content-around py-2 px-2 border-top border-bottom">
+          <span class>
+            {{tweet.likes}}
+            Likes
+          </span>
+        </div>
+        <div class="d-flex justify-content-around mb-2 mx-4">
+          <div>
+            <i class="far fa-comment comment fa-lg p-2" @click="commentmodel()"></i>
+            <!-- <span v-if="tweet.comments">{{tweet.comments}}</span> -->
+          </div>
+          <div>
+            <i class="fas fa-sync-alt sync fa-lg p-2"></i>
+          </div>
+          <div>
+            <span v-if="tweet.liked">
+              <i class="fas fa-heart heart text-danger fa-lg p-2" @click="likepost()"></i>
+            </span>
+            <span v-else>
+              <i class="far fa-heart heart fa-lg p-2" @click="likepost()"></i>
+            </span>
+          </div>
+          <div>
+            <i class="fas fa-upload upload fa-lg p-2"></i>
+          </div>
+        </div>
+        <!-- End Likes and other -->
+        <!-- Comments -->
+        <div class>
+          <div class="d-flex border-top py-3 px-3" v-for=" commentdata in tweet.comments">
+            <img
+              :src="commentdata.user.profile"
+              class="mr-2 rounded rounded-circle"
+              width="50px"
+              height="50px"
+            />
+            <div>
+              <span class="font-weight-bolder">
+                <router-link class="route text-dark" to="/notifications">{{commentdata.user.name}}</router-link>
+              </span>
+              <span class="text-muted">{{'@'+commentdata.user.username}}</span>
+              <span class="text-muted ml-2">{{commentdata.comment.created_at | date}}</span>
+              <div class="text-dark">{{commentdata.comment.comment}}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End comments -->
+        <!-- <postcomment :post="tweet"></postcomment> -->
+      </div>
+    </div>
     <div class="col-md-4"></div>
+    <!-- Comment Model -->
+
+    <div
+      class="modal fade"
+      id="comment"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="commentLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close text-primary"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="ml-3 d-flex">
+              <img
+                :src="tweet.user.profile"
+                class="mr-2 rounded rounded-circle"
+                width="50px"
+                height="50px"
+              />
+              <div class>
+                <span class="font-weight-bolder">{{tweet.user.name}}</span>
+                <span class="text-muted">{{'@'+tweet.user.username}}</span>
+                <span class="text-muted">{{tweet.tweet.created_at | date}}</span>
+                <div>{{tweet.tweet.tweet}}</div>
+                <div class="mt-2">
+                  Replying to
+                  <span class="text-primary">{{'@'+tweet.user.username}}</span>
+                </div>
+              </div>
+            </div>
+            <div class>
+              <div class="mx-3 mt-2">
+                <div class="d-flex">
+                  <img
+                    class="mr-2 rounded rounded-circle"
+                    :src="user.profile"
+                    width="50px"
+                    height="50px"
+                    alt
+                  />
+
+                  <span class="form-group">
+                    <textarea
+                      v-model="tweetreply"
+                      cols="60"
+                      class="form-control border-0"
+                      placeholder="Tweet your reply"
+                      rows="1"
+                      @keyup.enter="commentit()"
+                    ></textarea>
+                  </span>
+                </div>
+                <div></div>
+                <div class="mt-2">
+                  <span class="float-right">
+                    <button class="btn btn-primary tweet" @click="commentit()">Reply</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Comment Model -->
   </div>
 </template>
 
@@ -13,17 +166,50 @@ export default {
     MessageBody
   },
   data() {
-    return {};
+    return {
+      tweetreply: ""
+    };
   },
   methods: {
-    ...mapActions(["showtweet"])
+    ...mapActions(["showtweet", "fetchuser"]),
+    likepost() {
+      var data = {
+        post_id: this.tweet.tweet.id,
+        index: -1
+      };
+      this.$store.dispatch("likepost", data);
+    },
+    commentmodel() {
+      $("#comment").modal("show");
+    },
+    commentit() {
+      var data = {
+        post_id: this.tweet.tweet.id,
+        comment: this.tweetreply,
+        created_at: new Date(),
+        index: -1
+      };
+      // var currentDate = new Date();
+      // console.log(this.tweet.tweet.created_at);
+      // console.log(currentDate);
+
+      // var currentDateWithFormat = new Date()
+      //   .toJSON()
+      //   .slice(0, 10)
+      //   .replace(/-/g, "-");
+      // console.log(currentDateWithFormat);
+      this.tweetreply = "";
+      $("#comment").modal("hide");
+      this.$store.dispatch("commentit", data);
+    }
   },
 
   mounted() {
     this.showtweet(this.$route.params.id);
+    this.fetchuser();
   },
   computed: {
-    ...mapState(["tweet"])
+    ...mapState(["tweet", "user"])
   }
 };
 </script>
@@ -64,5 +250,21 @@ ul {
 li.li:hover {
   background-color: rgba(89, 119, 255, 0.05);
   cursor: pointer;
+}
+.tweetpic {
+  border-radius: 15px;
+}
+i.heart,
+i.comment {
+  cursor: pointer;
+}
+div.modal-content {
+  border-radius: 20px;
+}
+textarea:focus {
+  box-shadow: none;
+}
+textarea {
+  font-size: 18px;
 }
 </style>

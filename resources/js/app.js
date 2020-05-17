@@ -7,7 +7,10 @@ import moment from 'moment'
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('routerset', require('./components/routerset.vue').default);
 Vue.filter('date', function (value) {
-    return moment(value).format('MMMM Do YYYY');
+    return moment(value).calendar();
+})
+Vue.filter('datecomment', function (value) {
+    return moment(value).format('MMMM Do YYYY, h:mm:ss a');
 })
 // import VueLocalStorage from 'vue-localstorage'
 
