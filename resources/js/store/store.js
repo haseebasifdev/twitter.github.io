@@ -53,7 +53,17 @@ export default new Vuex.Store({
         },
         setlikedpost: (state, index) => {
             if (index == -1) {
-                state.tweet.liked = !state.tweet.liked
+                if (state.tweet.liked) {
+
+                    state.tweet.likes--;
+                    state.tweet.liked = (!state.tweet.liked);
+
+                } else {
+
+                    state.tweet.likes++;
+                    state.tweet.liked = (!state.tweet.liked);
+                }
+                // state.tweet.liked = !state.tweet.liked
 
             } else {
 

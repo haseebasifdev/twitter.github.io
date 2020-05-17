@@ -88371,7 +88371,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     },
     setlikedpost: function setlikedpost(state, index) {
       if (index == -1) {
-        state.tweet.liked = !state.tweet.liked;
+        if (state.tweet.liked) {
+          state.tweet.likes--;
+          state.tweet.liked = !state.tweet.liked;
+        } else {
+          state.tweet.likes++;
+          state.tweet.liked = !state.tweet.liked;
+        } // state.tweet.liked = !state.tweet.liked
+
       } else {
         if (state.usertweet[index].liked) {
           state.usertweet[index].likes--;
