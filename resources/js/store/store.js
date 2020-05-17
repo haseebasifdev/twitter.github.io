@@ -6,6 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         user: [],
+        showprofile: [],
+        showtweets: [],
         usertweet: [],
         alltweet: [],
         likedpost: '',
@@ -31,6 +33,7 @@ export default new Vuex.Store({
         finduser: (state, username) => {
             return state.allusers.filter(user => user.username == username)
         },
+        setshowprofile: (state, data) => state.showprofile = data,
         settweet: (state, data) => state.tweet = data,
         setcommentpostindex: (state, index) => state.commentpostindex = index,
         setnotifications: (state, data) => state.notifications = data,
@@ -49,7 +52,12 @@ export default new Vuex.Store({
 
         setusers: (state, users) => state.allusers = users,
         setfolow: (state, index) => {
-            state.allusers[index].following = !state.allusers[index].following
+            if (index == -1) {
+                state.showprofile.follow = !state.showprofile.follow
+            } else {
+                state.allusers[index].following = !state.allusers[index].following
+            }
+
         },
         setlikedpost: (state, index) => {
             if (index == -1) {
@@ -242,6 +250,32 @@ export default new Vuex.Store({
                 const response = await axios.get('/post/' + payload);
 
                 commit('settweet', response.data);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        showtweets: async ({
+            commit
+        }, payload) => {
+            try {
+                const response = await axios.get('/posts/' + payload);
+
+                commit('setusertweet', response.data);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        showprofile: async ({
+            commit
+        }, payload) => {
+            try {
+                const response = await axios.get('/user/' + payload);
+
+                commit('setshowprofile', response.data);
 
 
             } catch (err) {

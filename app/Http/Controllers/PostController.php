@@ -127,6 +127,39 @@ class PostController extends Controller
 
         return $post;
     }
+    public function showposts($username)
+    {
+        // return $post;   
+
+        $user = User::where('username', $username)->first();
+        $posts = Post::where('user_id', $user->id)->latest()->get();
+        $likes = [];
+        $liked = [];
+        $comments = [];
+        for ($i = 0; $i < $posts->count(); $i++) {
+            $likes = Like::where('post_id', $posts[$i]->id)->count();
+            $liked = Like::where('post_id', $posts[$i]->id)->where('user_id', auth()->id())->exists();
+            $comments = Comment::where('post_id', $posts[$i]->id)->count();
+            $posts[$i] = new Collection([
+                "tweet" => $posts[$i],
+                "user" => $user,
+                "likes" => $likes,
+                "liked" => $liked,
+                "comments" => $comments
+
+            ]);
+        };
+        // $post = new Collection([
+        //     "tweet" => $posts,
+        //     "user" => $user,
+        //     "likes" => $likes,
+        //     "liked" => $liked,
+        //     "comments" => $comments
+
+        // ]);
+
+        return $posts;
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -2257,6 +2257,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2350,6 +2357,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2395,6 +2412,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3230,6 +3257,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3483,6 +3513,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3495,6 +3542,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: _objectSpread({
+    follow: function follow(userid, index) {
+      var data = {
+        follow_id: userid,
+        index: index
+      };
+      this.$store.dispatch("follow", data);
+    },
+    unfollow: function unfollow(userid, index) {
+      var data = {
+        follow_id: userid,
+        index: index
+      };
+      this.$store.dispatch("unfollow", data);
+    },
     saveprofilepic: function saveprofilepic() {
       var data = {
         avatar: this.picture
@@ -3540,11 +3601,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(["fetchusertweet", "fetchuser", "alluser"])),
   mounted: function mounted() {
-    this.fetchusertweet();
+    // this.fetchusertweet();
     this.fetchuser();
     this.alluser();
+    this.$store.dispatch("showprofile", this.$route.params.username);
+    this.$store.dispatch("showtweets", this.$route.params.username);
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(["user", "usertweet"])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
+  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(["user", "usertweet", "showprofile"])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])({
     userdeta: function userdeta(state) {
       return state.user;
     }
@@ -8552,7 +8615,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n}\n", ""]);
 
 // exports
 
@@ -8571,7 +8634,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-b2c1088c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-b2c1088c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-b2c1088c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-b2c1088c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-b2c1088c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-b2c1088c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-b2c1088c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-b2c1088c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-b2c1088c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n}\n", ""]);
 
 // exports
 
@@ -8590,7 +8653,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-72bbec36] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-72bbec36] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-72bbec36]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-72bbec36]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-72bbec36] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-72bbec36] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-72bbec36]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-72bbec36]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-72bbec36]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n}\n", ""]);
 
 // exports
 
@@ -8761,7 +8824,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-3bd692e4] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\n  cursor: pointer;\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\n  background: rgba(54, 54, 250, 0.1);\n  border-radius: 40px;\n\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-3bd692e4] {\r\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\r\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\r\n  font-size: 1.2rem;\r\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\r\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\r\n  background: rgba(54, 54, 250, 0.1);\r\n  border-radius: 40px;\r\n\r\n  cursor: pointer;\n}\nbutton.following:hover span[data-v-3bd692e4] {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  display: none;\n}\nbutton.following[data-v-3bd692e4]:hover {\r\n  background: rgb(219, 28, 28);\r\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-3bd692e4]:hover:before {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  content: \"Unfollow\";\n}\r\n", ""]);
 
 // exports
 
@@ -67974,82 +68037,120 @@ var render = function() {
       "div",
       { staticClass: "col-md-7 border border-bottom-0 p-0 m-0" },
       _vm._l(_vm.allusers, function(data, index) {
-        return _c("ul", { staticClass: "list-group" }, [
-          _c(
-            "li",
-            {
-              staticClass:
-                "px-3 py-2 border-bottom d-flex justify-content-between"
-            },
-            [
-              _c("span", { staticClass: "d-flex" }, [
-                _c("img", {
-                  staticClass: "mr-2 rounded rounded-circle",
-                  attrs: {
-                    src: data.user.profile,
-                    width: "50px",
-                    height: "50px"
+        return _c(
+          "ul",
+          { staticClass: "list-group" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "route",
+                attrs: {
+                  to: {
+                    name: "profile",
+                    params: { username: data.user.username }
                   }
-                }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("div", { staticClass: "font-weight-bolder text-dark" }, [
-                    _vm._v(_vm._s(data.user.name))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-muted" }, [
-                    _vm._v(
-                      "\n              " +
-                        _vm._s("@" + data.user.username) +
-                        "\n              "
-                    ),
-                    data.follower
-                      ? _c("span", { staticClass: "bg-warning rounded" }, [
-                          _vm._v("follow you")
+                }
+              },
+              [
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "px-3 py-2 border-bottom d-flex justify-content-between"
+                  },
+                  [
+                    _c("span", { staticClass: "d-flex" }, [
+                      _c("img", {
+                        staticClass: "mr-2 rounded rounded-circle",
+                        attrs: {
+                          src: data.user.profile,
+                          width: "50px",
+                          height: "50px"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "div",
+                          { staticClass: "font-weight-bolder" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: " text-dark",
+                                attrs: {
+                                  to: {
+                                    name: "profile",
+                                    params: { username: data.user.username }
+                                  }
+                                }
+                              },
+                              [_vm._v(_vm._s(data.user.name))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-muted" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s("@" + data.user.username) +
+                              "\n                "
+                          ),
+                          data.follower
+                            ? _c(
+                                "span",
+                                { staticClass: "bg-warning rounded" },
+                                [_vm._v("follow you")]
+                              )
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-dark" }, [
+                          _vm._v(_vm._s(data.user.bio))
                         ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-dark" }, [
-                    _vm._v(_vm._s(data.user.bio))
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              data.following
-                ? _c("span", [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn btn-primary btn-sm px-4 font-weight-bolder following",
-                        on: {
-                          click: function($event) {
-                            return _vm.unfollow(data.user.id, index)
-                          }
-                        }
-                      },
-                      [_c("span", [_vm._v("Following")])]
-                    )
-                  ])
-                : _c("span", [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
-                        on: {
-                          click: function($event) {
-                            return _vm.follow(data.user.id, index)
-                          }
-                        }
-                      },
-                      [_vm._v("Follow")]
-                    )
-                  ])
-            ]
-          )
-        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    data.following
+                      ? _c("span", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary btn-sm px-4 font-weight-bolder following",
+                              on: {
+                                click: function($event) {
+                                  return _vm.unfollow(data.user.id, index)
+                                }
+                              }
+                            },
+                            [_c("span", [_vm._v("Following")])]
+                          )
+                        ])
+                      : _c("span", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
+                              on: {
+                                click: function($event) {
+                                  return _vm.follow(data.user.id, index)
+                                }
+                              }
+                            },
+                            [_vm._v("Follow")]
+                          )
+                        ])
+                  ]
+                )
+              ]
+            )
+          ],
+          1
+        )
       }),
       0
     ),
@@ -68082,84 +68183,122 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.allusers, function(data, index) {
-      return _c("ul", { staticClass: "list-group" }, [
-        data.follower
-          ? _c(
-              "li",
-              {
-                staticClass:
-                  "py-2 px-3 d-flex justify-content-between border border-top-0"
-              },
-              [
-                _c("span", { staticClass: "d-flex" }, [
-                  _c("img", {
-                    staticClass: "mr-2 rounded rounded-circle",
-                    attrs: {
-                      src: data.user.profile,
-                      width: "50px",
-                      height: "50px"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "font-weight-bolder text-dark" }, [
-                      _vm._v(_vm._s(data.user.name))
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-muted" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s("@" + data.user.username) +
-                          "\n            "
-                      ),
-                      data.follower
-                        ? _c("span", { staticClass: "bg-warning rounded" }, [
-                            _vm._v("follow you")
+      return _c(
+        "ul",
+        { staticClass: "list-group" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "route",
+              attrs: {
+                to: {
+                  name: "profile",
+                  params: { username: data.user.username }
+                }
+              }
+            },
+            [
+              data.follower
+                ? _c(
+                    "li",
+                    {
+                      staticClass:
+                        "py-2 px-3 d-flex justify-content-between border border-top-0"
+                    },
+                    [
+                      _c("span", { staticClass: "d-flex" }, [
+                        _c("img", {
+                          staticClass: "mr-2 rounded rounded-circle",
+                          attrs: {
+                            src: data.user.profile,
+                            width: "50px",
+                            height: "50px"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "div",
+                            { staticClass: "font-weight-bolder" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: " text-dark",
+                                  attrs: {
+                                    to: {
+                                      name: "profile",
+                                      params: { username: data.user.username }
+                                    }
+                                  }
+                                },
+                                [_vm._v(_vm._s(data.user.name))]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-muted" }, [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s("@" + data.user.username) +
+                                "\n              "
+                            ),
+                            data.follower
+                              ? _c(
+                                  "span",
+                                  { staticClass: "bg-warning rounded" },
+                                  [_vm._v("follow you")]
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-dark" }, [
+                            _vm._v(_vm._s(data.user.bio))
                           ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-dark" }, [
-                      _vm._v(_vm._s(data.user.bio))
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                data.following
-                  ? _c("span", [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn btn-primary btn-sm px-4 font-weight-bolder following",
-                          on: {
-                            click: function($event) {
-                              return _vm.unfollow(data.user.id, index)
-                            }
-                          }
-                        },
-                        [_c("span", [_vm._v("Following")])]
-                      )
-                    ])
-                  : _c("span", [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
-                          on: {
-                            click: function($event) {
-                              return _vm.follow(data.user.id, index)
-                            }
-                          }
-                        },
-                        [_vm._v("Follow")]
-                      )
-                    ])
-              ]
-            )
-          : _vm._e()
-      ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      data.following
+                        ? _c("span", [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-primary btn-sm px-4 font-weight-bolder following",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.unfollow(data.user.id, index)
+                                  }
+                                }
+                              },
+                              [_c("span", [_vm._v("Following")])]
+                            )
+                          ])
+                        : _c("span", [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.follow(data.user.id, index)
+                                  }
+                                }
+                              },
+                              [_vm._v("Follow")]
+                            )
+                          ])
+                    ]
+                  )
+                : _vm._e()
+            ]
+          )
+        ],
+        1
+      )
     }),
     0
   )
@@ -68189,68 +68328,106 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.allusers, function(data, index) {
-      return _c("ul", { staticClass: " list-group" }, [
-        data.following
-          ? _c(
-              "li",
-              {
-                staticClass:
-                  "py-2 px-3 d-flex justify-content-between border border-top-0"
-              },
-              [
-                _c("span", { staticClass: "d-flex" }, [
-                  _c("img", {
-                    staticClass: "mr-2 rounded rounded-circle",
-                    attrs: {
-                      src: data.user.profile,
-                      width: "50px",
-                      height: "50px"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "font-weight-bolder text-dark" }, [
-                      _vm._v(_vm._s(data.user.name))
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-muted" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s("@" + data.user.username) +
-                          "\n            "
-                      ),
-                      data.follower
-                        ? _c("span", { staticClass: "bg-warning rounded" }, [
-                            _vm._v("follow you")
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-dark" }, [
-                      _vm._v(_vm._s(data.user.bio))
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", [
-                  _c(
-                    "button",
+      return _c(
+        "ul",
+        { staticClass: "list-group" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "route",
+              attrs: {
+                to: {
+                  name: "profile",
+                  params: { username: data.user.username }
+                }
+              }
+            },
+            [
+              data.following
+                ? _c(
+                    "li",
                     {
                       staticClass:
-                        "btn btn-primary btn-sm px-4 font-weight-bolder following",
-                      on: {
-                        click: function($event) {
-                          return _vm.unfollow(data.user.id, index)
-                        }
-                      }
+                        "py-2 px-3 d-flex justify-content-between border border-top-0"
                     },
-                    [_c("span", [_vm._v("Following")])]
+                    [
+                      _c("span", { staticClass: "d-flex" }, [
+                        _c("img", {
+                          staticClass: "mr-2 rounded rounded-circle",
+                          attrs: {
+                            src: data.user.profile,
+                            width: "50px",
+                            height: "50px"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "div",
+                            { staticClass: "font-weight-bolder" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: " text-dark",
+                                  attrs: {
+                                    to: {
+                                      name: "profile",
+                                      params: { username: data.user.username }
+                                    }
+                                  }
+                                },
+                                [_vm._v(_vm._s(data.user.name))]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-muted" }, [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s("@" + data.user.username) +
+                                "\n              "
+                            ),
+                            data.follower
+                              ? _c(
+                                  "span",
+                                  { staticClass: "bg-warning rounded" },
+                                  [_vm._v("follow you")]
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-dark" }, [
+                            _vm._v(_vm._s(data.user.bio))
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-primary btn-sm px-4 font-weight-bolder following",
+                            on: {
+                              click: function($event) {
+                                return _vm.unfollow(data.user.id, index)
+                              }
+                            }
+                          },
+                          [_c("span", [_vm._v("Following")])]
+                        )
+                      ])
+                    ]
                   )
-                ])
-              ]
-            )
-          : _vm._e()
-      ])
+                : _vm._e()
+            ]
+          )
+        ],
+        1
+      )
     }),
     0
   )
@@ -69275,8 +69452,13 @@ var render = function() {
                       _c(
                         "router-link",
                         {
-                          staticClass: "route text-dark",
-                          attrs: { to: "/notifications" }
+                          staticClass: "text-dark",
+                          attrs: {
+                            to: {
+                              name: "profile",
+                              params: { username: data.user.username }
+                            }
+                          }
                         },
                         [_vm._v(_vm._s(data.user.name))]
                       )
@@ -69443,7 +69625,11 @@ var render = function() {
               _c("img", {
                 staticClass:
                   "rounded rounded-circle bg-white ml-3 p-1 img-profile",
-                attrs: { src: _vm.user.profile, width: "130px", alt: "" }
+                attrs: {
+                  src: _vm.showprofile.user.profile,
+                  width: "130px",
+                  alt: ""
+                }
               })
             ]
           ),
@@ -69462,39 +69648,85 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", [
-          _c(
-            "button",
-            {
-              staticClass:
-                "btn btn-outline-primary btn-md float-right font-weight-bolder mt-2 mr-2",
-              on: {
-                click: function($event) {
-                  return _vm.profilemodel()
-                }
-              }
-            },
-            [_vm._v("Edit profile")]
-          )
+          _vm.showprofile.user.username == _vm.user.username
+            ? _c(
+                "button",
+                {
+                  staticClass:
+                    "btn btn-outline-primary btn-md float-right font-weight-bolder mt-2 mr-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.profilemodel()
+                    }
+                  }
+                },
+                [_vm._v("Edit profile")]
+              )
+            : _c("div", { staticClass: "float-right mr-3 mt-2" }, [
+                _vm.showprofile.follow
+                  ? _c("span", [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-primary btn-sm px-4 font-weight-bolder following",
+                          on: {
+                            click: function($event) {
+                              return _vm.unfollow(_vm.showprofile.user.id, -1)
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Following")])]
+                      )
+                    ])
+                  : _c("span", [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
+                          on: {
+                            click: function($event) {
+                              return _vm.follow(_vm.showprofile.user.id, -1)
+                            }
+                          }
+                        },
+                        [_vm._v("Follow")]
+                      )
+                    ])
+              ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "userdata ml-3" }, [
-          _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.user.name))]),
-          _vm._v("\n      " + _vm._s("@" + _vm.user.username) + "\n      "),
-          _vm.user.bio
-            ? _c("div", { staticClass: "my-2" }, [_vm._v(_vm._s(_vm.user.bio))])
+          _c("div", { staticClass: "name" }, [
+            _vm._v(_vm._s(_vm.showprofile.user.name))
+          ]),
+          _vm._v(
+            "\n      " +
+              _vm._s("@" + _vm.showprofile.user.username) +
+              "\n      "
+          ),
+          _vm.showprofile.user.bio
+            ? _c("div", { staticClass: "my-2" }, [
+                _vm._v(_vm._s(_vm.showprofile.user.bio))
+              ])
             : _c("div", [_vm._v("No Bio Yet")]),
           _vm._v(" "),
           _c("div", { staticClass: "row text-muted mt-2" }, [
             _c("div", { staticClass: "col-4 m-0" }, [
               _c("i", { staticClass: "fas fa-map-marker-alt fa-md" }),
-              _vm._v("\n          " + _vm._s(_vm.user.location) + "\n        ")
+              _vm._v(
+                "\n          " +
+                  _vm._s(_vm.showprofile.user.location) +
+                  "\n        "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-4 m-0 p-0" }, [
               _c("i", { staticClass: "fas fa-birthday-cake" }),
               _vm._v(
                 "\n          Born " +
-                  _vm._s(_vm._f("date")(_vm.user.birthday)) +
+                  _vm._s(_vm._f("date")(_vm.showprofile.user.birthday)) +
                   "\n        "
               )
             ]),
@@ -69503,16 +69735,20 @@ var render = function() {
               _c("i", { staticClass: "far fa-calendar-alt" }),
               _vm._v(
                 "\n          Joined " +
-                  _vm._s(_vm._f("date")(_vm.user.created_at)) +
+                  _vm._s(_vm._f("date")(_vm.showprofile.user.created_at)) +
                   "\n        "
               )
             ])
           ]),
           _vm._v(" "),
-          _vm.user.website
+          _vm.showprofile.user.website
             ? _c("div", { staticClass: "my-1" }, [
                 _c("i", { staticClass: "fas fa-link text-primary" }),
-                _vm._v("\n        " + _vm._s(_vm.user.website) + "\n      ")
+                _vm._v(
+                  "\n        " +
+                    _vm._s(_vm.showprofile.user.website) +
+                    "\n      "
+                )
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -69522,7 +69758,7 @@ var render = function() {
             [
               _c("router-link", { attrs: { to: { name: "following" } } }, [
                 _c("span", { staticClass: "font-weight-bolder text-dark" }, [
-                  _vm._v(_vm._s(_vm.allfollowing.length))
+                  _vm._v(_vm._s(_vm.showprofile.following))
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "text-muted mr-4" }, [
@@ -69532,7 +69768,7 @@ var render = function() {
               _vm._v(" "),
               _c("router-link", { attrs: { to: { name: "follower" } } }, [
                 _c("span", { staticClass: "font-weight-bolder text-dark" }, [
-                  _vm._v(_vm._s(_vm.allfollower.length))
+                  _vm._v(_vm._s(_vm.showprofile.followers))
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "text-muted" }, [_vm._v("Followers")])
@@ -88300,6 +88536,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
     user: [],
+    showprofile: [],
+    showtweets: [],
     usertweet: [],
     alltweet: [],
     likedpost: '',
@@ -88331,6 +88569,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       return state.allusers.filter(function (user) {
         return user.username == username;
       });
+    },
+    setshowprofile: function setshowprofile(state, data) {
+      return state.showprofile = data;
     },
     settweet: function settweet(state, data) {
       return state.tweet = data;
@@ -88367,7 +88608,11 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       return state.allusers = users;
     },
     setfolow: function setfolow(state, index) {
-      state.allusers[index].following = !state.allusers[index].following;
+      if (index == -1) {
+        state.showprofile.follow = !state.showprofile.follow;
+      } else {
+        state.allusers[index].following = !state.allusers[index].following;
+      }
     },
     setlikedpost: function setlikedpost(state, index) {
       if (index == -1) {
@@ -88914,6 +89159,80 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       }
 
       return showtweet;
+    }(),
+    showtweets: function () {
+      var _showtweets = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16(_ref16, payload) {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context16) {
+          while (1) {
+            switch (_context16.prev = _context16.next) {
+              case 0:
+                commit = _ref16.commit;
+                _context16.prev = 1;
+                _context16.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/posts/' + payload);
+
+              case 4:
+                response = _context16.sent;
+                commit('setusertweet', response.data);
+                _context16.next = 11;
+                break;
+
+              case 8:
+                _context16.prev = 8;
+                _context16.t0 = _context16["catch"](1);
+                console.log(_context16.t0);
+
+              case 11:
+              case "end":
+                return _context16.stop();
+            }
+          }
+        }, _callee16, null, [[1, 8]]);
+      }));
+
+      function showtweets(_x26, _x27) {
+        return _showtweets.apply(this, arguments);
+      }
+
+      return showtweets;
+    }(),
+    showprofile: function () {
+      var _showprofile = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17(_ref17, payload) {
+        var commit, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee17$(_context17) {
+          while (1) {
+            switch (_context17.prev = _context17.next) {
+              case 0:
+                commit = _ref17.commit;
+                _context17.prev = 1;
+                _context17.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/user/' + payload);
+
+              case 4:
+                response = _context17.sent;
+                commit('setshowprofile', response.data);
+                _context17.next = 11;
+                break;
+
+              case 8:
+                _context17.prev = 8;
+                _context17.t0 = _context17["catch"](1);
+                console.log(_context17.t0);
+
+              case 11:
+              case "end":
+                return _context17.stop();
+            }
+          }
+        }, _callee17, null, [[1, 8]]);
+      }));
+
+      function showprofile(_x28, _x29) {
+        return _showprofile.apply(this, arguments);
+      }
+
+      return showprofile;
     }()
   }
 }));

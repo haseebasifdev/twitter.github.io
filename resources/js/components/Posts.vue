@@ -14,7 +14,10 @@
           />
           <div>
             <span class="font-weight-bolder">
-              <router-link class="route text-dark" to="/notifications">{{data.user.name}}</router-link>
+              <router-link
+                class="text-dark"
+                :to="{name:'profile',params: { username: data.user.username }}"
+              >{{data.user.name}}</router-link>
             </span>
             <span class="text-muted">{{'@'+data.user.username}}</span>
             <span class="text-muted ml-2">{{data.tweet.created_at | date}}</span>
@@ -82,7 +85,6 @@ export default {
         index: indexid
       };
       this.$store.dispatch("likepost", data);
-      
     },
     commentmodel(index) {
       this.$store.dispatch("commentpostindex", index);

@@ -30,6 +30,19 @@ class HomeController extends Controller
         $user = User::find(auth()->id());
         return view('home', compact('user'));
     }
+    public function show($username)
+
+    {
+        $user = User::where('username', $username)->first();
+        $user = new Collection([
+            "user" => $user,
+            "following" => Follow::where('user_id', $user->id)->count(),
+            "follower" => Follow::where('follow_id', $user->id)->count(),
+            "follow" => Follow::where('user_id', auth()->id())->where('follow_id', $user->id)->exists(),
+
+        ]);
+        return $user;
+    }
     public function alluser()
     {
         $users = User::where('id', "!=", auth()->id())->get();

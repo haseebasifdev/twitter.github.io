@@ -5,7 +5,7 @@
         <img src="images/cover.jfif" width="100%" height="250px" alt />
         <div class="profile position-absolute" style="bottom:-30%">
           <img
-            :src="user.profile"
+            :src="showprofile.user.profile"
             class="rounded rounded-circle bg-white ml-3 p-1 img-profile"
             width="130px"
             alt
@@ -22,40 +22,57 @@
 
       <div>
         <button
+          v-if="showprofile.user.username==user.username"
           class="btn btn-outline-primary btn-md float-right font-weight-bolder mt-2 mr-2"
           @click="profilemodel()"
         >Edit profile</button>
+        <div v-else class="float-right mr-3 mt-2">
+          <span v-if="showprofile.follow">
+            <button
+              class="btn btn-primary btn-sm px-4 font-weight-bolder following"
+              @click="unfollow(showprofile.user.id,-1)"
+            >
+              <span>Following</span>
+            </button>
+          </span>
+          <span v-else>
+            <button
+              class="btn btn-outline-primary btn-sm px-4 font-weight-bolder follow"
+              @click="follow(showprofile.user.id,-1)"
+            >Follow</button>
+          </span>
+        </div>
       </div>
       <div class="userdata ml-3">
-        <div class="name">{{user.name}}</div>
-        {{'@'+ user.username}}
-        <div v-if="user.bio" class="my-2">{{user.bio}}</div>
+        <div class="name">{{showprofile.user.name}}</div>
+        {{'@'+ showprofile.user.username}}
+        <div v-if="showprofile.user.bio" class="my-2">{{showprofile.user.bio}}</div>
         <div v-else>No Bio Yet</div>
         <div class="row text-muted mt-2">
           <div class="col-4 m-0">
             <i class="fas fa-map-marker-alt fa-md"></i>
-            {{user.location }}
+            {{showprofile.user.location }}
           </div>
           <div class="col-4 m-0 p-0">
             <i class="fas fa-birthday-cake"></i>
-            Born {{user.birthday | date}}
+            Born {{showprofile.user.birthday | date}}
           </div>
           <div class="col-4 m-0 p-0">
             <i class="far fa-calendar-alt"></i>
-            Joined {{user.created_at | date}}
+            Joined {{showprofile.user.created_at | date}}
           </div>
         </div>
-        <div v-if="user.website" class="my-1">
+        <div v-if="showprofile.user.website" class="my-1">
           <i class="fas fa-link text-primary"></i>
-          {{user.website}}
+          {{showprofile.user.website}}
         </div>
         <div class="mb-4">
           <router-link :to="{name:'following'}">
-            <span class="font-weight-bolder text-dark">{{allfollowing.length}}</span>
+            <span class="font-weight-bolder text-dark">{{showprofile.following}}</span>
             <span class="text-muted mr-4">Following</span>
           </router-link>
           <router-link :to="{name:'follower'}">
-            <span class="font-weight-bolder text-dark">{{allfollower.length}}</span>
+            <span class="font-weight-bolder text-dark">{{showprofile.followers}}</span>
             <span class="text-muted">Followers</span>
           </router-link>
         </div>
@@ -219,6 +236,20 @@ export default {
     };
   },
   methods: {
+    follow(userid, index) {
+      var data = {
+        follow_id: userid,
+        index: index
+      };
+      this.$store.dispatch("follow", data);
+    },
+    unfollow(userid, index) {
+      var data = {
+        follow_id: userid,
+        index: index
+      };
+      this.$store.dispatch("unfollow", data);
+    },
     saveprofilepic() {
       var data = {
         avatar: this.picture
@@ -266,12 +297,14 @@ export default {
     ...mapActions(["fetchusertweet", "fetchuser", "alluser"])
   },
   mounted() {
-    this.fetchusertweet();
+    // this.fetchusertweet();
     this.fetchuser();
     this.alluser();
+    this.$store.dispatch("showprofile", this.$route.params.username);
+    this.$store.dispatch("showtweets", this.$route.params.username);
   },
   computed: {
-    ...mapState(["user", "usertweet"]),
+    ...mapState(["user", "usertweet", "showprofile"]),
     ...mapState({
       userdeta: state => state.user
     }),
@@ -315,5 +348,19 @@ i.ipic {
   border-radius: 40px;
 
   cursor: pointer;
+}
+button.following:hover span {
+  /* background: rgb(219, 28, 28);
+border: none; */
+  display: none;
+}
+button.following:hover {
+  background: rgb(219, 28, 28);
+  border: 1px solid rgb(219, 28, 28);
+}
+button.following:hover:before {
+  /* background: rgb(219, 28, 28);
+border: none; */
+  content: "Unfollow";
 }
 </style>
