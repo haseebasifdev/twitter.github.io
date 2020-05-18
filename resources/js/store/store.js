@@ -16,7 +16,8 @@ export default new Vuex.Store({
         messages: {},
         notifications: [],
         tweet: [],
-        countnote: 0
+        countnote: 0,
+        onlineusers: []
 
     },
     getters: {
@@ -31,6 +32,25 @@ export default new Vuex.Store({
         },
     },
     mutations: {
+        setonlineusers: (state, data) => {
+            state.onlineusers = data;
+        },
+        setleaveonlineusers: (state, data) => {
+            state.onlineusers = state.onlineusers.filter(user => user != data)
+        },
+        setjoinonlineusers: (state, data) => {
+            state.onlineusers.push(data);
+        },
+
+        checkonline: (state, data) => {
+            state.onlineusers.find(user => {
+                if (user == data) {
+                    console.log("Checking", user);
+                    return true;
+                }
+            });
+        },
+
         finduser: (state, username) => {
             return state.allusers.filter(user => user.username == username)
         },

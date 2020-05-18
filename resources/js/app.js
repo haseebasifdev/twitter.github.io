@@ -30,7 +30,7 @@ const app = new Vue({
     el: '#app',
     methods: {
         ...mapActions(["alluser"]),
-        ...mapMutations(['setcountnote']),
+        ...mapMutations(['setcountnote', "setonlineusers", "setleaveonlineusers", "setjoinonlineusers"]),
     },
     mounted() {
         mapState(["countnote"])
@@ -57,6 +57,21 @@ const app = new Vue({
                 localStorage.setItem('notifications', JSON.stringify(b));
             }
         });
+        var from = $('meta[name="username"]').attr("content");
+        Echo.join("Online")
+
+            .here((users) => {
+                console.log("All", users);
+                this.setonlineusers(users)
+            })
+            .joining((user) => {
+                this.setjoinonlineusers(user)
+                console.log("Join", user);
+            })
+            .leaving((user) => {
+                this.setleaveonlineusers(user)
+                console.log("Leaving", user);
+            });
     }
 
 });

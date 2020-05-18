@@ -34,7 +34,7 @@
             <router-link :to="{name:'notifications'}" class="nav-links">
               <i class="far fa-bell fa-lg mr-3"></i>
               <span
-              v-if="countnote"
+                v-if="countnote"
                 class="badge badge-primary rounded-circle position-absolute"
                 style="left:20px;bottom:15px"
               >{{countnote}}</span>
@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations,mapActions } from "vuex";
 import tweet from "./Tweet";
 
 export default {
@@ -105,6 +105,7 @@ export default {
   props: ["user"],
   methods: {
     ...mapMutations(["resetcountnote"]),
+    ...mapActions(["notification"]),
     // tweetmodel() {
     //   console.log("clicked");
     //   $("#tweet").modal("show");
@@ -113,6 +114,7 @@ export default {
       console.log("Notification cicked");
       localStorage.removeItem("notifications");
       this.resetcountnote();
+      this.notification();
     }
   },
   mounted() {

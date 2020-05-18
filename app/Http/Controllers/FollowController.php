@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Follow;
+use App\Notification;
 use Illuminate\Http\Request;
 
 class FollowController extends Controller
@@ -38,6 +39,11 @@ class FollowController extends Controller
         Follow::create([
             'follow_id' => $request->follow_id,
             'user_id' => auth()->id()
+        ]);
+        Notification::create([
+            'from' => auth()->id(),
+            'to' => $request->follow_id,
+            'type' => 'Followed You',
         ]);
         return ('Success');
     }

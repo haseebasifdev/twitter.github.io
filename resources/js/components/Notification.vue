@@ -18,7 +18,7 @@
             />
             <div>
               <b>{{notification.user.name}}</b>
-              {{notification.notifications.type}} your tweet
+              {{notification.notifications.type}}
             </div>
           </div>
         </li>

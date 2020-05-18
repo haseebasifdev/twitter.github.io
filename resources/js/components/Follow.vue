@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-7 border border-bottom-0 p-0 m-0">
       <ul class="list-group" v-for="(data,index) in allusers">
-        <router-link class="route" :to="{name:'profile',params: { username: data.user.username }}">
-          <li class="px-3 py-2 border-bottom d-flex justify-content-between">
+        <!-- <router-link class="route" :to="{name:'profile',params: { username: data.user.username }}"> -->
+          <li class="px-3 py-2 border-bottom d-flex justify-content-between route">
             <span class="d-flex">
               <img
                 :src="data.user.profile"
@@ -43,7 +43,7 @@
               >Follow</button>
             </span>
           </li>
-        </router-link>
+        <!-- </router-link> -->
       </ul>
     </div>
     <div class="col-md-5"></div>
@@ -103,5 +103,6 @@ border: none; */
 .route:hover {
   text-decoration: none;
   background-color: rgba(202, 202, 202, 0.196);
+  cursor: pointer;
 }
 </style>

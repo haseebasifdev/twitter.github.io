@@ -27,3 +27,8 @@ Broadcast::channel('notification.{id}', function ($user, $id) {
     return $user->id == $id;
     // return true;
 });
+Broadcast::channel('Online', function ($users) {
+    // return $user->id == $to;
+    return $users;
+    // return true;
+});

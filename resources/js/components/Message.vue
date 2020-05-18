@@ -68,7 +68,6 @@ export default {
   created() {
     var from = $('meta[name="username"]').attr("content");
     Echo.private("chat." + from).listen("Chat", e => {
-
       this.setnewmessage(e.message);
     });
   }

@@ -50,7 +50,7 @@ class LikeController extends Controller
             Notification::create([
                 'from' => auth()->id(),
                 'to' => $Post->user_id,
-                'type' => 'Like',
+                'type' => 'Like your tweet',
             ]);
         }
 

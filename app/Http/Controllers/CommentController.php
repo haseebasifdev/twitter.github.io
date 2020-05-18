@@ -48,7 +48,7 @@ class CommentController extends Controller
         Notification::create([
             'from' => auth()->id(),
             'to' => $Post->user_id,
-            'type' => 'Comment',
+            'type' => 'Comment to your post',
         ]);
     }
 

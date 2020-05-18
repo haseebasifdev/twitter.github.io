@@ -18,6 +18,10 @@
                   <div class="font-weight-bolder">{{data.user.name}}</div>
                   <div class="text-muted">{{'@'+data.user.username}}</div>
                 </span>
+                <div class="ml-4">
+                  <span v-if="checkonlineuser(data.user)" class="badge badge-primary">Online</span>
+                  <span v-else class="badge badge-danger">offline</span>
+                </div>
               </li>
             </router-link>
           </ul>
@@ -31,19 +35,33 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {};
   },
   methods: {
     ...mapActions(["alluser"]),
+    ...mapMutations(["checkonline"]),
     unfollow(userid, index) {
       var data = {
         follow_id: userid,
         index: index
       };
       this.$store.dispatch("unfollow", data);
+    },
+    checkonlineuser(user) {
+      var number = 0;
+      this.onlineusers.find(onineuser => {
+        console.log("CheckOnline");
+        if (onineuser.id == user.id) {
+          console.log(user);
+          number = 1;
+        }
+      });
+      return number;
+      // console.log(_.find(this.onlineusers, { id: user }));
+      // return _.find(this.onlineusers, { id: user });
     }
   },
 
@@ -51,8 +69,8 @@ export default {
     this.alluser();
   },
   computed: {
-    ...mapState(["allusers"])
-  },
+    ...mapState(["allusers", "onlineusers"])
+  }
   // created() {
   //   const to = this.$route.params.username;
   //   console.log(to);

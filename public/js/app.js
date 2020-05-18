@@ -2814,24 +2814,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
   },
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["alluser"])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["alluser"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(["checkonline"])), {}, {
     unfollow: function unfollow(userid, index) {
       var data = {
         follow_id: userid,
         index: index
       };
       this.$store.dispatch("unfollow", data);
+    },
+    checkonlineuser: function checkonlineuser(user) {
+      var number = 0;
+      this.onlineusers.find(function (onineuser) {
+        console.log("CheckOnline");
+
+        if (onineuser.id == user.id) {
+          console.log(user);
+          number = 1;
+        }
+      });
+      return number; // console.log(_.find(this.onlineusers, { id: user }));
+      // return _.find(this.onlineusers, { id: user });
     }
   }),
   mounted: function mounted() {
     this.alluser();
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["allusers"])) // created() {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["allusers", "onlineusers"])) // created() {
   //   const to = this.$route.params.username;
   //   console.log(to);
   //   Echo.private("message." + to).listen("Message", e => {
@@ -2964,7 +2981,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     tweet: _Tweet__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ["user"],
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(["resetcountnote"])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(["resetcountnote"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["notification"])), {}, {
     // tweetmodel() {
     //   console.log("clicked");
     //   $("#tweet").modal("show");
@@ -2973,6 +2990,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log("Notification cicked");
       localStorage.removeItem("notifications");
       this.resetcountnote();
+      this.notification();
     }
   }),
   mounted: function mounted() {
@@ -8644,7 +8662,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -68066,120 +68084,99 @@ var render = function() {
       "div",
       { staticClass: "col-md-7 border border-bottom-0 p-0 m-0" },
       _vm._l(_vm.allusers, function(data, index) {
-        return _c(
-          "ul",
-          { staticClass: "list-group" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "route",
-                attrs: {
-                  to: {
-                    name: "profile",
-                    params: { username: data.user.username }
+        return _c("ul", { staticClass: "list-group" }, [
+          _c(
+            "li",
+            {
+              staticClass:
+                "px-3 py-2 border-bottom d-flex justify-content-between route"
+            },
+            [
+              _c("span", { staticClass: "d-flex" }, [
+                _c("img", {
+                  staticClass: "mr-2 rounded rounded-circle",
+                  attrs: {
+                    src: data.user.profile,
+                    width: "50px",
+                    height: "50px"
                   }
-                }
-              },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass:
-                      "px-3 py-2 border-bottom d-flex justify-content-between"
-                  },
-                  [
-                    _c("span", { staticClass: "d-flex" }, [
-                      _c("img", {
-                        staticClass: "mr-2 rounded rounded-circle",
-                        attrs: {
-                          src: data.user.profile,
-                          width: "50px",
-                          height: "50px"
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "div",
+                    { staticClass: "font-weight-bolder" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: " text-dark",
+                          attrs: {
+                            to: {
+                              name: "profile",
+                              params: { username: data.user.username }
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(data.user.name))]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-muted" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s("@" + data.user.username) +
+                        "\n                "
+                    ),
+                    data.follower
+                      ? _c("span", { staticClass: "bg-warning rounded" }, [
+                          _vm._v("follow you")
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-dark" }, [
+                    _vm._v(_vm._s(data.user.bio))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              data.following
+                ? _c("span", [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-primary btn-sm px-4 font-weight-bolder following",
+                        on: {
+                          click: function($event) {
+                            return _vm.unfollow(data.user.id, index)
+                          }
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c(
-                          "div",
-                          { staticClass: "font-weight-bolder" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: " text-dark",
-                                attrs: {
-                                  to: {
-                                    name: "profile",
-                                    params: { username: data.user.username }
-                                  }
-                                }
-                              },
-                              [_vm._v(_vm._s(data.user.name))]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-muted" }, [
-                          _vm._v(
-                            "\n                " +
-                              _vm._s("@" + data.user.username) +
-                              "\n                "
-                          ),
-                          data.follower
-                            ? _c(
-                                "span",
-                                { staticClass: "bg-warning rounded" },
-                                [_vm._v("follow you")]
-                              )
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-dark" }, [
-                          _vm._v(_vm._s(data.user.bio))
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    data.following
-                      ? _c("span", [
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "btn btn-primary btn-sm px-4 font-weight-bolder following",
-                              on: {
-                                click: function($event) {
-                                  return _vm.unfollow(data.user.id, index)
-                                }
-                              }
-                            },
-                            [_c("span", [_vm._v("Following")])]
-                          )
-                        ])
-                      : _c("span", [
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
-                              on: {
-                                click: function($event) {
-                                  return _vm.follow(data.user.id, index)
-                                }
-                              }
-                            },
-                            [_vm._v("Follow")]
-                          )
-                        ])
-                  ]
-                )
-              ]
-            )
-          ],
-          1
-        )
+                      },
+                      [_c("span", [_vm._v("Following")])]
+                    )
+                  ])
+                : _c("span", [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
+                        on: {
+                          click: function($event) {
+                            return _vm.follow(data.user.id, index)
+                          }
+                        }
+                      },
+                      [_vm._v("Follow")]
+                    )
+                  ])
+            ]
+          )
+        ])
       }),
       0
     ),
@@ -68833,6 +68830,20 @@ var render = function() {
                           _c("div", { staticClass: "text-muted" }, [
                             _vm._v(_vm._s("@" + data.user.username))
                           ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "ml-4" }, [
+                          _vm.checkonlineuser(data.user)
+                            ? _c(
+                                "span",
+                                { staticClass: "badge badge-primary" },
+                                [_vm._v("Online")]
+                              )
+                            : _c(
+                                "span",
+                                { staticClass: "badge badge-danger" },
+                                [_vm._v("offline")]
+                              )
                         ])
                       ]
                     )
@@ -69200,7 +69211,7 @@ var render = function() {
                   _vm._v(
                     "\n            " +
                       _vm._s(notification.notifications.type) +
-                      " your tweet\n          "
+                      "\n          "
                   )
                 ])
               ])
@@ -87056,7 +87067,7 @@ var app = new Vue({
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
   store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
   el: '#app',
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(["alluser"])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapMutations"])(['setcountnote'])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(["alluser"])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapMutations"])(['setcountnote', "setonlineusers", "setleaveonlineusers", "setjoinonlineusers"])),
   mounted: function mounted() {
     Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(["countnote"]);
     console.log("loca storage ength", JSON.parse(localStorage.getItem('notifications')).length);
@@ -87085,6 +87096,20 @@ var app = new Vue({
         var b = [0];
         localStorage.setItem('notifications', JSON.stringify(b));
       }
+    });
+    var from = $('meta[name="username"]').attr("content");
+    Echo.join("Online").here(function (users) {
+      console.log("All", users);
+
+      _this.setonlineusers(users);
+    }).joining(function (user) {
+      _this.setjoinonlineusers(user);
+
+      console.log("Join", user);
+    }).leaving(function (user) {
+      _this.setleaveonlineusers(user);
+
+      console.log("Leaving", user);
     });
   }
 });
@@ -88697,7 +88722,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     messages: {},
     notifications: [],
     tweet: [],
-    countnote: 0
+    countnote: 0,
+    onlineusers: []
   },
   getters: {
     allfollower: function allfollower(state) {
@@ -88717,6 +88743,25 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     }
   },
   mutations: {
+    setonlineusers: function setonlineusers(state, data) {
+      state.onlineusers = data;
+    },
+    setleaveonlineusers: function setleaveonlineusers(state, data) {
+      state.onlineusers = state.onlineusers.filter(function (user) {
+        return user != data;
+      });
+    },
+    setjoinonlineusers: function setjoinonlineusers(state, data) {
+      state.onlineusers.push(data);
+    },
+    checkonline: function checkonline(state, data) {
+      state.onlineusers.find(function (user) {
+        if (user == data) {
+          console.log("Checking", user);
+          return true;
+        }
+      });
+    },
     finduser: function finduser(state, username) {
       return state.allusers.filter(function (user) {
         return user.username == username;
