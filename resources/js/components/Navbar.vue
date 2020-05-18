@@ -30,9 +30,15 @@
               <i class="fas fa-hashtag fa-lg mr-3"></i>Explore
             </router-link>
           </li>
-          <li class="nav-item my-3">
-            <router-link :to="{name:'notifications'}" class="nav-links" >
-              <i class="far fa-bell fa-lg mr-3"></i>Notification
+          <li class="nav-item my-3 position-relative" @click="resetnotification()">
+            <router-link :to="{name:'notifications'}" class="nav-links">
+              <i class="far fa-bell fa-lg mr-3"></i>
+              <span
+              v-if="countnote"
+                class="badge badge-primary rounded-circle position-absolute"
+                style="left:20px;bottom:15px"
+              >{{countnote}}</span>
+              Notification
             </router-link>
           </li>
           <li class="nav-item my-3">
@@ -64,7 +70,7 @@
               <i class="fas fa-angle-right fa-lg mr-3"></i>More
             </a>
           </li>
-          <button class="btn btn-primary btn-lg btn-block tweet" @click="tweetmodel()">Tweet</button>
+          <!-- <button class="btn btn-primary btn-lg btn-block tweet" @click="tweetmodel()">Tweet</button> -->
           <slot></slot>
         </ul>
       </div>
@@ -89,6 +95,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 import tweet from "./Tweet";
 
 export default {
@@ -97,13 +104,22 @@ export default {
   },
   props: ["user"],
   methods: {
-    tweetmodel() {
-      console.log("clicked");
-      $("#tweet").modal("show");
+    ...mapMutations(["resetcountnote"]),
+    // tweetmodel() {
+    //   console.log("clicked");
+    //   $("#tweet").modal("show");
+    // },
+    resetnotification() {
+      console.log("Notification cicked");
+      localStorage.removeItem("notifications");
+      this.resetcountnote();
     }
   },
   mounted() {
     console.log("Component mounted.");
+  },
+  computed: {
+    ...mapState(["countnote"])
   }
 };
 </script>

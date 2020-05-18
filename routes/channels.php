@@ -22,3 +22,8 @@ Broadcast::channel('chat.{username}', function ($user, $username) {
     return auth()->user()->username == $username;
     // return true;
 });
+Broadcast::channel('notification.{id}', function ($user, $id) {
+    // return $user->id == $to;
+    return $user->id == $id;
+    // return true;
+});

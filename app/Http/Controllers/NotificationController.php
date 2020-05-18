@@ -16,7 +16,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = Notification::where('to', auth()->id())->get();
+        $notifications = Notification::where('to', auth()->id())->latest()->get();
         for ($i = 0; $i < $notifications->count(); $i++) {
             $user = User::find($notifications[$i]->from);
             $notifications[$i] = new Collection([

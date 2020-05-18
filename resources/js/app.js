@@ -21,7 +21,8 @@ Vue.filter('datecomment', function (value) {
 // })
 import {
     mapActions,
-    mapState
+    mapState,
+    mapMutations
 } from "vuex";
 const app = new Vue({
     router,
@@ -29,20 +30,33 @@ const app = new Vue({
     el: '#app',
     methods: {
         ...mapActions(["alluser"]),
+        ...mapMutations(['setcountnote']),
     },
-    // computed: {
-    //     ...mapState(["messages", "user"])
-    // },
-    // created() {
-    //     const from = $('meta[name="userid"]').attr("content");
-    //     const to = this.messages.user.id;
-    //     console.log("from", from);
-    //     console.log("to", to);
-    //     Echo.private("chat." + to + "." + from).listen("Chat", e => {
-    //         console.log(e.message.message);
-    //         this.$store.dispatch("setmessage", e.message);
-    //     });
-    // }
+    mounted() {
+        mapState(["countnote"])
+        console.log("loca storage ength", (JSON.parse(localStorage.getItem('notifications')).length));
+        this.setcountnote((JSON.parse(localStorage.getItem('notifications')).length));
+    },
+    created() {
+        var from = $('meta[name="userid"]').attr("content");
+        Echo.private("notification." + from).listen("BroadcastNotification", e => {
+            console.log("Notification", e);
+            // this.setnewnotifications(e.notification);
+            this.setcountnote(1);
+            var a = [];
+            if (localStorage.getItem('notifications')) {
+                console.log("If condision")
+                for (let index = 0; index <= (JSON.parse(localStorage.getItem('notifications')).length); index++) {
 
+                    a.push(index + 1);
+                }
+                localStorage.setItem('notifications', JSON.stringify(a));
+
+            } else {
+                var b = [0]
+                localStorage.setItem('notifications', JSON.stringify(b));
+            }
+        });
+    }
 
 });

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Notification;
+use App\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -42,6 +44,12 @@ class CommentController extends Controller
                 'comment' => $request->comment,
             ]
         );
+        $Post = Post::find($request->post_id);
+        Notification::create([
+            'from' => auth()->id(),
+            'to' => $Post->user_id,
+            'type' => 'Comment',
+        ]);
     }
 
     /**

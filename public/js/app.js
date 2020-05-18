@@ -2684,11 +2684,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     var _this = this;
 
-    var to = this.$route.params.username;
-    console.log("from", from);
-    console.log("to", to);
+    var from = $('meta[name="username"]').attr("content");
     Echo["private"]("chat." + from).listen("Chat", function (e) {
-      // console.log(e.message.message);
       _this.setnewmessage(e.message);
     });
   }
@@ -2856,7 +2853,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Tweet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tweet */ "./resources/js/components/Tweet.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _Tweet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tweet */ "./resources/js/components/Tweet.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2948,20 +2958,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    tweet: _Tweet__WEBPACK_IMPORTED_MODULE_0__["default"]
+    tweet: _Tweet__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ["user"],
-  methods: {
-    tweetmodel: function tweetmodel() {
-      console.log("clicked");
-      $("#tweet").modal("show");
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(["resetcountnote"])), {}, {
+    // tweetmodel() {
+    //   console.log("clicked");
+    //   $("#tweet").modal("show");
+    // },
+    resetnotification: function resetnotification() {
+      console.log("Notification cicked");
+      localStorage.removeItem("notifications");
+      this.resetcountnote();
     }
-  },
+  }),
   mounted: function mounted() {
     console.log("Component mounted.");
-  }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["countnote"]))
 });
 
 /***/ }),
@@ -68590,7 +68607,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
+  return _c("div", [
     _c(
       "div",
       { staticClass: "card-header mt-0 pt-0", staticStyle: { height: "3rem" } },
@@ -68608,7 +68625,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "card-body border-bottom overflow-auto",
+        staticClass: "card-body border-bottom overflow-auto scroll",
         staticStyle: { height: "520px" }
       },
       [
@@ -68951,7 +68968,14 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "nav-item my-3" },
+                  {
+                    staticClass: "nav-item my-3 position-relative",
+                    on: {
+                      click: function($event) {
+                        return _vm.resetnotification()
+                      }
+                    }
+                  },
                   [
                     _c(
                       "router-link",
@@ -68961,7 +68985,19 @@ var render = function() {
                       },
                       [
                         _c("i", { staticClass: "far fa-bell fa-lg mr-3" }),
-                        _vm._v("Notification\n          ")
+                        _vm._v(" "),
+                        _vm.countnote
+                          ? _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "badge badge-primary rounded-circle position-absolute",
+                                staticStyle: { left: "20px", bottom: "15px" }
+                              },
+                              [_vm._v(_vm._s(_vm.countnote))]
+                            )
+                          : _vm._e(),
+                        _vm._v("\n            Notification\n          ")
                       ]
                     )
                   ],
@@ -69017,19 +69053,6 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _vm._m(3),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary btn-lg btn-block tweet",
-                    on: {
-                      click: function($event) {
-                        return _vm.tweetmodel()
-                      }
-                    }
-                  },
-                  [_vm._v("Tweet")]
-                ),
                 _vm._v(" "),
                 _vm._t("default")
               ],
@@ -69539,9 +69562,11 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("span", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(data.likes))
-                      ])
+                      data.likes
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(data.likes))
+                          ])
+                        : _vm._e()
                     ])
                   : _c("span", [
                       _c("i", {
@@ -69553,9 +69578,11 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("span", { staticClass: "text-dark" }, [
-                        _vm._v(_vm._s(data.likes))
-                      ])
+                      data.likes
+                        ? _c("span", { staticClass: "text-dark" }, [
+                            _vm._v(_vm._s(data.likes))
+                          ])
+                        : _vm._e()
                     ])
               ]),
               _vm._v(" "),
@@ -69612,7 +69639,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
+  return _c("div", { staticClass: "row", attrs: { id: "profile" } }, [
     _c(
       "div",
       { staticClass: "col-md-7 p-0 m-0 border" },
@@ -87029,20 +87056,37 @@ var app = new Vue({
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
   store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
   el: '#app',
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(["alluser"])) // computed: {
-  //     ...mapState(["messages", "user"])
-  // },
-  // created() {
-  //     const from = $('meta[name="userid"]').attr("content");
-  //     const to = this.messages.user.id;
-  //     console.log("from", from);
-  //     console.log("to", to);
-  //     Echo.private("chat." + to + "." + from).listen("Chat", e => {
-  //         console.log(e.message.message);
-  //         this.$store.dispatch("setmessage", e.message);
-  //     });
-  // }
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(["alluser"])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapMutations"])(['setcountnote'])),
+  mounted: function mounted() {
+    Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(["countnote"]);
+    console.log("loca storage ength", JSON.parse(localStorage.getItem('notifications')).length);
+    this.setcountnote(JSON.parse(localStorage.getItem('notifications')).length);
+  },
+  created: function created() {
+    var _this = this;
 
+    var from = $('meta[name="userid"]').attr("content");
+    Echo["private"]("notification." + from).listen("BroadcastNotification", function (e) {
+      console.log("Notification", e); // this.setnewnotifications(e.notification);
+
+      _this.setcountnote(1);
+
+      var a = [];
+
+      if (localStorage.getItem('notifications')) {
+        console.log("If condision");
+
+        for (var index = 0; index <= JSON.parse(localStorage.getItem('notifications')).length; index++) {
+          a.push(index + 1);
+        }
+
+        localStorage.setItem('notifications', JSON.stringify(a));
+      } else {
+        var b = [0];
+        localStorage.setItem('notifications', JSON.stringify(b));
+      }
+    });
+  }
 });
 
 /***/ }),
@@ -88573,6 +88617,40 @@ var routes = [{
   name: 'explore'
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_11__["default"]({
+  scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+    var position = {};
+
+    if (savedPosition) {
+      position = savedPosition;
+    } else if (to.hash) {
+      if (document.querySelector(to.hash)) {
+        position.selector = to.hash;
+
+        if (to.hash === '#profile') {
+          position.offset = {
+            y: 140
+          };
+        }
+      }
+    } else position = {
+      x: 0,
+      y: 0
+    }; // if (savedPosition) {
+    //     return savedPosition
+    // } else {
+    //     return {
+    //         x: 0,
+    //         y: 0
+    //     }
+    // }
+
+
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve(position);
+      }, 330);
+    });
+  },
   routes: routes // short for `routes: routes`
 
 }));
@@ -88618,7 +88696,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     allusers: [],
     messages: {},
     notifications: [],
-    tweet: []
+    tweet: [],
+    countnote: 0
   },
   getters: {
     allfollower: function allfollower(state) {
@@ -88643,6 +88722,12 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         return user.username == username;
       });
     },
+    setcountnote: function setcountnote(state, data) {
+      state.countnote = state.countnote + data;
+    },
+    resetcountnote: function resetcountnote(state) {
+      state.countnote = 0;
+    },
     setshowprofile: function setshowprofile(state, data) {
       return state.showprofile = data;
     },
@@ -88654,6 +88739,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     },
     setnotifications: function setnotifications(state, data) {
       return state.notifications = data;
+    },
+    setnewnotifications: function setnewnotifications(state, data) {
+      return state.notifications.push(data);
     },
     setnewmessage: function setnewmessage(state, data) {
       return state.messages.messages.push(data);

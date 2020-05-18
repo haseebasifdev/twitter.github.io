@@ -16,6 +16,7 @@ export default new Vuex.Store({
         messages: {},
         notifications: [],
         tweet: [],
+        countnote: 0
 
     },
     getters: {
@@ -33,10 +34,17 @@ export default new Vuex.Store({
         finduser: (state, username) => {
             return state.allusers.filter(user => user.username == username)
         },
+        setcountnote: (state, data) => {
+            state.countnote = state.countnote + data;
+        },
+        resetcountnote: (state) => {
+            state.countnote = 0;
+        },
         setshowprofile: (state, data) => state.showprofile = data,
         settweet: (state, data) => state.tweet = data,
         setcommentpostindex: (state, index) => state.commentpostindex = index,
         setnotifications: (state, data) => state.notifications = data,
+        setnewnotifications: (state, data) => state.notifications.push(data),
         setnewmessage: (state, data) => state.messages.messages.push(data),
         setuser: (state, userdata) => state.user = userdata,
         setmessageuser: (state, data) => state.messages = data,

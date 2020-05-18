@@ -83,7 +83,7 @@ export default {
       this.picture = "";
     },
     tweetit() {
-      if (this.tweet.length <= 255 ) {
+      if (this.tweet.length <= 255) {
         var post = {
           tweet: this.tweet,
           avatar: this.picture
@@ -96,7 +96,6 @@ export default {
         this.tweet = "";
         this.$store.dispatch("posttweet", payload);
         this.fetchusertweet();
-
         $("#tweet").modal("hide");
       }
     }

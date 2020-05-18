@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" id="profile">
     <div class="col-md-7 p-0 m-0 border">
       <div class="cover position-relative">
         <img src="images/cover.jfif" width="100%" height="250px" alt />

@@ -3,7 +3,8 @@
 @section('content')
 <div class="" style="margin-left:5%">
    <div class="row">
-      <meta name="userid" content="{{Auth::check()? Auth::user()->username : 'null'}}">
+      <meta name="username" content="{{Auth::check()? Auth::user()->username : 'null'}}">
+      <meta name="userid" content="{{Auth::check()? Auth::user()->id : 'null'}}">
       <div class="col-md-3 col-sm- m-0 p-0 ">
          <navbar :user="{{$user}}">
             <button class=" btn btn-light btn-block btn-lg font-weight-bolder text-danger" style="border-radius: 30px;"

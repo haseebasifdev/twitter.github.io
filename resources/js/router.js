@@ -30,12 +30,12 @@ const routes = [{
     {
         path: '/notifications',
         component: Notification,
-        name:'notifications'
+        name: 'notifications'
     },
     {
         path: '/:username/status/:id',
         component: ShowPost,
-        name:'showpost'
+        name: 'showpost'
     },
     {
         path: '/message',
@@ -97,5 +97,38 @@ const routes = [{
     },
 ]
 export default new VueRouter({
+
+    scrollBehavior(to, from, savedPosition) {
+        let position = {};
+        if (savedPosition) {
+            position = savedPosition;
+        } else if (to.hash) {
+            if (document.querySelector(to.hash)) {
+                position.selector = to.hash;
+                if (to.hash === '#profile') {
+                    position.offset = {
+                        y: 140
+                    };
+                }
+            }
+        } else position = {
+            x: 0,
+            y: 0
+        };
+        // if (savedPosition) {
+        //     return savedPosition
+        // } else {
+        //     return {
+        //         x: 0,
+        //         y: 0
+        //     }
+        // }
+
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(position);
+            }, 330);
+        });
+    },
     routes // short for `routes: routes`
 })

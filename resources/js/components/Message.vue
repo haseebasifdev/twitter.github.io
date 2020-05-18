@@ -1,10 +1,10 @@
 <template>
-  <div class>
+  <div>
     <div class="card-header mt-0 pt-0" style="height:3rem">
       <div class="font-weight-bold">{{messages.user.name}}</div>
       <div class="text-muted">{{'@'+messages.user.username}}</div>
     </div>
-    <div class="card-body border-bottom overflow-auto" style="height:520px">
+    <div class="card-body border-bottom overflow-auto scroll" style="height:520px">
       <div
         class="bg-warning p-2 text-center justify-content-center"
         v-if="messages.messages.length==0"
@@ -66,11 +66,9 @@ export default {
     ...mapState(["messages", "user"])
   },
   created() {
-    const to = this.$route.params.username;
-    console.log("from", from);
-    console.log("to", to);
+    var from = $('meta[name="username"]').attr("content");
     Echo.private("chat." + from).listen("Chat", e => {
-      // console.log(e.message.message);
+
       this.setnewmessage(e.message);
     });
   }

@@ -48,11 +48,11 @@
               class="fas fa-heart heart text-danger fa-lg p-2"
               @click="likepost(data.tweet.id,index)"
             ></i>
-            <span class="text-danger">{{data.likes}}</span>
+            <span v-if="data.likes" class="text-danger">{{data.likes}}</span>
           </span>
           <span v-else>
             <i class="far fa-heart heart fa-lg p-2" @click="likepost(data.tweet.id,index)"></i>
-            <span class="text-dark">{{data.likes}}</span>
+            <span v-if="data.likes" class="text-dark">{{data.likes}}</span>
           </span>
         </div>
         <div>
