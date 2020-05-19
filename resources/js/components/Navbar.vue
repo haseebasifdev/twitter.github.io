@@ -1,7 +1,9 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed">
-      <button
+    <nav
+      class="navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed overflow-auto"
+    >
+      <!-- <button
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -11,63 +13,71 @@
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button>-->
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+      <div class="overflow-auto">
         <ul class="navbar-nav d-block">
           <li class="mb-4">
             <router-link to="/" class>
-              <img src="/images/twitter.png" width="60px" class="twitter p-2" style alt srcset />
+              <img src="/images/twitter.png" width="50px" class="twitter p-1" style alt srcset />
             </router-link>
           </li>
           <li class="nav-item my-3">
-            <router-link to="/" class="nav-links">
-              <i class="fas fa-home fa-lg mr-3"></i>Home
+            <router-link to="/" class="nav-links-main">
+              <i class="fas fa-home fa-lg mr-3"></i>
+              <span class="d-none d-sm-none d-md-inline nav-links">Home</span>
             </router-link>
           </li>
           <li class="nav-item my-3">
-            <router-link :to="{name:'explore'}" class="nav-links">
-              <i class="fas fa-hashtag fa-lg mr-3"></i>Explore
+            <router-link :to="{name:'explore'}" class="nav-links-main">
+              <i class="fas fa-hashtag fa-lg mr-3"></i>
+              <span class="d-none d-sm-none d-md-inline nav-links">Explore</span>
             </router-link>
           </li>
           <li class="nav-item my-3 position-relative" @click="resetnotification()">
-            <router-link :to="{name:'notifications'}" class="nav-links">
+            <router-link :to="{name:'notifications'}" class="nav-links-main">
               <i class="far fa-bell fa-lg mr-3"></i>
               <span
                 v-if="countnote"
                 class="badge badge-primary rounded-circle position-absolute"
                 style="left:20px;bottom:15px"
               >{{countnote}}</span>
-              <span class=" hidden-sm">Notification</span>
+              <span class="d-none d-sm-none d-md-inline nav-links">Notification</span>
             </router-link>
           </li>
           <li class="nav-item my-3">
-            <router-link :to="{name:'message'}" class="nav-links">
-              <i class="far fa-envelope fa-lg mr-3"></i>Messages
+            <router-link :to="{name:'message'}" class="nav-links-main">
+              <i class="far fa-envelope fa-lg mr-3"></i>
+              <span class="d-none d-sm-none d-md-inline nav-links">Messages</span>
             </router-link>
           </li>
           <li class="nav-item my-3">
-            <a class="nav-links" href="#">
-              <i class="far fa-bookmark fa-lg mr-3"></i>Bookmarks
+            <a class="nav-links-main" href="#">
+              <i class="far fa-bookmark fa-lg mr-3"></i>
+              <span class="d-none d-sm-none d-md-inline nav-links">Bookmarks</span>
             </a>
           </li>
           <li class="nav-item my-3">
-            <a class="nav-links" href="#">
-              <i class="far fa-list-alt fa-lg mr-3"></i>Lists
+            <a class="nav-links-main" href="#">
+              <i class="far fa-list-alt fa-lg mr-3"></i>
+              <span class="d-none d-sm-none d-md-inline nav-links">Lists</span>
             </a>
           </li>
           <li class="nav-item my-3">
             <router-link
               :to="{name:'profile',params: { username: user.username }}"
-              class="nav-links"
+              class="nav-links-main"
               href="#"
             >
-              <i class="far fa-user fa-lg mr-3"></i>Profile
+              <i class="far fa-user fa-lg mr-3"></i>
+              <span class="d-none d-sm-none d-md-inline nav-links">Profile</span>
             </router-link>
           </li>
           <li class="nav-item my-3">
-            <a class="nav-links" href="#">
-              <i class="fas fa-angle-right fa-lg mr-3"></i>More
+            <a class="nav-links-main" href="#">
+              <i class="fas fa-angle-right fa-lg mr-3"></i>
+              <span class="d-none d-sm-none d-md-inline nav-links">More</span>
             </a>
           </li>
           <!-- <button class="btn btn-primary btn-lg btn-block tweet" @click="tweetmodel()">Tweet</button> -->
@@ -95,7 +105,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations,mapActions } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 import tweet from "./Tweet";
 
 export default {
@@ -127,19 +137,26 @@ export default {
 </script>
 <style scoped>
 .nav-links {
-  color: rgba(0, 0, 0, 0.8);
   font-family: Helvetica;
   font-weight: bolder;
-  font-size: 1rem;
+  font-size: 1.6vw;
+}
+.nav-links-main {
+  color: rgba(0, 0, 0, 0.8);
   margin-bottom: 50px;
   padding: 10px 10px;
 }
-.nav-links:hover {
+.nav-links-main:hover {
   color: rgb(58, 117, 255, 0.8);
   text-decoration: none;
   background: rgb(70, 70, 255, 0.1);
   border-radius: 25px;
 }
+i {
+  width: 20px;
+}
+/* .nav-links:hover {
+} */
 button.tweet {
   border-radius: 30px;
 }

@@ -1,11 +1,11 @@
 <template>
   <div class="row">
-    <div class="col-md-7 border p-0 m-0 border-bottom-0">
+    <div class="col-md-8 col-sm-10 col-11 col-xl-7 border p-0 m-0 border-bottom-0">
       <tweet class="border-0"></tweet>
       <div class="bg-light" style=" height:10px"></div>
-      <post  :usertweet="usertweet"></post>
+      <post :usertweet="usertweet"></post>
     </div>
-    <div class="col-md-5"></div>
+    <div class="col-md-4 col-sm-2 col-1 col-xl-5"></div>
   </div>
 </template>
 
@@ -41,5 +41,4 @@ export default {
 };
 </script>
 <style scoped>
-
 </style>

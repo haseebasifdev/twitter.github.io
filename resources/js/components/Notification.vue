@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10 col-sm-11 col-xl-7">
       <ul class="list-group border">
         <li class="my-2 p-2">
           <h3 class="font-weight-bolder">Notifications</h3>
@@ -24,7 +24,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-md-4"></div>
+    <div class=""></div>
   </div>
 </template>
 

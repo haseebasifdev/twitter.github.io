@@ -2971,6 +2971,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8792,7 +8802,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-links[data-v-6dde423b] {\n  color: rgba(0, 0, 0, 0.8);\n  font-family: Helvetica;\n  font-weight: bolder;\n  font-size: 1rem;\n  margin-bottom: 50px;\n  padding: 10px 10px;\n}\n.nav-links[data-v-6dde423b]:hover {\n  color: rgb(58, 117, 255, 0.8);\n  text-decoration: none;\n  background: rgb(70, 70, 255, 0.1);\n  border-radius: 25px;\n}\nbutton.tweet[data-v-6dde423b] {\n  border-radius: 30px;\n}\na.profile-link[data-v-6dde423b]:hover {\n  background: rgb(70, 70, 255, 0.1);\n  border-radius: 25px;\n  cursor: pointer;\n}\n.router-link-exact-active[data-v-6dde423b] {\n  color: rgb(58, 117, 255, 0.8);\n}\nimg.twitter[data-v-6dde423b] {\n  border-radius: 60px;\n}\nimg.twitter[data-v-6dde423b]:hover {\n  background: rgb(70, 70, 255, 0.1);\n}\n", ""]);
+exports.push([module.i, "\n.nav-links[data-v-6dde423b] {\n  font-family: Helvetica;\n  font-weight: bolder;\n  font-size: 1.6vw;\n}\n.nav-links-main[data-v-6dde423b] {\n  color: rgba(0, 0, 0, 0.8);\n  margin-bottom: 50px;\n  padding: 10px 10px;\n}\n.nav-links-main[data-v-6dde423b]:hover {\n  color: rgb(58, 117, 255, 0.8);\n  text-decoration: none;\n  background: rgb(70, 70, 255, 0.1);\n  border-radius: 25px;\n}\ni[data-v-6dde423b] {\n  width: 20px;\n}\n/* .nav-links:hover {\n} */\nbutton.tweet[data-v-6dde423b] {\n  border-radius: 30px;\n}\na.profile-link[data-v-6dde423b]:hover {\n  background: rgb(70, 70, 255, 0.1);\n  border-radius: 25px;\n  cursor: pointer;\n}\n.router-link-exact-active[data-v-6dde423b] {\n  color: rgb(58, 117, 255, 0.8);\n}\nimg.twitter[data-v-6dde423b] {\n  border-radius: 60px;\n}\nimg.twitter[data-v-6dde423b]:hover {\n  background: rgb(70, 70, 255, 0.1);\n}\n", ""]);
 
 // exports
 
@@ -68565,7 +68575,10 @@ var render = function() {
   return _c("div", { staticClass: "row" }, [
     _c(
       "div",
-      { staticClass: "col-md-7 border p-0 m-0 border-bottom-0" },
+      {
+        staticClass:
+          "col-md-8 col-sm-10 col-11 col-xl-7 border p-0 m-0 border-bottom-0"
+      },
       [
         _c("tweet", { staticClass: "border-0" }),
         _vm._v(" "),
@@ -68576,7 +68589,7 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-5" })
+    _c("div", { staticClass: "col-md-4 col-sm-2 col-1 col-xl-5" })
   ])
 }
 var staticRenderFns = []
@@ -68778,7 +68791,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row border" }, [
-    _c("div", { staticClass: "col-md-4 p-0" }, [
+    _c("div", { staticClass: "col-md-5 col-sm-12 p-0" }, [
       _c("div", { staticClass: "border-right" }, [
         _vm._m(0),
         _vm._v(" "),
@@ -68867,7 +68880,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "col-md-8 p-0" },
+      { staticClass: "col-md-7 p-0" },
       [_c("router-view", { key: _vm.$route.path })],
       1
     )
@@ -68914,177 +68927,200 @@ var render = function() {
       "nav",
       {
         staticClass:
-          "navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed"
+          "navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed overflow-auto"
       },
       [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarSupportedContent" }
-          },
-          [
-            _c(
-              "ul",
-              { staticClass: "navbar-nav d-block" },
-              [
-                _c(
-                  "li",
-                  { staticClass: "mb-4" },
-                  [
-                    _c("router-link", { attrs: { to: "/" } }, [
-                      _c("img", {
-                        staticClass: "twitter p-2",
-                        attrs: {
-                          src: "/images/twitter.png",
-                          width: "60px",
-                          alt: "",
-                          srcset: ""
-                        }
-                      })
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item my-3" },
-                  [
-                    _c(
-                      "router-link",
-                      { staticClass: "nav-links", attrs: { to: "/" } },
-                      [
-                        _c("i", { staticClass: "fas fa-home fa-lg mr-3" }),
-                        _vm._v("Home\n          ")
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item my-3" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-links",
-                        attrs: { to: { name: "explore" } }
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-hashtag fa-lg mr-3" }),
-                        _vm._v("Explore\n          ")
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "nav-item my-3 position-relative",
-                    on: {
-                      click: function($event) {
-                        return _vm.resetnotification()
+        _c("div", { staticClass: "overflow-auto" }, [
+          _c(
+            "ul",
+            { staticClass: "navbar-nav d-block" },
+            [
+              _c(
+                "li",
+                { staticClass: "mb-4" },
+                [
+                  _c("router-link", { attrs: { to: "/" } }, [
+                    _c("img", {
+                      staticClass: "twitter p-1",
+                      attrs: {
+                        src: "/images/twitter.png",
+                        width: "50px",
+                        alt: "",
+                        srcset: ""
                       }
+                    })
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item my-3" },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-links-main", attrs: { to: "/" } },
+                    [
+                      _c("i", { staticClass: "fas fa-home fa-lg mr-3" }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "d-none d-sm-none d-md-inline nav-links"
+                        },
+                        [_vm._v("Home")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item my-3" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-links-main",
+                      attrs: { to: { name: "explore" } }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-hashtag fa-lg mr-3" }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "d-none d-sm-none d-md-inline nav-links"
+                        },
+                        [_vm._v("Explore")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "nav-item my-3 position-relative",
+                  on: {
+                    click: function($event) {
+                      return _vm.resetnotification()
                     }
-                  },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-links",
-                        attrs: { to: { name: "notifications" } }
-                      },
-                      [
-                        _c("i", { staticClass: "far fa-bell fa-lg mr-3" }),
-                        _vm._v(" "),
-                        _vm.countnote
-                          ? _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "badge badge-primary rounded-circle position-absolute",
-                                staticStyle: { left: "20px", bottom: "15px" }
-                              },
-                              [_vm._v(_vm._s(_vm.countnote))]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("span", { staticClass: " hidden-sm" }, [
-                          _vm._v("Notification")
-                        ])
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item my-3" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-links",
-                        attrs: { to: { name: "message" } }
-                      },
-                      [
-                        _c("i", { staticClass: "far fa-envelope fa-lg mr-3" }),
-                        _vm._v("Messages\n          ")
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item my-3" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-links",
-                        attrs: {
-                          to: {
-                            name: "profile",
-                            params: { username: _vm.user.username }
-                          },
-                          href: "#"
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "far fa-user fa-lg mr-3" }),
-                        _vm._v("Profile\n          ")
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._t("default")
-              ],
-              2
-            )
-          ]
-        )
+                  }
+                },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-links-main",
+                      attrs: { to: { name: "notifications" } }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-bell fa-lg mr-3" }),
+                      _vm._v(" "),
+                      _vm.countnote
+                        ? _c(
+                            "span",
+                            {
+                              staticClass:
+                                "badge badge-primary rounded-circle position-absolute",
+                              staticStyle: { left: "20px", bottom: "15px" }
+                            },
+                            [_vm._v(_vm._s(_vm.countnote))]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "d-none d-sm-none d-md-inline nav-links"
+                        },
+                        [_vm._v("Notification")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item my-3" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-links-main",
+                      attrs: { to: { name: "message" } }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-envelope fa-lg mr-3" }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "d-none d-sm-none d-md-inline nav-links"
+                        },
+                        [_vm._v("Messages")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item my-3" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-links-main",
+                      attrs: {
+                        to: {
+                          name: "profile",
+                          params: { username: _vm.user.username }
+                        },
+                        href: "#"
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-user fa-lg mr-3" }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "d-none d-sm-none d-md-inline nav-links"
+                        },
+                        [_vm._v("Profile")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._t("default")
+            ],
+            2
+          )
+        ])
       ]
     ),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -69092,30 +69128,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item my-3" }, [
-      _c("a", { staticClass: "nav-links", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "nav-links-main", attrs: { href: "#" } }, [
         _c("i", { staticClass: "far fa-bookmark fa-lg mr-3" }),
-        _vm._v("Bookmarks\n          ")
+        _vm._v(" "),
+        _c("span", { staticClass: "d-none d-sm-none d-md-inline nav-links" }, [
+          _vm._v("Bookmarks")
+        ])
       ])
     ])
   },
@@ -69124,9 +69143,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item my-3" }, [
-      _c("a", { staticClass: "nav-links", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "nav-links-main", attrs: { href: "#" } }, [
         _c("i", { staticClass: "far fa-list-alt fa-lg mr-3" }),
-        _vm._v("Lists\n          ")
+        _vm._v(" "),
+        _c("span", { staticClass: "d-none d-sm-none d-md-inline nav-links" }, [
+          _vm._v("Lists")
+        ])
       ])
     ])
   },
@@ -69135,9 +69157,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item my-3" }, [
-      _c("a", { staticClass: "nav-links", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "nav-links-main", attrs: { href: "#" } }, [
         _c("i", { staticClass: "fas fa-angle-right fa-lg mr-3" }),
-        _vm._v("More\n          ")
+        _vm._v(" "),
+        _c("span", { staticClass: "d-none d-sm-none d-md-inline nav-links" }, [
+          _vm._v("More")
+        ])
       ])
     ])
   },
@@ -69193,7 +69218,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-8" }, [
+    _c("div", { staticClass: "col-md-10 col-sm-11 col-xl-7" }, [
       _c(
         "ul",
         { staticClass: "list-group border" },
@@ -69232,7 +69257,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-4" })
+    _c("div", {})
   ])
 }
 var staticRenderFns = [
@@ -69663,7 +69688,7 @@ var render = function() {
   return _c("div", { staticClass: "row", attrs: { id: "profile" } }, [
     _c(
       "div",
-      { staticClass: "col-md-7 p-0 m-0 border" },
+      { staticClass: "col-md-9 col-12 col-xl-7 col-sm-10 p-0 ml-1 border" },
       [
         _c("div", { staticClass: "cover position-relative" }, [
           _c("img", {

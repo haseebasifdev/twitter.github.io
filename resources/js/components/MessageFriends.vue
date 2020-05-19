@@ -1,6 +1,6 @@
 <template>
   <div class="row border">
-    <div class="col-md-4 p-0">
+    <div class="col-md-5 col-sm-12 p-0">
       <div class="border-right">
         <div class="card-header" style="height:3rem">
           Messages
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8 p-0">
+    <div class="col-md-7 p-0">
       <router-view :key="$route.path"></router-view>
     </div>
   </div>
