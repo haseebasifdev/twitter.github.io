@@ -1,6 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-md-7 border border-bottom-0 p-0 m-0">
+    <div class="col-md-10 col-12 col-sm-10 col-xl-7 border border-bottom-0 p-0 m-0">
+      <li class=" list-group border-bottom py-2 px-1"><h4>People You May Know</h4> </li>
       <ul class="list-group" v-for="(data,index) in allusers">
         <!-- <router-link class="route" :to="{name:'profile',params: { username: data.user.username }}"> -->
           <li class="px-3 py-2 border-bottom d-flex justify-content-between route">

@@ -1,8 +1,8 @@
 <template>
   <div class="row" id="profile">
-    <div class="col-md-9 col-12 col-xl-7 col-sm-10 p-0 ml-1 border">
+    <div class="col-md-9 col-12 col-xl-7 col-sm-10 p-0 m-0 border">
       <div class="cover position-relative">
-        <img src="images/cover.jfif" width="100%" height="250px" alt />
+        <img src="images/cover.jfif" width="100%" height="200px" alt />
         <div class="profile position-absolute" style="bottom:-30%">
           <img
             :src="showprofile.user.profile"
@@ -15,7 +15,7 @@
           <i
             class="fas fa-camera fa-lg text-white ipic position-absolute p-2 rounded-circle"
             @click="profilepic()"
-            style="left:60px;bottom:-20px"
+            style="left:60px;bottom:-10px"
           ></i>
         </div>
       </div>

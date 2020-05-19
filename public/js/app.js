@@ -2264,6 +2264,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -68089,109 +68090,125 @@ var render = function() {
   return _c("div", { staticClass: "row" }, [
     _c(
       "div",
-      { staticClass: "col-md-7 border border-bottom-0 p-0 m-0" },
-      _vm._l(_vm.allusers, function(data, index) {
-        return _c("ul", { staticClass: "list-group" }, [
-          _c(
-            "li",
-            {
-              staticClass:
-                "px-3 py-2 border-bottom d-flex justify-content-between route"
-            },
-            [
-              _c("span", { staticClass: "d-flex" }, [
-                _c("img", {
-                  staticClass: "mr-2 rounded rounded-circle",
-                  attrs: {
-                    src: data.user.profile,
-                    width: "50px",
-                    height: "50px"
-                  }
-                }),
+      {
+        staticClass:
+          "col-md-10 col-12 col-sm-10 col-xl-7 border border-bottom-0 p-0 m-0"
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.allusers, function(data, index) {
+          return _c("ul", { staticClass: "list-group" }, [
+            _c(
+              "li",
+              {
+                staticClass:
+                  "px-3 py-2 border-bottom d-flex justify-content-between route"
+              },
+              [
+                _c("span", { staticClass: "d-flex" }, [
+                  _c("img", {
+                    staticClass: "mr-2 rounded rounded-circle",
+                    attrs: {
+                      src: data.user.profile,
+                      width: "50px",
+                      height: "50px"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "div",
+                      { staticClass: "font-weight-bolder" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: " text-dark",
+                            attrs: {
+                              to: {
+                                name: "profile",
+                                params: { username: data.user.username }
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(data.user.name))]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "text-muted" }, [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s("@" + data.user.username) +
+                          "\n                "
+                      ),
+                      data.follower
+                        ? _c("span", { staticClass: "bg-warning rounded" }, [
+                            _vm._v("follow you")
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "text-dark" }, [
+                      _vm._v(_vm._s(data.user.bio))
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    { staticClass: "font-weight-bolder" },
-                    [
+                data.following
+                  ? _c("span", [
                       _c(
-                        "router-link",
+                        "button",
                         {
-                          staticClass: " text-dark",
-                          attrs: {
-                            to: {
-                              name: "profile",
-                              params: { username: data.user.username }
+                          staticClass:
+                            "btn btn-primary btn-sm px-4 font-weight-bolder following",
+                          on: {
+                            click: function($event) {
+                              return _vm.unfollow(data.user.id, index)
                             }
                           }
                         },
-                        [_vm._v(_vm._s(data.user.name))]
+                        [_c("span", [_vm._v("Following")])]
                       )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-muted" }, [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s("@" + data.user.username) +
-                        "\n                "
-                    ),
-                    data.follower
-                      ? _c("span", { staticClass: "bg-warning rounded" }, [
-                          _vm._v("follow you")
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-dark" }, [
-                    _vm._v(_vm._s(data.user.bio))
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              data.following
-                ? _c("span", [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn btn-primary btn-sm px-4 font-weight-bolder following",
-                        on: {
-                          click: function($event) {
-                            return _vm.unfollow(data.user.id, index)
+                    ])
+                  : _c("span", [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
+                          on: {
+                            click: function($event) {
+                              return _vm.follow(data.user.id, index)
+                            }
                           }
-                        }
-                      },
-                      [_c("span", [_vm._v("Following")])]
-                    )
-                  ])
-                : _c("span", [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
-                        on: {
-                          click: function($event) {
-                            return _vm.follow(data.user.id, index)
-                          }
-                        }
-                      },
-                      [_vm._v("Follow")]
-                    )
-                  ])
-            ]
-          )
-        ])
-      }),
-      0
+                        },
+                        [_vm._v("Follow")]
+                      )
+                    ])
+              ]
+            )
+          ])
+        })
+      ],
+      2
     ),
     _vm._v(" "),
     _c("div", { staticClass: "col-md-5" })
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: " list-group border-bottom py-2 px-1" }, [
+      _c("h4", [_vm._v("People You May Know")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -69688,14 +69705,14 @@ var render = function() {
   return _c("div", { staticClass: "row", attrs: { id: "profile" } }, [
     _c(
       "div",
-      { staticClass: "col-md-9 col-12 col-xl-7 col-sm-10 p-0 ml-1 border" },
+      { staticClass: "col-md-9 col-12 col-xl-7 col-sm-10 p-0 m-0 border" },
       [
         _c("div", { staticClass: "cover position-relative" }, [
           _c("img", {
             attrs: {
               src: "images/cover.jfif",
               width: "100%",
-              height: "250px",
+              height: "200px",
               alt: ""
             }
           }),
@@ -69724,7 +69741,7 @@ var render = function() {
                 _c("i", {
                   staticClass:
                     "fas fa-camera fa-lg text-white ipic position-absolute p-2 rounded-circle",
-                  staticStyle: { left: "60px", bottom: "-20px" },
+                  staticStyle: { left: "60px", bottom: "-10px" },
                   on: {
                     click: function($event) {
                       return _vm.profilepic()

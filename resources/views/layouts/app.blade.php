@@ -18,6 +18,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .logouticon {
+            color: rgba(0, 0, 0, 0.8);
+            margin-bottom: 50px;
+            padding: 10px 10px;
+        }
+
+        .logouticon:hover {
+            color: rgb(58, 117, 255, 0.8);
+            text-decoration: none;
+            background: rgb(70, 70, 255, 0.1);
+            border-radius: 25px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
