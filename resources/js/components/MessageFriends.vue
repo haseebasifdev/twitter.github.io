@@ -12,15 +12,15 @@
               :to="{name:'messagebody',params: { username: data.user.username }}"
               class="route"
             >
-              <li class="p-2 bg-light border-bottom d-flex">
+              <li class="p-2 bg-light border-bottom d-flex position-relative">
                 <img :src="data.user.profile" width="13%" class="rounded-circle mr-2" alt srcset />
                 <span>
                   <div class="font-weight-bolder">{{data.user.name}}</div>
                   <div class="text-muted">{{'@'+data.user.username}}</div>
                 </span>
-                <div class="ml-4">
+                <div class="ml-4 position-absolute" style="right:10px">
                   <span v-if="checkonlineuser(data.user)" class="badge badge-primary">Online</span>
-                  <span v-else class="badge badge-danger">offline</span>
+                  <span v-else class="badge badge-danger">Offline</span>
                 </div>
               </li>
             </router-link>
@@ -53,9 +53,7 @@ export default {
     checkonlineuser(user) {
       var number = 0;
       this.onlineusers.find(onineuser => {
-        console.log("CheckOnline");
         if (onineuser.id == user.id) {
-          console.log(user);
           number = 1;
         }
       });

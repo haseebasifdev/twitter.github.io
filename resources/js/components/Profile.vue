@@ -13,9 +13,9 @@
         </div>
         <div v-if="showprofile.user.username==user.username">
           <i
-            class="fas fa-camera text-white ipic position-absolute"
+            class="fas fa-camera fa-lg text-white ipic position-absolute p-2 rounded-circle"
             @click="profilepic()"
-            style="left:70px"
+            style="left:60px;bottom:-20px"
           ></i>
         </div>
       </div>
@@ -351,6 +351,7 @@ i.ipic:hover {
 i.ipic:hover {
   cursor: pointer;
   opacity: 0.9;
+  background-color: rgba(255, 255, 255, 0.411);
 }
 i.ipic {
   opacity: 0.6;
@@ -362,8 +363,6 @@ i.ipic {
   cursor: pointer;
 }
 button.following:hover span {
-  /* background: rgb(219, 28, 28);
-border: none; */
   display: none;
 }
 button.following:hover {
@@ -371,8 +370,6 @@ button.following:hover {
   border: 1px solid rgb(219, 28, 28);
 }
 button.following:hover:before {
-  /* background: rgb(219, 28, 28);
-border: none; */
   content: "Unfollow";
 }
 a.website:hover {

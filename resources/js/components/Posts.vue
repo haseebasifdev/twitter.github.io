@@ -122,15 +122,15 @@ img.tweetpic {
 }
 .sync:hover {
   cursor: pointer;
-  color: rgba(107, 255, 210, 0.576);
+  color: rgba(0, 255, 0, 0.676);
 
-  background-color: rgba(127, 255, 212, 0.05);
+  background-color: rgba(0, 255, 0, 0.05);
   border-radius: 40px;
 }
 .comment:hover {
   cursor: pointer;
-  color: rgba(129, 251, 215, 0.576);
-  background-color: rgba(127, 255, 212, 0.05);
+  color: rgba(0, 251, 0, 0.676);
+  background-color: rgba(0, 255, 0, 0.05);
   border-radius: 40px;
 }
 .post:hover {

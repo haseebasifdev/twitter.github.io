@@ -2834,10 +2834,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     checkonlineuser: function checkonlineuser(user) {
       var number = 0;
       this.onlineusers.find(function (onineuser) {
-        console.log("CheckOnline");
-
         if (onineuser.id == user.id) {
-          console.log(user);
           number = 1;
         }
       });
@@ -8852,7 +8849,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(107, 255, 210, 0.576);\n\n  background-color: rgba(127, 255, 212, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(129, 251, 215, 0.576);\n  background-color: rgba(127, 255, 212, 0.05);\n  border-radius: 40px;\n}\n.post[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  background-color: rgba(88, 166, 255, 0.074);\n}\n.routemain[data-v-4ac4d2f8] {\n  text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 251, 0, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.post[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  background-color: rgba(88, 166, 255, 0.074);\n}\n.routemain[data-v-4ac4d2f8] {\n  text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8871,7 +8868,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-3bd692e4] {\r\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\r\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\r\n  font-size: 1.2rem;\r\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.9;\n}\ni.ipic[data-v-3bd692e4] {\r\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\r\n  background: rgba(54, 54, 250, 0.1);\r\n  border-radius: 40px;\r\n\r\n  cursor: pointer;\n}\nbutton.following:hover span[data-v-3bd692e4] {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  display: none;\n}\nbutton.following[data-v-3bd692e4]:hover {\r\n  background: rgb(219, 28, 28);\r\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-3bd692e4]:hover:before {\r\n  /* background: rgb(219, 28, 28);\r\nborder: none; */\r\n  content: \"Unfollow\";\n}\na.website[data-v-3bd692e4]:hover {\r\n  text-decoration: none;\n}\nspan.message[data-v-3bd692e4] {\r\n  border: 1px solid rgb(52, 130, 255);\n}\nspan.message[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  background-color: rgba(0, 110, 255, 0.1);\n}\r\n", ""]);
+exports.push([module.i, "\nbutton[data-v-3bd692e4] {\r\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\r\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\r\n  font-size: 1.2rem;\r\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.9;\r\n  background-color: rgba(255, 255, 255, 0.411);\n}\ni.ipic[data-v-3bd692e4] {\r\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\r\n  background: rgba(54, 54, 250, 0.1);\r\n  border-radius: 40px;\r\n\r\n  cursor: pointer;\n}\nbutton.following:hover span[data-v-3bd692e4] {\r\n  display: none;\n}\nbutton.following[data-v-3bd692e4]:hover {\r\n  background: rgb(219, 28, 28);\r\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-3bd692e4]:hover:before {\r\n  content: \"Unfollow\";\n}\na.website[data-v-3bd692e4]:hover {\r\n  text-decoration: none;\n}\nspan.message[data-v-3bd692e4] {\r\n  border: 1px solid rgb(52, 130, 255);\n}\nspan.message[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  background-color: rgba(0, 110, 255, 0.1);\n}\r\n", ""]);
 
 // exports
 
@@ -68810,7 +68807,10 @@ var render = function() {
                   [
                     _c(
                       "li",
-                      { staticClass: "p-2 bg-light border-bottom d-flex" },
+                      {
+                        staticClass:
+                          "p-2 bg-light border-bottom d-flex position-relative"
+                      },
                       [
                         _c("img", {
                           staticClass: "rounded-circle mr-2",
@@ -68832,19 +68832,26 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "ml-4" }, [
-                          _vm.checkonlineuser(data.user)
-                            ? _c(
-                                "span",
-                                { staticClass: "badge badge-primary" },
-                                [_vm._v("Online")]
-                              )
-                            : _c(
-                                "span",
-                                { staticClass: "badge badge-danger" },
-                                [_vm._v("offline")]
-                              )
-                        ])
+                        _c(
+                          "div",
+                          {
+                            staticClass: "ml-4 position-absolute",
+                            staticStyle: { right: "10px" }
+                          },
+                          [
+                            _vm.checkonlineuser(data.user)
+                              ? _c(
+                                  "span",
+                                  { staticClass: "badge badge-primary" },
+                                  [_vm._v("Online")]
+                                )
+                              : _c(
+                                  "span",
+                                  { staticClass: "badge badge-danger" },
+                                  [_vm._v("Offline")]
+                                )
+                          ]
+                        )
                       ]
                     )
                   ]
@@ -69008,7 +69015,10 @@ var render = function() {
                               [_vm._v(_vm._s(_vm.countnote))]
                             )
                           : _vm._e(),
-                        _vm._v("\n            Notification\n          ")
+                        _vm._v(" "),
+                        _c("span", { staticClass: " hidden-sm" }, [
+                          _vm._v("Notification")
+                        ])
                       ]
                     )
                   ],
@@ -69688,8 +69698,8 @@ var render = function() {
             ? _c("div", [
                 _c("i", {
                   staticClass:
-                    "fas fa-camera text-white ipic position-absolute",
-                  staticStyle: { left: "70px" },
+                    "fas fa-camera fa-lg text-white ipic position-absolute p-2 rounded-circle",
+                  staticStyle: { left: "60px", bottom: "-20px" },
                   on: {
                     click: function($event) {
                       return _vm.profilepic()

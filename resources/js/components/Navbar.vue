@@ -38,7 +38,7 @@
                 class="badge badge-primary rounded-circle position-absolute"
                 style="left:20px;bottom:15px"
               >{{countnote}}</span>
-              Notification
+              <span class=" hidden-sm">Notification</span>
             </router-link>
           </li>
           <li class="nav-item my-3">
