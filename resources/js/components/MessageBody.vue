@@ -2,8 +2,8 @@
   <div class="d-flex my-2 ml-4">
     <textarea
       v-model="message"
-      class="px-3"
-      id="area"
+      class="emojionearea"
+      id="area emojionearea"
       rows="1"
       placeholder="Start a new message"
       @keyup.enter="sendmessage()"

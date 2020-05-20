@@ -7,7 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Twitter_Clone') }}</title>
+    {{-- <title>Twitter-Clone</title> --}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -26,9 +27,9 @@
         }
 
         .logouticon:hover {
-            color: rgb(58, 117, 255, 0.8);
+            color: rgb(0, 172, 238);
             text-decoration: none;
-            background: rgb(70, 70, 255, 0.1);
+            background: rgb(0, 172, 238, 0.07);
             border-radius: 25px;
             cursor: pointer;
         }
@@ -91,7 +92,7 @@
             </div>
         </nav>
         @endguest
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
 

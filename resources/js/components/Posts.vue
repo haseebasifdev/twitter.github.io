@@ -129,7 +129,7 @@ img.tweetpic {
 }
 .comment:hover {
   cursor: pointer;
-  color: rgba(0, 251, 0, 0.676);
+  color: rgba(0, 109, 251, 0.676);
   background-color: rgba(0, 255, 0, 0.05);
   border-radius: 40px;
 }

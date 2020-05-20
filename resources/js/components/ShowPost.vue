@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-11 col-xl-8">
       <div class="pt-2 border-bottom post border">
         <div class="mx-3 d-flex">
           <!-- profile -->
@@ -12,7 +12,10 @@
           />
           <div>
             <span class="font-weight-bolder">
-              <router-link class="route text-dark" to="/notifications">{{tweet.user.name}}</router-link>
+              <router-link
+                class="route text-dark"
+                :to="{name:'profile',params: { username: tweet.user.username }}"
+              >{{tweet.user.name}}</router-link>
             </span>
             <span class="text-muted">{{'@'+tweet.user.username}}</span>
             <span class="text-muted ml-2">{{tweet.tweet.created_at | date}}</span>
@@ -65,7 +68,10 @@
             />
             <div>
               <span class="font-weight-bolder">
-                <router-link class="route text-dark" to="/notifications">{{commentdata.user.name}}</router-link>
+                <router-link
+                  class="route text-dark"
+                  :to="{name:'profile',params: { username: commentdata.user.username }}"
+                >{{commentdata.user.name}}</router-link>
               </span>
               <span class="text-muted">{{'@'+commentdata.user.username}}</span>
               <span class="text-muted ml-2">{{commentdata.comment.created_at | date}}</span>
@@ -266,5 +272,31 @@ textarea:focus {
 }
 textarea {
   font-size: 18px;
+}
+.heart:hover {
+  cursor: pointer;
+  color: red;
+  background-color: rgba(255, 0, 0, 0.05);
+  border-radius: 40px;
+}
+.sync:hover {
+  cursor: pointer;
+  color: rgba(0, 255, 0, 0.676);
+
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 40px;
+}
+.comment:hover {
+  cursor: pointer;
+  color: rgba(0, 251, 0, 0.676);
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 40px;
+}
+.upload:hover {
+  cursor: pointer;
+  color: red;
+
+  background-color: rgba(255, 0, 0, 0.05);
+  border-radius: 40px;
 }
 </style>

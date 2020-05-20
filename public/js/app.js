@@ -2980,8 +2980,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3688,6 +3686,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8803,7 +8807,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-links[data-v-6dde423b] {\n  font-family: Helvetica;\n  font-weight: bolder;\n  font-size: 1.6vw;\n}\n.nav-links-main[data-v-6dde423b] {\n  color: rgba(0, 0, 0, 0.8);\n  margin-bottom: 50px;\n  padding: 10px 10px;\n}\n.nav-links-main[data-v-6dde423b]:hover {\n  color: rgb(58, 117, 255, 0.8);\n  text-decoration: none;\n  background: rgb(70, 70, 255, 0.1);\n  border-radius: 25px;\n}\ni[data-v-6dde423b] {\n  width: 20px;\n}\n/* .nav-links:hover {\n} */\nbutton.tweet[data-v-6dde423b] {\n  border-radius: 30px;\n}\na.profile-link[data-v-6dde423b]:hover {\n  background: rgb(70, 70, 255, 0.1);\n  border-radius: 25px;\n  cursor: pointer;\n}\n.router-link-exact-active[data-v-6dde423b] {\n  color: rgb(58, 117, 255, 0.8);\n}\nimg.twitter[data-v-6dde423b] {\n  border-radius: 60px;\n}\nimg.twitter[data-v-6dde423b]:hover {\n  background: rgb(70, 70, 255, 0.1);\n}\n", ""]);
+exports.push([module.i, "\n.badge[data-v-6dde423b] {\n  color: white;\n  background-color: rgba(0, 172, 238);\n}\n.nav-links[data-v-6dde423b] {\n  font-family: Helvetica;\n  font-weight: bolder;\n  font-size: 1.6vw;\n}\n.nav-links-main[data-v-6dde423b] {\n  color: rgba(0, 0, 0, 0.8);\n  margin-bottom: 40px;\n  padding: 10px 10px;\n}\n.nav-links-main[data-v-6dde423b]:hover {\n  color: rgb(0, 172, 238);\n  text-decoration: none;\n  background: rgb(0, 172, 238, 0.07);\n  border-radius: 25px;\n}\ni[data-v-6dde423b] {\n  width: 20px;\n}\n/* .nav-links:hover {\n} */\nbutton.tweet[data-v-6dde423b] {\n  border-radius: 30px;\n}\na.profile-link[data-v-6dde423b]:hover {\n  background: rgba(0, 172, 238, 0.1);\n  border-radius: 25px;\n  cursor: pointer;\n}\n.router-link-exact-active[data-v-6dde423b] {\n  color: rgba(0, 172, 238);\n}\nimg.twitter[data-v-6dde423b] {\n  border-radius: 60px;\n}\nimg.twitter[data-v-6dde423b]:hover {\n  background: rgb(0, 172, 238, 0.1);\n}\n", ""]);
 
 // exports
 
@@ -8860,7 +8864,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 251, 0, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.post[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  background-color: rgba(88, 166, 255, 0.074);\n}\n.routemain[data-v-4ac4d2f8] {\n  text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 109, 251, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.post[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  background-color: rgba(88, 166, 255, 0.074);\n}\n.routemain[data-v-4ac4d2f8] {\n  text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8879,7 +8883,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-3bd692e4] {\r\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\r\n  margin-top: 15%;\n}\ndiv.name[data-v-3bd692e4] {\r\n  font-size: 1.2rem;\r\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.9;\r\n  background-color: rgba(255, 255, 255, 0.411);\n}\ni.ipic[data-v-3bd692e4] {\r\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\r\n  background: rgba(54, 54, 250, 0.1);\r\n  border-radius: 40px;\r\n\r\n  cursor: pointer;\n}\nbutton.following:hover span[data-v-3bd692e4] {\r\n  display: none;\n}\nbutton.following[data-v-3bd692e4]:hover {\r\n  background: rgb(219, 28, 28);\r\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-3bd692e4]:hover:before {\r\n  content: \"Unfollow\";\n}\na.website[data-v-3bd692e4]:hover {\r\n  text-decoration: none;\n}\nspan.message[data-v-3bd692e4] {\r\n  border: 1px solid rgb(52, 130, 255);\n}\nspan.message[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  background-color: rgba(0, 110, 255, 0.1);\n}\r\n", ""]);
+exports.push([module.i, "\nbutton[data-v-3bd692e4] {\r\n  border-radius: 25px;\n}\ndiv.userdata[data-v-3bd692e4] {\r\n  margin-bottom: 10vh;\n}\ndiv.name[data-v-3bd692e4] {\r\n  font-size: 1.2rem;\r\n  font-family: fantasy;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\nspan.x[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\n}\n.image-upload > input[data-v-3bd692e4] {\r\n  display: none;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.3;\n}\ni.ipic[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  opacity: 0.9;\r\n  background-color: rgba(255, 255, 255, 0.411);\n}\ni.ipic[data-v-3bd692e4] {\r\n  opacity: 0.6;\n}\n.file-input[data-v-3bd692e4]:hover {\r\n  background: rgba(54, 54, 250, 0.1);\r\n  border-radius: 40px;\r\n\r\n  cursor: pointer;\n}\nbutton.following:hover span[data-v-3bd692e4] {\r\n  display: none;\n}\nbutton.following[data-v-3bd692e4]:hover {\r\n  background: rgb(219, 28, 28);\r\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-3bd692e4]:hover:before {\r\n  content: \"Unfollow\";\n}\na.website[data-v-3bd692e4]:hover {\r\n  text-decoration: none;\n}\nspan.message[data-v-3bd692e4] {\r\n  border: 1px solid rgb(52, 130, 255);\n}\nspan.message[data-v-3bd692e4]:hover {\r\n  cursor: pointer;\r\n  background-color: rgba(0, 110, 255, 0.1);\n}\r\n", ""]);
 
 // exports
 
@@ -8898,7 +8902,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-14865028] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-14865028] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-14865028]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-14865028]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.received[data-v-14865028] {\n  /* background-color: aqua; */\n  border-radius: 1rem;\n  /* padding: 10px 15px; */\n}\n.sender[data-v-14865028] {\n  background-color: rgba(0, 255, 0, 0.664);\n}\n.received[data-v-14865028] {\n  max-width: 60%;\n\n  display: inline-block;\n}\nul[data-v-14865028] {\n  list-style-type: none;\n}\nli.li[data-v-14865028]:hover {\n  background-color: rgba(89, 119, 255, 0.05);\n  cursor: pointer;\n}\n.tweetpic[data-v-14865028] {\n  border-radius: 15px;\n}\ni.heart[data-v-14865028],\ni.comment[data-v-14865028] {\n  cursor: pointer;\n}\ndiv.modal-content[data-v-14865028] {\n  border-radius: 20px;\n}\ntextarea[data-v-14865028]:focus {\n  box-shadow: none;\n}\ntextarea[data-v-14865028] {\n  font-size: 18px;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-14865028] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-14865028] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-14865028]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-14865028]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.received[data-v-14865028] {\n  /* background-color: aqua; */\n  border-radius: 1rem;\n  /* padding: 10px 15px; */\n}\n.sender[data-v-14865028] {\n  background-color: rgba(0, 255, 0, 0.664);\n}\n.received[data-v-14865028] {\n  max-width: 60%;\n\n  display: inline-block;\n}\nul[data-v-14865028] {\n  list-style-type: none;\n}\nli.li[data-v-14865028]:hover {\n  background-color: rgba(89, 119, 255, 0.05);\n  cursor: pointer;\n}\n.tweetpic[data-v-14865028] {\n  border-radius: 15px;\n}\ni.heart[data-v-14865028],\ni.comment[data-v-14865028] {\n  cursor: pointer;\n}\ndiv.modal-content[data-v-14865028] {\n  border-radius: 20px;\n}\ntextarea[data-v-14865028]:focus {\n  box-shadow: none;\n}\ntextarea[data-v-14865028] {\n  font-size: 18px;\n}\n.heart[data-v-14865028]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-14865028]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-14865028]:hover {\n  cursor: pointer;\n  color: rgba(0, 251, 0, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.upload[data-v-14865028]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n", ""]);
 
 // exports
 
@@ -68747,8 +68751,12 @@ var render = function() {
           expression: "message"
         }
       ],
-      staticClass: "px-3",
-      attrs: { id: "area", rows: "1", placeholder: "Start a new message" },
+      staticClass: "emojionearea",
+      attrs: {
+        id: "area emojionearea",
+        rows: "1",
+        placeholder: "Start a new message"
+      },
       domProps: { value: _vm.message },
       on: {
         keyup: function($event) {
@@ -68944,17 +68952,17 @@ var render = function() {
       "nav",
       {
         staticClass:
-          "navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed overflow-auto"
+          "navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed"
       },
       [
-        _c("div", { staticClass: "overflow-auto" }, [
+        _c("div", {}, [
           _c(
             "ul",
             { staticClass: "navbar-nav d-block" },
             [
               _c(
                 "li",
-                { staticClass: "mb-4" },
+                {},
                 [
                   _c("router-link", { attrs: { to: "/" } }, [
                     _c("img", {
@@ -69045,7 +69053,7 @@ var render = function() {
                             "span",
                             {
                               staticClass:
-                                "badge badge-primary rounded-circle position-absolute",
+                                "badge rounded-circle position-absolute",
                               staticStyle: { left: "20px", bottom: "15px" }
                             },
                             [_vm._v(_vm._s(_vm.countnote))]
@@ -69752,7 +69760,7 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _c("div", [
+        _c("div", { staticClass: "userdata" }, [
           _vm.showprofile.user.username == _vm.user.username
             ? _c(
                 "button",
@@ -69827,7 +69835,7 @@ var render = function() {
               ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "userdata ml-3" }, [
+        _c("div", { staticClass: "ml-3" }, [
           _c("div", { staticClass: "name" }, [
             _vm._v(_vm._s(_vm.showprofile.user.name))
           ]),
@@ -70357,7 +70365,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-8" }, [
+    _c("div", { staticClass: "col-md-11 col-xl-8" }, [
       _c("div", { staticClass: "pt-2 border-bottom post border" }, [
         _c("div", { staticClass: "mx-3 d-flex" }, [
           _c("img", {
@@ -70378,7 +70386,12 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "route text-dark",
-                    attrs: { to: "/notifications" }
+                    attrs: {
+                      to: {
+                        name: "profile",
+                        params: { username: _vm.tweet.user.username }
+                      }
+                    }
                   },
                   [_vm._v(_vm._s(_vm.tweet.user.name))]
                 )
@@ -70495,7 +70508,12 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "route text-dark",
-                        attrs: { to: "/notifications" }
+                        attrs: {
+                          to: {
+                            name: "profile",
+                            params: { username: commentdata.user.username }
+                          }
+                        }
                       },
                       [_vm._v(_vm._s(commentdata.user.name))]
                     )
@@ -87151,17 +87169,11 @@ var app = new Vue({
     });
     var from = $('meta[name="username"]').attr("content");
     Echo.join("Online").here(function (users) {
-      console.log("All", users);
-
       _this.setonlineusers(users);
     }).joining(function (user) {
       _this.setjoinonlineusers(user);
-
-      console.log("Join", user);
     }).leaving(function (user) {
       _this.setleaveonlineusers(user);
-
-      console.log("Leaving", user);
     });
   }
 });

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <nav
-      class="navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed overflow-auto"
-    >
+    <nav class="navbar navbar-expand-lg d-block navbar-primary bg-white position-fixed">
       <!-- <button
         class="navbar-toggler"
         type="button"
@@ -16,9 +14,9 @@
       </button>-->
 
       <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-      <div class="overflow-auto">
+      <div class>
         <ul class="navbar-nav d-block">
-          <li class="mb-4">
+          <li class>
             <router-link to="/" class>
               <img src="/images/twitter.png" width="50px" class="twitter p-1" style alt srcset />
             </router-link>
@@ -40,7 +38,7 @@
               <i class="far fa-bell fa-lg mr-3"></i>
               <span
                 v-if="countnote"
-                class="badge badge-primary rounded-circle position-absolute"
+                class="badge rounded-circle position-absolute"
                 style="left:20px;bottom:15px"
               >{{countnote}}</span>
               <span class="d-none d-sm-none d-md-inline nav-links">Notification</span>
@@ -136,6 +134,10 @@ export default {
 };
 </script>
 <style scoped>
+.badge {
+  color: white;
+  background-color: rgba(0, 172, 238);
+}
 .nav-links {
   font-family: Helvetica;
   font-weight: bolder;
@@ -143,13 +145,13 @@ export default {
 }
 .nav-links-main {
   color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   padding: 10px 10px;
 }
 .nav-links-main:hover {
-  color: rgb(58, 117, 255, 0.8);
+  color: rgb(0, 172, 238);
   text-decoration: none;
-  background: rgb(70, 70, 255, 0.1);
+  background: rgb(0, 172, 238, 0.07);
   border-radius: 25px;
 }
 i {
@@ -161,17 +163,17 @@ button.tweet {
   border-radius: 30px;
 }
 a.profile-link:hover {
-  background: rgb(70, 70, 255, 0.1);
+  background: rgba(0, 172, 238, 0.1);
   border-radius: 25px;
   cursor: pointer;
 }
 .router-link-exact-active {
-  color: rgb(58, 117, 255, 0.8);
+  color: rgba(0, 172, 238);
 }
 img.twitter {
   border-radius: 60px;
 }
 img.twitter:hover {
-  background: rgb(70, 70, 255, 0.1);
+  background: rgb(0, 172, 238, 0.1);
 }
 </style>

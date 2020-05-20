@@ -38,6 +38,7 @@ const app = new Vue({
         this.setcountnote((JSON.parse(localStorage.getItem('notifications')).length));
     },
     created() {
+        
         var from = $('meta[name="userid"]').attr("content");
         Echo.private("notification." + from).listen("BroadcastNotification", e => {
             console.log("Notification", e);
@@ -61,16 +62,14 @@ const app = new Vue({
         Echo.join("Online")
 
             .here((users) => {
-                console.log("All", users);
                 this.setonlineusers(users)
             })
             .joining((user) => {
                 this.setjoinonlineusers(user)
-                console.log("Join", user);
             })
             .leaving((user) => {
                 this.setleaveonlineusers(user)
-                console.log("Leaving", user);
+
             });
     }
 

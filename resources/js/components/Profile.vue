@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="userdata">
         <button
           v-if="showprofile.user.username==user.username"
           class="btn btn-outline-primary btn-md float-right font-weight-bolder mt-2 mr-2"
@@ -51,7 +51,7 @@
           </span>
         </div>
       </div>
-      <div class="userdata ml-3">
+      <div class="ml-3">
         <div class="name">{{showprofile.user.name}}</div>
         {{'@'+ showprofile.user.username}}
         <div v-if="showprofile.user.bio" class="my-2">{{showprofile.user.bio}}</div>
@@ -329,7 +329,7 @@ button {
   border-radius: 25px;
 }
 div.userdata {
-  margin-top: 15%;
+  margin-bottom: 10vh;
 }
 div.name {
   font-size: 1.2rem;
