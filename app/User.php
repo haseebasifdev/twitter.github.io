@@ -44,4 +44,12 @@ class User extends Authenticatable
             return asset('images/download.jpg');
         }
     }
+    public function getCoverAttribute($value)
+    {
+        if ($value) {
+            return asset('cover/' . $value);
+        } else {
+            return asset('images/cover.jfif');
+        }
+    }
 }

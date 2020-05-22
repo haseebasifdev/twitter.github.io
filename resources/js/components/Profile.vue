@@ -2,10 +2,18 @@
   <div class="row" id="profile">
     <div class="col-md-9 col-12 col-xl-7 col-sm-10 p-0 m-0 border">
       <div class="cover position-relative">
-        <img src="images/cover.jfif" width="100%" height="200px" alt />
+        <img :src="user.cover" width="100%" height="200px" alt />
+
+        <div v-if="showprofile.user.username==user.username">
+          <i
+            class="fas fa-camera fa-lg text-danger ipic position-absolute p-2 rounded-circle"
+            @click="coverpic()"
+            style="right:50%;top:100px"
+          ></i>
+        </div>
         <div class="profile position-absolute" style="bottom:-30%">
           <img
-            :src="showprofile.user.profile"
+            :src="user.profile"
             class="rounded rounded-circle bg-white ml-3 p-1 img-profile"
             width="130px"
             alt
@@ -145,7 +153,7 @@
     <div
       v-if="showprofile.user.username==user.username"
       class="modal fade"
-      id="profile"
+      id="profilemodel"
       tabindex="-1"
       role="dialog"
       aria-labelledby="profileTitle"
@@ -163,24 +171,23 @@
           </div>
           <div class="modal-body overflow-auto" style="height:500px">
             <form>
-              <div class="cover position-relative">
+              <div class="cover position-relative userdata">
                 <img src="images/cover.jfif" width="100%" height="200px" alt />
                 <div class="profile position-absolute" style="bottom:-30%">
                   <img
                     :src="user.profile"
-                    class="rounded rounded-circle bg-white ml-3 p-1 img-fluid"
+                    class="rounded rounded-circle bg-white ml-3 p-1 img-fluid img-profile"
                     width="130px"
                     alt
                   />
                 </div>
               </div>
-              <div class="form-group userdata">
+              <div class="form-group ">
                 <label for="exampleInputEmail1">Name</label>
                 <input
                   v-model="userdeta.name"
                   type="text"
                   class="form-control"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Enter Name"
                 />
@@ -192,7 +199,6 @@
                   v-model="userdeta.bio"
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Enter Bio"
                 ></textarea>
@@ -203,7 +209,6 @@
                   v-model="userdeta.location"
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Your Location"
                 />
@@ -214,7 +219,6 @@
                   v-model="userdeta.website"
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Your Website"
                 />
@@ -244,10 +248,15 @@ export default {
   },
   data() {
     return {
-      picture: ""
+      picture: "",
+      picturetype: ""
     };
   },
   methods: {
+    coverpic() {
+      this.picturetype = 1;
+      $("#profilepic").modal("show");
+    },
     follow(userid, index) {
       var data = {
         follow_id: userid,
@@ -264,16 +273,19 @@ export default {
     },
     saveprofilepic() {
       var data = {
-        avatar: this.picture
+        avatar: this.picture,
+        type: this.picturetype
       };
-
+      console.log(data)
       this.$store.dispatch("saveprofilepicture", data);
       this.fetchusertweet();
       this.fetchuser();
+      this.$store.dispatch("showprofile", this.$route.params.username);
       this.picture = "";
       $("#profilepic").modal("hide");
     },
     profilepic() {
+      this.picturetype = 0;
       $("#profilepic").modal("show");
     },
     cancelpicture() {
@@ -289,10 +301,11 @@ export default {
     hidemodel() {
       this.fetchusertweet();
       this.fetchuser();
-      $("#profile").modal("hide");
+      $("#profilemodel").modal("toggle");
     },
     profilemodel() {
-      $("#profile").modal("show");
+      console.log("Profile Model");
+      $("#profilemodel").modal("toggle");
       // this.authuser.push(this.userdetail);
       // console.log(this.userdetail);
     },
@@ -301,8 +314,8 @@ export default {
         this.$store.dispatch("saveprofile", this.userdeta);
         this.fetchusertweet();
         this.fetchuser();
-
-        $("#profile").modal("hide");
+        this.$store.dispatch("showprofile", this.$route.params.username);
+        $("#profilemodel").modal("hide");
       }
     },
 
@@ -329,7 +342,7 @@ button {
   border-radius: 25px;
 }
 div.userdata {
-  margin-bottom: 10vh;
+  margin-bottom: 12%;
 }
 div.name {
   font-size: 1.2rem;

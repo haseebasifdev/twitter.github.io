@@ -63,7 +63,7 @@
 
                             <div class="col-md-6">
                                 <input id="birthday" type="date" name="birthday"
-                                    class="form-control @error('birthday') is-invalid @enderror" max="2015-01-01">
+                                    class="form-control @error('birthday') is-invalid @enderror" max="2015-01-01" required>
                                 @error('birthday')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

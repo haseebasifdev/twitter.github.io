@@ -6,6 +6,7 @@ use App\Comment;
 use App\Follow;
 use App\Like;
 use App\Post;
+use App\Retweet;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -30,6 +31,8 @@ class PostController extends Controller
             $user = User::find($post[$i]->user_id);
             $likes = Like::where('post_id', $post[$i]->id)->count();
             $liked = Like::where('post_id', $post[$i]->id)->where('user_id', auth()->id())->exists();
+            $retweeted = Retweet::where('post_id', $post[$i]->id)->where('user_id', auth()->id())->exists();
+            $retweets = Retweet::where('post_id', $post[$i]->id)->where('user_id', auth()->id())->count();
             $comments = Comment::where('post_id', $post[$i]->id)->count();
             if ($liked) {
                 $liked = true;
@@ -41,6 +44,8 @@ class PostController extends Controller
                 "user" => $user,
                 "likes" => $likes,
                 "liked" => $liked,
+                "retweeted" => $retweeted,
+                "retweet" => $retweets,
                 "comments" => $comments
 
             ]);
@@ -108,6 +113,7 @@ class PostController extends Controller
         $user = User::find($post->user_id);
         $likes = Like::where('post_id', $post->id)->count();
         $liked = Like::where('post_id', $post->id)->where('user_id', auth()->id())->exists();
+
         $comments = Comment::where('post_id', $post->id)->get();
         for ($i = 0; $i < $comments->count(); $i++) {
             $user = User::find($comments[$i]->user_id);
@@ -139,12 +145,16 @@ class PostController extends Controller
         for ($i = 0; $i < $posts->count(); $i++) {
             $likes = Like::where('post_id', $posts[$i]->id)->count();
             $liked = Like::where('post_id', $posts[$i]->id)->where('user_id', auth()->id())->exists();
+            $retweeted = Retweet::where('post_id', $posts[$i]->id)->where('user_id', auth()->id())->exists();
+            $retweets = Retweet::where('post_id', $posts[$i]->id)->where('user_id', auth()->id())->count();
             $comments = Comment::where('post_id', $posts[$i]->id)->count();
             $posts[$i] = new Collection([
                 "tweet" => $posts[$i],
                 "user" => $user,
                 "likes" => $likes,
                 "liked" => $liked,
+                "retweeted" => $retweeted,
+                "retweet" => $retweets,
                 "comments" => $comments
 
             ]);
@@ -192,6 +202,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return ('Successfuly Delete');
     }
 }

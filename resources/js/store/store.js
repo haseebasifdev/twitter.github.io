@@ -32,6 +32,9 @@ export default new Vuex.Store({
         },
     },
     mutations: {
+        removeTweet: (state, index) => {
+            state.usertweet.splice(index,1);
+        },
         setonlineusers: (state, data) => {
             state.onlineusers = data;
         },
@@ -116,6 +119,35 @@ export default new Vuex.Store({
                 console.log(state.usertweet[index].liked, state.usertweet[index].likes)
             }
         },
+        setretweetedpost: (state, index) => {
+            if (index == -1) {
+                if (state.tweet.retweeted) {
+
+                    state.tweet.retweet--;
+                    state.tweet.retweeted = (!state.tweet.retweeted);
+
+                } else {
+
+                    state.tweet.retweet++;
+                    state.tweet.retweeted = (!state.tweet.retweeted);
+                }
+                // state.tweet.retweeted = !state.tweet.retweeted
+
+            } else {
+
+                if (state.usertweet[index].retweeted) {
+
+                    state.usertweet[index].retweet--;
+                    state.usertweet[index].retweeted = (!state.usertweet[index].retweeted);
+
+                } else {
+
+                    state.usertweet[index].retweet++;
+                    state.usertweet[index].retweeted = (!state.usertweet[index].retweeted);
+                }
+                console.log(state.usertweet[index].retweeted, state.usertweet[index].retweet)
+            }
+        },
     },
     actions: {
         async fetchuser({
@@ -169,6 +201,18 @@ export default new Vuex.Store({
             try {
                 commit('setlikedpost', payload.index);
                 await axios.post('/like', payload);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        retweetpost: async ({
+            commit
+        }, payload) => {
+            try {
+                commit('setretweetedpost', payload.index);
+                await axios.post('/retweet', payload);
 
 
             } catch (err) {
@@ -308,6 +352,18 @@ export default new Vuex.Store({
 
             } catch (err) {
                 console.log(err);
+            }
+        },
+        deletetweet: async ({
+            commit
+        }, payload) => {
+            try {
+                commit('removeTweet', payload.index);
+                const response = await axios.get('/deletepost/' + payload.post_id);
+
+
+            } catch (err) {
+                console.log(err)
             }
         },
     }

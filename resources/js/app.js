@@ -12,6 +12,7 @@ Vue.filter('date', function (value) {
 Vue.filter('datecomment', function (value) {
     return moment(value).format('MMMM Do YYYY, h:mm:ss a');
 })
+
 // import VueLocalStorage from 'vue-localstorage'
 
 // Vue.use(VueLocalStorage)

@@ -30,6 +30,7 @@ Route::get('/users', 'HomeController@alluser')->name('user');
 
 // Post Controller
 Route::post('/post', 'PostController@store')->name('post');
+Route::get('/deletepost/{post}', 'PostController@destroy')->name('destroy');
 Route::get('/post', 'PostController@index')->name('getpost');
 Route::get('/post/{post}', 'PostController@show')->name('getpost');
 Route::get('/posts/{username}', 'PostController@showposts')->name('getposts');
@@ -47,6 +48,8 @@ Route::post('/unfollow', 'FollowController@destroy')->name('unfollow');
 // Message Controller
 Route::post('/allmessage', 'MessageController@show')->middleware('auth')->name('allmessage');
 Route::post('/savemessage', 'MessageController@store')->middleware('auth')->name('allmessage');
+// Retweet
+Route::post('/retweet', 'RetweetController@store')->middleware('auth')->name('allmessage');
 
 // Notification Controller
 Route::get('/index', 'NotificationController@index')->name('getnotification');

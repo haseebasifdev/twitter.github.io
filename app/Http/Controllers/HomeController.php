@@ -73,6 +73,7 @@ class HomeController extends Controller
     public function storeprofile(Request $request)
     {
         // return ($request->avatar);
+
         $exploded = explode(',', $request->avatar);
         $decode = base64_decode($exploded[1]);
         if (str_contains($exploded[0], 'jpeg')) {
@@ -80,11 +81,23 @@ class HomeController extends Controller
         } else {
             $extension = 'png';
         };
-        $filename = str_random() . '.' . $extension;
-        $path = public_path() . '\profiles/' . $filename;
-        file_put_contents($path, $decode);
+        // $filename = str_random() . '.' . $extension;
+        // $path = public_path() . '\profiles/' . $filename;
+        // file_put_contents($path, $decode);
         $user = User::find(auth()->id());
-        $user->profile = $filename;
+        if ($request->type == 0) {
+
+            $filename = str_random() . '.' . $extension;
+            $path = public_path() . '\profiles/' . $filename;
+            file_put_contents($path, $decode);
+            $user->profile = $filename;
+        } else {
+
+            $filename = str_random() . '.' . $extension;
+            $path = public_path() . '\cover/' . $filename;
+            file_put_contents($path, $decode);
+            $user->cover = $filename;
+        }
         $user->save();
     }
 }

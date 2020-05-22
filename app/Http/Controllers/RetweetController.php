@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
+use App\Post;
 use App\Retweet;
 use Illuminate\Http\Request;
 
@@ -35,7 +37,25 @@ class RetweetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $like = Retweet::where('post_id', $request->post_id)->where('user_id', auth()->id());
+
+        if ($like->exists()) {
+            $like->delete();
+        } else {
+            Retweet::create([
+                'user_id' => auth()->id(),
+                'post_id' => $request->post_id,
+            ]);
+            $Post = Post::find($request->post_id);
+            Notification::create([
+                'from' => auth()->id(),
+                'to' => $Post->user_id,
+                'type' => 'Like your tweet',
+            ]);
+        }
+
+        // $likes = Like::where('user_id', auth()->id())->get();
+        return (["Retweet" => 'Completed']);
     }
 
     /**
