@@ -50,7 +50,7 @@ class RetweetController extends Controller
             Notification::create([
                 'from' => auth()->id(),
                 'to' => $Post->user_id,
-                'type' => 'Like your tweet',
+                'type' => 'Retweeted your tweet',
             ]);
         }
 

@@ -14,7 +14,7 @@
       </button>-->
 
       <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-      <div class>
+      <div class=" overflow-auto" style="max-width:300px">
         <ul class="navbar-nav d-block">
           <li class>
             <router-link to="/" class>
@@ -72,11 +72,27 @@
               <span class="d-none d-sm-none d-md-inline nav-links">Profile</span>
             </router-link>
           </li>
+
           <li class="nav-item my-3">
-            <a class="nav-links-main" href="#">
-              <i class="fas fa-angle-right fa-lg mr-3"></i>
-              <span class="d-none d-sm-none d-md-inline nav-links">More</span>
-            </a>
+            
+            <span class="dropup">
+              <a
+                class="nav-links-main"
+                href="#"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-ellipsis-h fa-lg mr-3"></i>
+                <span class="d-none d-sm-none d-md-inline nav-links">More</span>
+              </a>
+              <div class="dropdown-menu bg-light" style="width:10px"  aria-labelledby="dropdownMenuButton">
+                <router-link to="/" class="dropdown-item text-dark">
+                  <i class="fas fa-cog"></i>Setting
+                </router-link>
+              </div>
+            </span>
           </li>
           <!-- <button class="btn btn-primary btn-lg btn-block tweet" @click="tweetmodel()">Tweet</button> -->
           <slot></slot>
@@ -175,5 +191,8 @@ img.twitter {
 }
 img.twitter:hover {
   background: rgb(0, 172, 238, 0.1);
+}
+.dropdown-menu {
+    width: 10px !important;
 }
 </style>

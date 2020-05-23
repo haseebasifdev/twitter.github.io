@@ -22,10 +22,7 @@ const Bar = {
 const routes = [{
         path: '/',
         component: Home
-    },
-    {
-        path: '/bar',
-        component: Bar
+        
     },
     {
         path: '/notifications',
