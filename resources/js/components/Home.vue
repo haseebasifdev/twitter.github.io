@@ -1,6 +1,8 @@
 <template>
   <div class="row">
-    <div class="col-md-8 col-sm-10 col-11 col-xl-7 border p-0 m-0 border-bottom-0">
+    <div
+      class="col-md-8 col-sm-10 col-11 col-xl-7 border p-0 m-0 border-bottom-0"
+    >
       <tweet class="border-0"></tweet>
       <div class="bg-light" style=" height:10px"></div>
       <post :usertweet="usertweet"></post>
@@ -22,7 +24,7 @@ export default {
   data() {
     return {};
   },
-  
+
   methods: {
     ...mapActions([
       "fetchusertweet",

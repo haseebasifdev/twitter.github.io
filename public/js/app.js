@@ -2265,6 +2265,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2573,6 +2585,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -3388,10 +3402,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (!value) return "";
       value = value.toString();
       var hashReg = /@\w+/gm;
-      var hashReg1 = /#\w+/gm; // let hashReg = "";
-
-      value = value.replace(hashReg, "<b>$&</b>");
-      value = value.replace(hashReg1, "<b>$&</b>");
+      var hashReg1 = /#\w+/gm;
+      value = value.replace(hashReg, "<span style='color:blue'>$&</span>");
+      value = value.replace(hashReg1, "<span style='color:blue'>$&</span>");
       return value;
     }
   },
@@ -3453,6 +3466,36 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4137,10 +4180,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           tweet: post,
           user: this.user
         };
-        this.picture = "";
-        this.tweet = "";
         this.$store.dispatch("posttweet", payload);
         this.fetchusertweet();
+        var splitstwwet = this.tweet.split(" ");
+        this.picture = "";
+        this.tweet = "";
+
+        for (var i = 0; i < splitstwwet.length; i++) {
+          if (splitstwwet[i].toString().includes("#")) {}
+        }
+
         $("#tweet").modal("hide");
       }
     }
@@ -8796,7 +8845,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n  cursor: pointer;\n}\ninput.search[data-v-01ada95c] {\n  height: 30px;\n  border-radius: 20px;\n  background-color: rgba(0, 119, 255, 0.03);\n  border: none;\n}\ninput.search[data-v-01ada95c]:focus {\n  background-color: white;\n  box-shadow: none;\n}\n", ""]);
 
 // exports
 
@@ -8986,7 +9035,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.retweet[data-v-4ac4d2f8] {\n  color: rgba(0, 184, 0);\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 109, 251, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.post[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  background-color: rgba(88, 166, 255, 0.074);\n}\n.routemain[data-v-4ac4d2f8] {\n  text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-4ac4d2f8] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-4ac4d2f8] {\n  margin-top: 15%;\n}\ndiv.name[data-v-4ac4d2f8] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-4ac4d2f8] {\n  border-radius: 20px;\n}\n.upload[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.retweet[data-v-4ac4d2f8] {\n  color: rgba(0, 184, 0);\n}\n.comment[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  color: rgba(0, 109, 251, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.post[data-v-4ac4d2f8]:hover {\n  cursor: pointer;\n  background-color: rgba(88, 166, 255, 0.074);\n}\n.routemain[data-v-4ac4d2f8] {\n  text-decoration: none;\n}\n.modal-content[data-v-4ac4d2f8] {\n  border-radius: 40px;\n}\n.deleteoption[data-v-4ac4d2f8]:hover {\n  background-color: rgb(0, 172, 238, 0.07);\n}\n", ""]);
 
 // exports
 
@@ -68214,6 +68263,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c(
       "div",
       {
@@ -68221,7 +68272,7 @@ var render = function() {
           "col-md-10 col-12 col-sm-10 col-xl-7 border border-bottom-0 p-0 m-0"
       },
       [
-        _vm._m(0),
+        _vm._m(1),
         _vm._v(" "),
         _vm._l(_vm.allusers, function(data, index) {
           return _c("ul", { staticClass: "list-group" }, [
@@ -68250,7 +68301,7 @@ var render = function() {
                         _c(
                           "router-link",
                           {
-                            staticClass: " text-dark",
+                            staticClass: "text-dark",
                             attrs: {
                               to: {
                                 name: "profile",
@@ -68266,9 +68317,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "text-muted" }, [
                       _vm._v(
-                        "\n                " +
+                        "\n              " +
                           _vm._s("@" + data.user.username) +
-                          "\n                "
+                          "\n              "
                       ),
                       data.follower
                         ? _c("span", { staticClass: "bg-warning rounded" }, [
@@ -68330,7 +68381,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: " list-group border-bottom py-2 px-1" }, [
+    return _c(
+      "nav",
+      {
+        staticClass:
+          "navbar navbar-expand-lg navbar-light sticky-top border border-top-0 border-bottom-0 bg-light col-md-10 col-12 col-sm-10 col-xl-7"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "navbar-collapse",
+            attrs: { id: "navbarSupportedContent" }
+          },
+          [
+            _c("form", { staticClass: "form-inline my-2 my-lg-0 flo" }, [
+              _c("input", {
+                staticClass: "form-control search",
+                attrs: {
+                  size: "60",
+                  type: "search",
+                  placeholder: "Search Twitter"
+                }
+              })
+            ])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group border-bottom py-2 px-1" }, [
       _c("h4", [_vm._v("People You May Know")])
     ])
   }
@@ -69743,7 +69827,8 @@ var render = function() {
                 data.user.id == _vm.user.id
                   ? _c("span", [
                       _c("i", {
-                        staticClass: "fas fa-chevron-down position-absolute",
+                        staticClass:
+                          "fas fa-chevron-down deleteoption position-absolute p-2 rounded-circle",
                         staticStyle: { right: "15px" },
                         attrs: {
                           id: "dropdownMenu2",
@@ -70019,6 +70104,61 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row", attrs: { id: "profile" } }, [
+    _c(
+      "nav",
+      {
+        staticClass:
+          "navbar navbar-expand-lg navbar-light sticky-top border border-top-0 border-bottom-0 bg-light col-md-9 col-12 col-xl-7 col-sm-10"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "navbar-collapse",
+            attrs: { id: "navbarSupportedContent" }
+          },
+          [
+            _c("ul", { staticClass: "navbar-nav d-flex" }, [
+              _c(
+                "div",
+                { staticClass: " mr-4" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fas fa-arrow-left text-primary fa-lg"
+                      })
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "div",
+                  {
+                    staticClass: "font-weight-bolder m-0 p-0",
+                    staticStyle: {}
+                  },
+                  [_vm._v(_vm._s(_vm.user.name))]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "m-0 p-0" }, [
+                  _vm._v(_vm._s(_vm.usertweet.length))
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "col-md-9 col-12 col-xl-7 col-sm-10 p-0 m-0 border" },
@@ -70440,7 +70580,7 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group " }, [
+                        _c("div", { staticClass: "form-group" }, [
                           _c(
                             "label",
                             { attrs: { for: "exampleInputEmail1" } },
@@ -88960,7 +89100,8 @@ var Bar = {
 };
 var routes = [{
   path: '/',
-  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+  name: 'home'
 }, {
   path: '/notifications',
   component: _components_Notification__WEBPACK_IMPORTED_MODULE_9__["default"],
@@ -89917,6 +90058,41 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       }
 
       return deletetweet;
+    }(),
+    hashtag: function () {
+      var _hashtag = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee20(_ref20, payload) {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee20$(_context20) {
+          while (1) {
+            switch (_context20.prev = _context20.next) {
+              case 0:
+                commit = _ref20.commit;
+                _context20.prev = 1;
+                _context20.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('');
+
+              case 4:
+                _context20.next = 9;
+                break;
+
+              case 6:
+                _context20.prev = 6;
+                _context20.t0 = _context20["catch"](1);
+                console.error();
+
+              case 9:
+              case "end":
+                return _context20.stop();
+            }
+          }
+        }, _callee20, null, [[1, 6]]);
+      }));
+
+      function hashtag(_x34, _x35) {
+        return _hashtag.apply(this, arguments);
+      }
+
+      return hashtag;
     }()
   }
 }));

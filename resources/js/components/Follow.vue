@@ -1,49 +1,61 @@
 <template>
   <div class="row">
+    <nav
+      class="navbar navbar-expand-lg navbar-light sticky-top border border-top-0 border-bottom-0 bg-light col-md-10 col-12 col-sm-10 col-xl-7"
+    >
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0 flo">
+          <!-- <span for class="fa fa-search form-control-feedback"></span> -->
+          <input size="60" class="form-control search" type="search" placeholder="Search Twitter" />
+        </form>
+      </div>
+    </nav>
     <div class="col-md-10 col-12 col-sm-10 col-xl-7 border border-bottom-0 p-0 m-0">
-      <li class=" list-group border-bottom py-2 px-1"><h4>People You May Know</h4> </li>
+      <li class="list-group border-bottom py-2 px-1">
+        <h4>People You May Know</h4>
+      </li>
       <ul class="list-group" v-for="(data,index) in allusers">
         <!-- <router-link class="route" :to="{name:'profile',params: { username: data.user.username }}"> -->
-          <li class="px-3 py-2 border-bottom d-flex justify-content-between route">
-            <span class="d-flex">
-              <img
-                :src="data.user.profile"
-                class="mr-2 rounded rounded-circle"
-                width="50px"
-                height="50px"
-              />
-              <div>
-                <div class="font-weight-bolder">
-                  <router-link
-                  class=" text-dark"
-                    :to="{name:'profile',params: { username: data.user.username }}"
-                  >{{data.user.name}}</router-link>
-                </div>
-                <div class="text-muted">
-                  {{'@'+data.user.username}}
-                  <span
-                    v-if="data.follower"
-                    class="bg-warning rounded"
-                  >follow you</span>
-                </div>
-                <div class="text-dark">{{data.user.bio}}</div>
+        <li class="px-3 py-2 border-bottom d-flex justify-content-between route">
+          <span class="d-flex">
+            <img
+              :src="data.user.profile"
+              class="mr-2 rounded rounded-circle"
+              width="50px"
+              height="50px"
+            />
+            <div>
+              <div class="font-weight-bolder">
+                <router-link
+                  class="text-dark"
+                  :to="{name:'profile',params: { username: data.user.username }}"
+                >{{data.user.name}}</router-link>
               </div>
-            </span>
-            <span v-if="data.following">
-              <button
-                class="btn btn-primary btn-sm px-4 font-weight-bolder following"
-                @click="unfollow(data.user.id,index)"
-              >
-                <span>Following</span>
-              </button>
-            </span>
-            <span v-else>
-              <button
-                class="btn btn-outline-primary btn-sm px-4 font-weight-bolder follow"
-                @click="follow(data.user.id,index)"
-              >Follow</button>
-            </span>
-          </li>
+              <div class="text-muted">
+                {{'@'+data.user.username}}
+                <span
+                  v-if="data.follower"
+                  class="bg-warning rounded"
+                >follow you</span>
+              </div>
+              <div class="text-dark">{{data.user.bio}}</div>
+            </div>
+          </span>
+          <span v-if="data.following">
+            <button
+              class="btn btn-primary btn-sm px-4 font-weight-bolder following"
+              @click="unfollow(data.user.id,index)"
+            >
+              <span>Following</span>
+            </button>
+          </span>
+          <span v-else>
+            <button
+              class="btn btn-outline-primary btn-sm px-4 font-weight-bolder follow"
+              @click="follow(data.user.id,index)"
+            >Follow</button>
+          </span>
+        </li>
         <!-- </router-link> -->
       </ul>
     </div>
@@ -105,5 +117,15 @@ border: none; */
   text-decoration: none;
   background-color: rgba(202, 202, 202, 0.196);
   cursor: pointer;
+}
+input.search {
+  height: 30px;
+  border-radius: 20px;
+  background-color: rgba(0, 119, 255, 0.03);
+  border: none;
+}
+input.search:focus {
+  background-color: white;
+  box-shadow: none;
 }
 </style>

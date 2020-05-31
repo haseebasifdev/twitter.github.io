@@ -19,7 +19,7 @@
           <span class="text-muted ml-2 position-relative">{{data.tweet.created_at | date}}</span>
           <span v-if="data.user.id==user.id">
             <i
-              class="fas fa-chevron-down position-absolute"
+              class="fas fa-chevron-down deleteoption position-absolute p-2 rounded-circle"
               id="dropdownMenu2"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -138,9 +138,9 @@ export default {
       value = value.toString();
       let hashReg = /@\w+/gm;
       let hashReg1 = /#\w+/gm;
-      // let hashReg = "";
-      value = value.replace(hashReg, "<b>$&</b>");
-      value = value.replace(hashReg1, "<b>$&</b>");
+
+      value = value.replace(hashReg, "<span style='color:blue'>$&</span>");
+      value = value.replace(hashReg1, "<span style='color:blue'>$&</span>");
       return value;
     }
   },
@@ -239,5 +239,11 @@ img.tweetpic {
 }
 .routemain {
   text-decoration: none;
+}
+.modal-content {
+  border-radius: 40px;
+}
+.deleteoption:hover {
+  background-color: rgb(0, 172, 238, 0.07);
 }
 </style>

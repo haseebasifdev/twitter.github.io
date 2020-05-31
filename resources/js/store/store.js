@@ -366,5 +366,19 @@ export default new Vuex.Store({
                 console.log(err)
             }
         },
+        hashtag:async({
+            commit
+        },payload)=>
+        {
+            try
+            {
+                await axios.post('')
+            }
+            catch(err)
+            {
+                console.error();
+                
+            }
+        }
     }
 })

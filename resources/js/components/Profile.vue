@@ -1,5 +1,35 @@
 <template>
   <div class="row" id="profile">
+    <!-- <div class="p-2 position-fixed bg-danger col-md-9 col-12 col-xl-6 col-sm-10">Hello</div> -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light sticky-top border border-top-0 border-bottom-0 bg-light col-md-9 col-12 col-xl-7 col-sm-10"
+    >
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav d-flex">
+          <div class=" mr-4">
+            <!-- <li class="nav-item mr-4"> -->
+            <router-link :to="{name:'home'}" class="nav-link">
+              <i class="fas fa-arrow-left text-primary fa-lg"></i>
+            </router-link>
+            <!-- </li> -->
+          </div>
+          <div>
+            <!-- <li class="nav-item p-0 m-0"> -->
+            <div style="font-size:" class="font-weight-bolder m-0 p-0">{{user.name}}</div>
+            <div class="m-0 p-0">{{usertweet.length}}</div>
+          </div>
+          <!-- </li> -->
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>-->
+      </div>
+    </nav>
     <div class="col-md-9 col-12 col-xl-7 col-sm-10 p-0 m-0 border">
       <div class="cover position-relative">
         <img :src="user.cover" width="100%" height="200px" alt />
@@ -182,7 +212,7 @@
                   />
                 </div>
               </div>
-              <div class="form-group ">
+              <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
                 <input
                   v-model="userdeta.name"
@@ -276,7 +306,7 @@ export default {
         avatar: this.picture,
         type: this.picturetype
       };
-      console.log(data)
+      console.log(data);
       this.$store.dispatch("saveprofilepicture", data);
       this.fetchusertweet();
       this.fetchuser();

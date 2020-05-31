@@ -21,7 +21,8 @@ const Bar = {
 
 const routes = [{
         path: '/',
-        component: Home
+        component: Home,
+        name:'home'
         
     },
     {
