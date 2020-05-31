@@ -141,8 +141,8 @@ export default {
       let hashReg = /@\w+/gm;
       let hashReg1 = /#\w+/gm;
 
-      value = value.replace(hashReg, "<span style='color:blue'>$&</span>");
-      value = value.replace(hashReg1, "<span style='color:blue'>$&</span>");
+      value = value.replace(hashReg, "<span style='color:#1DA1F2'>$&</span>");
+      value = value.replace(hashReg1, "<span style='color:#1DA1F2'>$&</span>");
       return value;
     }
   },

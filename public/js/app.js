@@ -3446,8 +3446,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       value = value.toString();
       var hashReg = /@\w+/gm;
       var hashReg1 = /#\w+/gm;
-      value = value.replace(hashReg, "<span style='color:blue'>$&</span>");
-      value = value.replace(hashReg1, "<span style='color:blue'>$&</span>");
+      value = value.replace(hashReg, "<span style='color:#1DA1F2'>$&</span>");
+      value = value.replace(hashReg1, "<span style='color:#1DA1F2'>$&</span>");
       return value;
     }
   },
@@ -3894,6 +3894,39 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -70947,8 +70980,53 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-md-11 col-xl-8" }, [
-      _c("div", { staticClass: "pt-2 border-bottom post border" }, [
-        _c("div", { staticClass: "mx-3 d-flex" }, [
+      _c("div", { staticClass: " border-bottom post border" }, [
+        _c(
+          "nav",
+          {
+            staticClass:
+              "navbar navbar-expand-lg navbar-light sticky-top bg-white border-bottom"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "navbar-collapse",
+                attrs: { id: "navbarSupportedContent" }
+              },
+              [
+                _c("ul", { staticClass: "navbar-nav" }, [
+                  _c(
+                    "div",
+                    { staticClass: " mr-4  d-flex" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link font-weight-bold",
+                          attrs: { to: { name: "home" } }
+                        },
+                        [
+                          _c("i", {
+                            staticClass:
+                              "fas fa-arrow-left text-primary fa-lg mr-3"
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("h4", { staticClass: " my-auto" }, [_vm._v("Tweet")])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div")
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "mx-3 d-flex mt-2" }, [
           _c("img", {
             staticClass: "mr-2 rounded rounded-circle",
             attrs: {

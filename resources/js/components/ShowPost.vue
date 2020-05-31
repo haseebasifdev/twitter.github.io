@@ -1,8 +1,41 @@
 <template>
   <div class="row">
+    
     <div class="col-md-11 col-xl-8">
-      <div class="pt-2 border-bottom post border">
-        <div class="mx-3 d-flex">
+      <div class=" border-bottom post border">
+        <!-- <ul><li>Tweet</li></ul> -->
+        <nav
+      class="navbar navbar-expand-lg navbar-light sticky-top bg-white border-bottom"
+    >
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <div class=" mr-4  d-flex">
+            <!-- <li class="nav-item mr-4"> -->
+            <router-link :to="{name:'home'}" class="nav-link font-weight-bold">
+              <i class="fas fa-arrow-left text-primary fa-lg mr-3"></i>
+              
+            </router-link>
+            <h4 class=" my-auto">Tweet</h4>
+            <!-- </li> -->
+          </div>
+          <div>
+            <!-- <li class="nav-item p-0 m-0"> -->
+            <!-- <div style="font-size:" class="font-weight-bolder m-0 p-0">{{user.name}}</div> -->
+            <!-- <div class="m-0 p-0">Tweets {{usertweet.length}}</div> -->
+          </div>
+          <!-- </li> -->
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>-->
+      </div>
+    </nav>
+        <div class="mx-3 d-flex mt-2">
           <!-- profile -->
           <img
             :src="tweet.user.profile"
@@ -41,17 +74,17 @@
             <i class="far fa-comment comment fa-lg p-2" @click="commentmodel()"></i>
             <!-- <span v-if="tweet.comments">{{tweet.comments}}</span> -->
           </div>
-          
-        <div>
-          <span v-if="tweet.retweeted">
-            <i class="fas fa-sync-alt sync fa-lg p-2 text-success" @click="retweet()"></i>
-            <span v-if="tweet.retweet" class="text-success">{{tweet.retweet}}</span>
-          </span>
-          <span v-else>
-            <i class="fas fa-sync sync fa-lg p-2" @click="retweet()"></i>
-            <span v-if="tweet.retweet" class="text-dark">{{tweet.retweet}}</span>
-          </span>
-        </div>
+
+          <div>
+            <span v-if="tweet.retweeted">
+              <i class="fas fa-sync-alt sync fa-lg p-2 text-success" @click="retweet()"></i>
+              <span v-if="tweet.retweet" class="text-success">{{tweet.retweet}}</span>
+            </span>
+            <span v-else>
+              <i class="fas fa-sync sync fa-lg p-2" @click="retweet()"></i>
+              <span v-if="tweet.retweet" class="text-dark">{{tweet.retweet}}</span>
+            </span>
+          </div>
           <div>
             <span v-if="tweet.liked">
               <i class="fas fa-heart heart text-danger fa-lg p-2" @click="likepost()"></i>
@@ -193,8 +226,7 @@ export default {
       };
       this.$store.dispatch("likepost", data);
     },
-    retweet()
-    {
+    retweet() {
       var data = {
         post_id: this.tweet.tweet.id,
         index: -1
