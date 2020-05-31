@@ -1,8 +1,18 @@
 <template>
   <div class="row">
-    <div
-      class="col-md-8 col-sm-10 col-11 col-xl-7 border p-0 m-0 border-bottom-0"
+    <nav
+      class="navbar navbar-expand-lg navbar-light sticky-top border border-top-0 border-bottom-0 bg-light ccol-md-8 col-sm-10 col-11 col-xl-7"
     >
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav d-flex">
+          <div class="mr-4">
+            <span class=" home">Home</span>
+           
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <div class="col-md-8 col-sm-10 col-11 col-xl-7 border p-0 m-0 border-bottom-0">
       <tweet class="border-0"></tweet>
       <div class="bg-light" style=" height:10px"></div>
       <post :usertweet="usertweet"></post>
@@ -44,4 +54,10 @@ export default {
 };
 </script>
 <style scoped>
+.home
+{
+  font-family: Roman;
+  font-size: 20px;
+  font-weight: 900;
+}
 </style>

@@ -18,7 +18,8 @@ export default new Vuex.Store({
         tweet: [],
         countnote: 0,
         onlineusers: [],
-        explore: []
+        explore: [],
+        trendstweets: [],
 
     },
     getters: {
@@ -33,6 +34,9 @@ export default new Vuex.Store({
         },
     },
     mutations: {
+        trendstweets: (state, data) => {
+            state.trendstweets = data;
+        },
         explore: (state, data) => {
             state.explore = data;
         },
@@ -386,6 +390,20 @@ export default new Vuex.Store({
             try {
                 var res = await axios.get('explore');
                 commit('explore', res.data);
+
+            } catch (err) {
+                console.error();
+
+            }
+        },
+        Trendingtweets: async ({
+            commit
+        }, payload) => {
+            try {
+                console.log("Before Exploring",payload);
+                var res = await axios.post('/trending/' , payload);
+                console.log("After Explore",res.data);
+                commit('trendstweets', res.data);
 
             } catch (err) {
                 console.error();

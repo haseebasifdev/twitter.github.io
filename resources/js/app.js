@@ -34,12 +34,13 @@ const app = new Vue({
         ...mapMutations(['setcountnote', "setonlineusers", "setleaveonlineusers", "setjoinonlineusers"]),
     },
     mounted() {
-        mapState(["countnote"])
+        console.log("Width",$(window).width());
+        mapState(["countnote"]);
         console.log("loca storage ength", (JSON.parse(localStorage.getItem('notifications')).length));
         this.setcountnote((JSON.parse(localStorage.getItem('notifications')).length));
     },
     created() {
-        
+
         var from = $('meta[name="userid"]').attr("content");
         Echo.private("notification." + from).listen("BroadcastNotification", e => {
             console.log("Notification", e);
@@ -72,6 +73,9 @@ const app = new Vue({
                 this.setleaveonlineusers(user)
 
             });
+    },
+    watch() {
+        
     }
 
 });

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Profile from './components/Profile.vue'
 import Home from './components/Home.vue'
-import Explore from './components/Follow'
+import Explore from './components/Explore'
 import Follower from './components/Followers'
 import Following from './components/Following'
 import Friend from './components/Friend'
@@ -9,6 +9,7 @@ import Message from './components/Message'
 import MessageFriends from './components/MessageFriends'
 import Notification from './components/Notification'
 import ShowPost from './components/ShowPost'
+import Posts from './components/Posts'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [{
         path: '/notifications',
         component: Notification,
         name: 'notifications'
+    },
+    {
+        path: '/trending/:trend',
+        component: Posts,
+        name: 'trend'
     },
     {
         path: '/:username/status/:id',
@@ -52,7 +58,7 @@ const routes = [{
         children: [
             // {
             //     path: 'follower',
-            //     component: Follower,
+            //     component: Posts,
             //     name: 'follower'
             // },
             // {
@@ -91,8 +97,37 @@ const routes = [{
     {
         path: '/explore/trends',
         component: Explore,
-        name: 'explore'
+        name: 'explore',
+        // children: [
+        //     {
+        //         path: ':trend',
+        //         component: Posts,
+        //         name: 'trend'
+        //     },
+        //     // {
+        //     //     path: 'following',
+        //     //     component: Following,
+        //     //     name: 'following'
+        //     // },
+        // ]
     },
+    // {
+    //     path: '/explore/trends',
+    //     component: Explore,
+    //     name: 'explore',
+    //     children: [
+    //         {
+    //             path: ':trend',
+    //             component: Posts,
+    //             name: 'trend'
+    //         },
+    //         // {
+    //         //     path: 'following',
+    //         //     component: Following,
+    //         //     name: 'following'
+    //         // },
+    //     ]
+    // },
 ]
 export default new VueRouter({
 

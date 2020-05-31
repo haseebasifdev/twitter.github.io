@@ -55,3 +55,4 @@ Route::post('/retweet', 'RetweetController@store')->middleware('auth')->name('al
 Route::get('/index', 'NotificationController@index')->name('getnotification');
 Route::post('/explore', 'ExploreController@store')->name('explore');
 Route::get('/explore', 'ExploreController@index')->name('exploreindex');
+Route::post('/trending', 'ExploreController@show');

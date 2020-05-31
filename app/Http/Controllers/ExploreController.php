@@ -50,9 +50,12 @@ class ExploreController extends Controller
      * @param  \App\Explore  $explore
      * @return \Illuminate\Http\Response
      */
-    public function show(Explore $explore)
+    public function show(Request $request)
     {
-        //
+        // return ($request);
+        $postid=Explore::where('hashtag',$request->tag)->pluck('post_id');
+        $posts=Post::whereIn('id',$postid)->get();
+        return $posts;
     }
 
     /**

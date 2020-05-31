@@ -113,7 +113,8 @@ class PostController extends Controller
         $user = User::find($post->user_id);
         $likes = Like::where('post_id', $post->id)->count();
         $liked = Like::where('post_id', $post->id)->where('user_id', auth()->id())->exists();
-
+        $retweeted = Retweet::where('post_id', $post->id)->where('user_id', auth()->id())->exists();
+        $retweets = Retweet::where('post_id', $post->id)->where('user_id', auth()->id())->count();
         $comments = Comment::where('post_id', $post->id)->get();
         for ($i = 0; $i < $comments->count(); $i++) {
             $user = User::find($comments[$i]->user_id);
@@ -127,6 +128,8 @@ class PostController extends Controller
             "user" => $user,
             "likes" => $likes,
             "liked" => $liked,
+            "retweeted" => $retweeted,
+            "retweet" => $retweets,
             "comments" => $comments
 
         ]);

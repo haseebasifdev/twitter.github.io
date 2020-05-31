@@ -41,9 +41,17 @@
             <i class="far fa-comment comment fa-lg p-2" @click="commentmodel()"></i>
             <!-- <span v-if="tweet.comments">{{tweet.comments}}</span> -->
           </div>
-          <div>
-            <i class="fas fa-sync-alt sync fa-lg p-2"></i>
-          </div>
+          
+        <div>
+          <span v-if="tweet.retweeted">
+            <i class="fas fa-sync-alt sync fa-lg p-2 text-success" @click="retweet()"></i>
+            <span v-if="tweet.retweet" class="text-success">{{tweet.retweet}}</span>
+          </span>
+          <span v-else>
+            <i class="fas fa-sync sync fa-lg p-2" @click="retweet()"></i>
+            <span v-if="tweet.retweet" class="text-dark">{{tweet.retweet}}</span>
+          </span>
+        </div>
           <div>
             <span v-if="tweet.liked">
               <i class="fas fa-heart heart text-danger fa-lg p-2" @click="likepost()"></i>
@@ -184,6 +192,14 @@ export default {
         index: -1
       };
       this.$store.dispatch("likepost", data);
+    },
+    retweet()
+    {
+      var data = {
+        post_id: this.tweet.tweet.id,
+        index: -1
+      };
+      this.$store.dispatch("retweetpost", data);
     },
     commentmodel() {
       $("#comment").modal("show");

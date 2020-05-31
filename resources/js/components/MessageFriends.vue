@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="col-md-7 p-0">
-      <router-view :key="$route.path"></router-view>
+      <router-view :key="$route.path"  ></router-view>
     </div>
   </div>
 </template>
