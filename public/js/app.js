@@ -2277,6 +2277,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2300,8 +2309,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   mounted: function mounted() {
     this.alluser();
+    this.$store.dispatch("explore");
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["allusers"]))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["allusers", "explore"]))
 });
 
 /***/ }),
@@ -3022,6 +3032,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     //   console.log("clicked");
     //   $("#tweet").modal("show");
     // },
+    explore: function explore() {
+      this.$store.dispatch("explore");
+    },
     resetnotification: function resetnotification() {
       console.log("Notification cicked");
       localStorage.removeItem("notifications");
@@ -8852,7 +8865,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n  cursor: pointer;\n}\ninput.search[data-v-01ada95c] {\n  height: 30px;\n  border-radius: 20px;\n  background-color: rgba(0, 119, 255, 0.03);\n  border: none;\n}\ninput.search[data-v-01ada95c]:focus {\n  background-color: white;\n  box-shadow: none;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n  cursor: pointer;\n}\ninput.search[data-v-01ada95c] {\n  height: 30px;\n  border-radius: 20px;\n  background-color: rgba(0, 119, 255, 0.03);\n  border: none;\n}\ninput.search[data-v-01ada95c]:focus {\n  background-color: white;\n  box-shadow: none;\n}\nul[data-v-01ada95c] {\n  list-style-type: none;\n}\nh4.trend[data-v-01ada95c]\n{\n  font-weight: 800;\n  font-family:Cambria;\n}\nli.trend[data-v-01ada95c]:hover\n{\n  background-color: rgba(200, 200, 200, 0.13);\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -68281,103 +68294,25 @@ var render = function() {
       [
         _vm._m(1),
         _vm._v(" "),
-        _vm._l(_vm.allusers, function(data, index) {
-          return _c("ul", { staticClass: "list-group" }, [
-            _c(
-              "li",
-              {
-                staticClass:
-                  "px-3 py-2 border-bottom d-flex justify-content-between route"
-              },
-              [
-                _c("span", { staticClass: "d-flex" }, [
-                  _c("img", {
-                    staticClass: "mr-2 rounded rounded-circle",
-                    attrs: {
-                      src: data.user.profile,
-                      width: "50px",
-                      height: "50px"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "div",
-                      { staticClass: "font-weight-bolder" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "text-dark",
-                            attrs: {
-                              to: {
-                                name: "profile",
-                                params: { username: data.user.username }
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(data.user.name))]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-muted" }, [
-                      _vm._v(
-                        "\n              " +
-                          _vm._s("@" + data.user.username) +
-                          "\n              "
-                      ),
-                      data.follower
-                        ? _c("span", { staticClass: "bg-warning rounded" }, [
-                            _vm._v("follow you")
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-dark" }, [
-                      _vm._v(_vm._s(data.user.bio))
-                    ])
-                  ])
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.explore, function(trends, index) {
+            return _c("li", { staticClass: "p-2 border-bottom trend" }, [
+              _c("span", [
+                _c("div", [_vm._v("Trending in pakistan")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "font-weight-bold" }, [
+                  _vm._v(_vm._s(trends[0].hashtag))
                 ]),
                 _vm._v(" "),
-                data.following
-                  ? _c("span", [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn btn-primary btn-sm px-4 font-weight-bolder following",
-                          on: {
-                            click: function($event) {
-                              return _vm.unfollow(data.user.id, index)
-                            }
-                          }
-                        },
-                        [_c("span", [_vm._v("Following")])]
-                      )
-                    ])
-                  : _c("span", [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn btn-outline-primary btn-sm px-4 font-weight-bolder follow",
-                          on: {
-                            click: function($event) {
-                              return _vm.follow(data.user.id, index)
-                            }
-                          }
-                        },
-                        [_vm._v("Follow")]
-                      )
-                    ])
-              ]
-            )
-          ])
-        })
-      ],
-      2
+                _c("div", [_vm._v(_vm._s(trends.length) + " Tweets")])
+              ])
+            ])
+          }),
+          0
+        )
+      ]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "col-md-5" })
@@ -68422,7 +68357,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group border-bottom py-2 px-1" }, [
-      _c("h4", [_vm._v("People You May Know")])
+      _c("h4", { staticClass: " trend" }, [_vm._v("Trends For You")])
     ])
   }
 ]
@@ -69224,7 +69159,14 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "nav-item my-3" },
+                  {
+                    staticClass: "nav-item my-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.explore()
+                      }
+                    }
+                  },
                   [
                     _c(
                       "router-link",
@@ -89127,7 +89069,7 @@ var routes = [{
     name: 'messagebody'
   }]
 }, {
-  path: '/auth/:username',
+  path: '/user/:username',
   component: _components_Profile_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
   name: 'profile',
   children: [// {
@@ -89165,7 +89107,7 @@ var routes = [{
 //     name: 'following'
 // },
 {
-  path: '/explore/follow',
+  path: '/explore',
   component: _components_Follow__WEBPACK_IMPORTED_MODULE_3__["default"],
   name: 'explore'
 }];
@@ -89251,7 +89193,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     notifications: [],
     tweet: [],
     countnote: 0,
-    onlineusers: []
+    onlineusers: [],
+    explore: []
   },
   getters: {
     allfollower: function allfollower(state) {
@@ -89271,6 +89214,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     }
   },
   mutations: {
+    explore: function explore(state, data) {
+      state.explore = data;
+    },
     removeTweet: function removeTweet(state, index) {
       state.usertweet.splice(index, 1);
     },
@@ -90100,6 +90046,43 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
       }
 
       return hashtag;
+    }(),
+    explore: function () {
+      var _explore = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee21(_ref21) {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee21$(_context21) {
+          while (1) {
+            switch (_context21.prev = _context21.next) {
+              case 0:
+                commit = _ref21.commit;
+                _context21.prev = 1;
+                _context21.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('explore');
+
+              case 4:
+                res = _context21.sent;
+                commit('explore', res.data);
+                _context21.next = 11;
+                break;
+
+              case 8:
+                _context21.prev = 8;
+                _context21.t0 = _context21["catch"](1);
+                console.error();
+
+              case 11:
+              case "end":
+                return _context21.stop();
+            }
+          }
+        }, _callee21, null, [[1, 8]]);
+      }));
+
+      function explore(_x36) {
+        return _explore.apply(this, arguments);
+      }
+
+      return explore;
     }()
   }
 }));

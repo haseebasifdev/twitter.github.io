@@ -15,7 +15,7 @@ class ExploreController extends Controller
      */
     public function index()
     {
-        //
+        return Explore::all()->groupBy('hashtag');
     }
 
     /**

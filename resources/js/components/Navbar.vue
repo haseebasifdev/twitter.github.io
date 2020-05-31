@@ -27,7 +27,7 @@
               <span class="d-none d-sm-none d-md-inline nav-links">Home</span>
             </router-link>
           </li>
-          <li class="nav-item my-3">
+          <li class="nav-item my-3" @click="explore()">
             <router-link :to="{name:'explore'}" class="nav-links-main">
               <i class="fas fa-hashtag fa-lg mr-3"></i>
               <span class="d-none d-sm-none d-md-inline nav-links">Explore</span>
@@ -128,12 +128,17 @@ export default {
   },
   props: ["user"],
   methods: {
+    
     ...mapMutations(["resetcountnote"]),
     ...mapActions(["notification"]),
     // tweetmodel() {
     //   console.log("clicked");
     //   $("#tweet").modal("show");
     // },
+    explore()
+    {
+      this.$store.dispatch("explore");
+    },
     resetnotification() {
       console.log("Notification cicked");
       localStorage.removeItem("notifications");

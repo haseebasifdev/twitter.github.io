@@ -46,7 +46,7 @@ const routes = [{
         }, ]
     },
     {
-        path: '/auth/:username',
+        path: '/user/:username',
         component: Profile,
         name: 'profile',
         children: [
@@ -89,7 +89,7 @@ const routes = [{
     //     name: 'following'
     // },
     {
-        path: '/explore/follow',
+        path: '/explore',
         component: Explore,
         name: 'explore'
     },

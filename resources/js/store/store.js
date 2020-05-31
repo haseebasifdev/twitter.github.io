@@ -17,7 +17,8 @@ export default new Vuex.Store({
         notifications: [],
         tweet: [],
         countnote: 0,
-        onlineusers: []
+        onlineusers: [],
+        explore: []
 
     },
     getters: {
@@ -32,8 +33,11 @@ export default new Vuex.Store({
         },
     },
     mutations: {
+        explore: (state, data) => {
+            state.explore = data;
+        },
         removeTweet: (state, index) => {
-            state.usertweet.splice(index,1);
+            state.usertweet.splice(index, 1);
         },
         setonlineusers: (state, data) => {
             state.onlineusers = data;
@@ -366,19 +370,27 @@ export default new Vuex.Store({
                 console.log(err)
             }
         },
-        hashtag:async({
+        hashtag: async ({
             commit
-        },payload)=>
-        {
-            try
-            {
-                await axios.post('explore',payload)
-            }
-            catch(err)
-            {
+        }, payload) => {
+            try {
+                await axios.post('explore', payload)
+            } catch (err) {
                 console.error();
-                
+
             }
-        }
+        },
+        explore: async ({
+            commit
+        }) => {
+            try {
+                var res = await axios.get('explore');
+                commit('explore', res.data);
+
+            } catch (err) {
+                console.error();
+
+            }
+        },
     }
 })

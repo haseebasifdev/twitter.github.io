@@ -12,10 +12,19 @@
     </nav>
     <div class="col-md-10 col-12 col-sm-10 col-xl-7 border border-bottom-0 p-0 m-0">
       <li class="list-group border-bottom py-2 px-1">
-        <h4>People You May Know</h4>
+        <h4 class=" trend">Trends For You</h4>
       </li>
-      <ul class="list-group" v-for="(data,index) in allusers">
-        <!-- <router-link class="route" :to="{name:'profile',params: { username: data.user.username }}"> -->
+      <ul class="list-group">
+        <li class="p-2 border-bottom trend" v-for="(trends,index) in explore">
+          <span>
+            <div>Trending in pakistan</div>
+            <div class="font-weight-bold">{{trends[0].hashtag}}</div>
+            <div>{{trends.length}} Tweets</div>
+          </span>
+        </li>
+      </ul>
+      <!-- <ul class="list-group" v-for="(data,index) in allusers">
+        <router-link class="route" :to="{name:'profile',params: { username: data.user.username }}">
         <li class="px-3 py-2 border-bottom d-flex justify-content-between route">
           <span class="d-flex">
             <img
@@ -56,8 +65,8 @@
             >Follow</button>
           </span>
         </li>
-        <!-- </router-link> -->
-      </ul>
+        </router-link>
+      </ul>-->
     </div>
     <div class="col-md-5"></div>
   </div>
@@ -89,9 +98,10 @@ export default {
 
   mounted() {
     this.alluser();
+    this.$store.dispatch("explore");
   },
   computed: {
-    ...mapState(["allusers"])
+    ...mapState(["allusers", "explore"])
   }
 };
 </script>
@@ -127,5 +137,18 @@ input.search {
 input.search:focus {
   background-color: white;
   box-shadow: none;
+}
+ul {
+  list-style-type: none;
+}
+h4.trend
+{
+  font-weight: 800;
+  font-family:Cambria;
+}
+li.trend:hover
+{
+  background-color: rgba(200, 200, 200, 0.13);
+  cursor: pointer;
 }
 </style>
