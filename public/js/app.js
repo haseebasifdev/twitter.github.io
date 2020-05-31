@@ -4186,8 +4186,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.picture = "";
         this.tweet = "";
 
-        for (var i = 0; i < splitstwwet.length; i++) {
-          if (splitstwwet[i].toString().includes("#")) {}
+        if (splitstwwet) {
+          for (var i = 0; i < splitstwwet.length; i++) {
+            if (splitstwwet[i].toString().includes("#")) {
+              var tags = {
+                tag: splitstwwet[i]
+              };
+              this.$store.dispatch("hashtag", tags);
+            }
+          }
         }
 
         $("#tweet").modal("hide");
@@ -70150,7 +70157,7 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "m-0 p-0" }, [
-                  _vm._v(_vm._s(_vm.usertweet.length))
+                  _vm._v("Tweets " + _vm._s(_vm.usertweet.length))
                 ])
               ])
             ])
@@ -90069,7 +90076,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                 commit = _ref20.commit;
                 _context20.prev = 1;
                 _context20.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('');
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('explore', payload);
 
               case 4:
                 _context20.next = 9;

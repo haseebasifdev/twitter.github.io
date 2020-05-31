@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use Image;
 
 class HomeController extends Controller
 {
@@ -92,11 +93,17 @@ class HomeController extends Controller
             file_put_contents($path, $decode);
             $user->profile = $filename;
         } else {
-
+            // $decode;
             $filename = str_random() . '.' . $extension;
             $path = public_path() . '\cover/' . $filename;
             file_put_contents($path, $decode);
+
+            // $img = Image::make($image->path());
             $user->cover = $filename;
+
+            // $path->resize(200, 200, function ($constraint) {
+            //     $constraint->aspectRatio();
+            // });
         }
         $user->save();
     }

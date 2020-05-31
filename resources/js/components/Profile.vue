@@ -16,7 +16,7 @@
           <div>
             <!-- <li class="nav-item p-0 m-0"> -->
             <div style="font-size:" class="font-weight-bolder m-0 p-0">{{user.name}}</div>
-            <div class="m-0 p-0">{{usertweet.length}}</div>
+            <div class="m-0 p-0">Tweets {{usertweet.length}}</div>
           </div>
           <!-- </li> -->
         </ul>

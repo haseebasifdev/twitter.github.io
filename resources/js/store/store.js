@@ -372,7 +372,7 @@ export default new Vuex.Store({
         {
             try
             {
-                await axios.post('')
+                await axios.post('explore',payload)
             }
             catch(err)
             {

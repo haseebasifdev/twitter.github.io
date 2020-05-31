@@ -15,6 +15,12 @@ class CreateExploresTable extends Migration
     {
         Schema::create('explores', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('post_id');
+            $table->text('hashtag');
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

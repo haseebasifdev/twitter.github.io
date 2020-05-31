@@ -94,14 +94,18 @@ export default {
         };
         this.$store.dispatch("posttweet", payload);
         this.fetchusertweet();
-        var splitstwwet=this.tweet.split(" ")
+        var splitstwwet = this.tweet.split(" ");
         this.picture = "";
         this.tweet = "";
-        for (var i=0;i<splitstwwet.length;i++)
-        {
-          if(splitstwwet[i].toString().includes("#"))
-          {
-            
+
+        if (splitstwwet) {
+          for (var i = 0; i < splitstwwet.length; i++) {
+            if (splitstwwet[i].toString().includes("#")) {
+              var tags = {
+                tag: splitstwwet[i]
+              };
+              this.$store.dispatch("hashtag", tags);
+            }
           }
         }
         $("#tweet").modal("hide");

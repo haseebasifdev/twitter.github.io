@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Explore;
+use App\Post;
 use Illuminate\Http\Request;
 
 class ExploreController extends Controller
@@ -35,7 +36,12 @@ class ExploreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return($request);
+        Explore::create([
+            'post_id' => Post::latest()->first()->id,
+            'hashtag' => $request->tag
+        ]);
+        return 'Success';
     }
 
     /**
