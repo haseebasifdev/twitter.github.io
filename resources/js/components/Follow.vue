@@ -6,7 +6,7 @@
       <div class="navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline my-2 my-lg-0 flo">
           <!-- <span for class="fa fa-search form-control-feedback"></span> -->
-          <input size="60" class="form-control search" type="search" placeholder="Search Twitter" />
+          <input size="60" v-model="search" class="form-control search" type="search" placeholder="Search Twitter" />
         </form>
       </div>
     </nav>
@@ -15,12 +15,14 @@
         <h4 class=" trend">Trends For You</h4>
       </li>
       <ul class="list-group">
-        <li class="p-2 border-bottom trend" v-for="(trends,index) in explore">
+        <li class="p-2 border-bottom trend" v-for="(trends,index) in explore" >
+          <router-link :to="index" class=" text-dark trending">
           <span>
             <div>Trending in pakistan</div>
-            <div class="font-weight-bold">{{trends[0].hashtag}}</div>
+            <div class="font-weight-bold">{{index}}</div>
             <div>{{trends.length}} Tweets</div>
           </span>
+          </router-link>
         </li>
       </ul>
       <!-- <ul class="list-group" v-for="(data,index) in allusers">
@@ -76,7 +78,9 @@
 import { mapActions, mapState } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      search:''
+    };
   },
   methods: {
     ...mapActions(["alluser"]),
@@ -93,6 +97,11 @@ export default {
         index: index
       };
       this.$store.dispatch("unfollow", data);
+    },
+    exploreit(hashtag)
+    {
+      this.search=hashtag
+      console.log(hashtag);
     }
   },
 
@@ -150,5 +159,9 @@ li.trend:hover
 {
   background-color: rgba(200, 200, 200, 0.13);
   cursor: pointer;
+}
+.trending
+{
+  text-decoration: none;
 }
 </style>

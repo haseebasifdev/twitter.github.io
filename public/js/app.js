@@ -2286,10 +2286,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      search: ''
+    };
   },
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["alluser"])), {}, {
     follow: function follow(userid, index) {
@@ -2305,6 +2309,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         index: index
       };
       this.$store.dispatch("unfollow", data);
+    },
+    exploreit: function exploreit(hashtag) {
+      this.search = hashtag;
+      console.log(hashtag);
     }
   }),
   mounted: function mounted() {
@@ -8865,7 +8873,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n  cursor: pointer;\n}\ninput.search[data-v-01ada95c] {\n  height: 30px;\n  border-radius: 20px;\n  background-color: rgba(0, 119, 255, 0.03);\n  border: none;\n}\ninput.search[data-v-01ada95c]:focus {\n  background-color: white;\n  box-shadow: none;\n}\nul[data-v-01ada95c] {\n  list-style-type: none;\n}\nh4.trend[data-v-01ada95c]\n{\n  font-weight: 800;\n  font-family:Cambria;\n}\nli.trend[data-v-01ada95c]:hover\n{\n  background-color: rgba(200, 200, 200, 0.13);\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-01ada95c] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-01ada95c] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-01ada95c]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-01ada95c]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.route[data-v-01ada95c]:hover {\n  text-decoration: none;\n  background-color: rgba(202, 202, 202, 0.196);\n  cursor: pointer;\n}\ninput.search[data-v-01ada95c] {\n  height: 30px;\n  border-radius: 20px;\n  background-color: rgba(0, 119, 255, 0.03);\n  border: none;\n}\ninput.search[data-v-01ada95c]:focus {\n  background-color: white;\n  box-shadow: none;\n}\nul[data-v-01ada95c] {\n  list-style-type: none;\n}\nh4.trend[data-v-01ada95c]\n{\n  font-weight: 800;\n  font-family:Cambria;\n}\nli.trend[data-v-01ada95c]:hover\n{\n  background-color: rgba(200, 200, 200, 0.13);\n  cursor: pointer;\n}\n.trending[data-v-01ada95c]\n{\n  text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -68283,47 +68291,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _vm._m(0),
-    _vm._v(" "),
     _c(
-      "div",
-      {
-        staticClass:
-          "col-md-10 col-12 col-sm-10 col-xl-7 border border-bottom-0 p-0 m-0"
-      },
-      [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "ul",
-          { staticClass: "list-group" },
-          _vm._l(_vm.explore, function(trends, index) {
-            return _c("li", { staticClass: "p-2 border-bottom trend" }, [
-              _c("span", [
-                _c("div", [_vm._v("Trending in pakistan")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "font-weight-bold" }, [
-                  _vm._v(_vm._s(trends[0].hashtag))
-                ]),
-                _vm._v(" "),
-                _c("div", [_vm._v(_vm._s(trends.length) + " Tweets")])
-              ])
-            ])
-          }),
-          0
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-5" })
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
       "nav",
       {
         staticClass:
@@ -68339,19 +68307,81 @@ var staticRenderFns = [
           [
             _c("form", { staticClass: "form-inline my-2 my-lg-0 flo" }, [
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.search,
+                    expression: "search"
+                  }
+                ],
                 staticClass: "form-control search",
                 attrs: {
                   size: "60",
                   type: "search",
                   placeholder: "Search Twitter"
+                },
+                domProps: { value: _vm.search },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.search = $event.target.value
+                  }
                 }
               })
             ])
           ]
         )
       ]
-    )
-  },
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "col-md-10 col-12 col-sm-10 col-xl-7 border border-bottom-0 p-0 m-0"
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.explore, function(trends, index) {
+            return _c(
+              "li",
+              { staticClass: "p-2 border-bottom trend" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: " text-dark trending", attrs: { to: index } },
+                  [
+                    _c("span", [
+                      _c("div", [_vm._v("Trending in pakistan")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "font-weight-bold" }, [
+                        _vm._v(_vm._s(index))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(trends.length) + " Tweets")])
+                    ])
+                  ]
+                )
+              ],
+              1
+            )
+          }),
+          0
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-5" })
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -89107,7 +89137,7 @@ var routes = [{
 //     name: 'following'
 // },
 {
-  path: '/explore',
+  path: '/explore/trends',
   component: _components_Follow__WEBPACK_IMPORTED_MODULE_3__["default"],
   name: 'explore'
 }];

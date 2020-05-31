@@ -89,7 +89,7 @@ const routes = [{
     //     name: 'following'
     // },
     {
-        path: '/explore',
+        path: '/explore/trends',
         component: Explore,
         name: 'explore'
     },
