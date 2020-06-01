@@ -2294,6 +2294,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2315,15 +2316,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         index: index
       };
       this.$store.dispatch("unfollow", data);
-    },
-    exploreit: function exploreit(hashtag) {
-      this.search = hashtag;
-      console.log(hashtag);
-      var data = {
-        tag: hashtag
-      };
-      this.$store.dispatch("Trendingtweets", data);
-    }
+    } // exploreit(hashtag) {
+    //   this.search = hashtag;
+    //   console.log(hashtag);
+    //   var data={
+    //     tag:hashtag
+    //   }
+    //   this.$store.dispatch("Trendingtweets",data);
+    // }
+
   }),
   mounted: function mounted() {
     this.alluser();
@@ -4155,6 +4156,227 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.fetchuser();
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(["tweet", "user"]))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TrendingPosts.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _PostComment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostComment */ "./resources/js/components/PostComment.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    postcomment: _PostComment__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  name: "trendingpost",
+  //   props: ["trendstweets"],
+  data: function data() {
+    return {};
+  },
+  filters: {
+    hashBold: function hashBold(value) {
+      if (!value) return "";
+      value = value.toString();
+      var hashReg = /@\w+/gm;
+      var hashReg1 = /#\w+/gm;
+      value = value.replace(hashReg, "<span style='color:#1DA1F2'>$&</span>");
+      value = value.replace(hashReg1, "<span style='color:#1DA1F2'>$&</span>");
+      return value;
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(["user", "trendstweets"])),
+  mounted: function mounted() {
+    var data = {
+      tag: this.$route.params.trend
+    };
+    this.$store.dispatch("Trendingtweets", data);
+  },
+  methods: {
+    // ...mapActions(["fetchtrendstweets", "fetchuser"]),
+    deletemodel: function deletemodel() {
+      $("#deletemodel").modal("toggle"); // var data = {
+      //   post_id: postid,
+      //   index: indexid
+      // };
+      // this.$store.dispatch("deletetweet", data);
+    },
+    deletetweet: function deletetweet(postid, indexid) {
+      // $("#deletemodel").modal("show");
+      var data = {
+        post_id: postid,
+        index: indexid
+      };
+      this.$store.dispatch("deletetweet", data);
+      $("#deletemodel").modal("toggle");
+    },
+    likepost: function likepost(postid, indexid) {
+      var data = {
+        post_id: postid,
+        index: indexid,
+        flag: 1
+      };
+      this.$store.dispatch("likepost", data);
+    },
+    retweet: function retweet(postid, indexid) {
+      var data = {
+        post_id: postid,
+        index: indexid
+      };
+      this.$store.dispatch("retweetpost", data);
+    },
+    commentmodel: function commentmodel(index) {
+      this.$store.dispatch("commentpostindex", index);
+      $("#comment").modal("show");
+    }
+  }
 });
 
 /***/ }),
@@ -9191,6 +9413,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\nbutton[data-v-14865028] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-14865028] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-14865028]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-14865028]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.received[data-v-14865028] {\n  /* background-color: aqua; */\n  border-radius: 1rem;\n  /* padding: 10px 15px; */\n}\n.sender[data-v-14865028] {\n  background-color: rgba(0, 255, 0, 0.664);\n}\n.received[data-v-14865028] {\n  max-width: 60%;\n\n  display: inline-block;\n}\nul[data-v-14865028] {\n  list-style-type: none;\n}\nli.li[data-v-14865028]:hover {\n  background-color: rgba(89, 119, 255, 0.05);\n  cursor: pointer;\n}\n.tweetpic[data-v-14865028] {\n  border-radius: 15px;\n}\ni.heart[data-v-14865028],\ni.comment[data-v-14865028] {\n  cursor: pointer;\n}\ndiv.modal-content[data-v-14865028] {\n  border-radius: 20px;\n}\ntextarea[data-v-14865028]:focus {\n  box-shadow: none;\n}\ntextarea[data-v-14865028] {\n  font-size: 18px;\n}\n.heart[data-v-14865028]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-14865028]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.comment[data-v-14865028]:hover {\n  cursor: pointer;\n  color: rgba(0, 251, 0, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.upload[data-v-14865028]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nbutton[data-v-0f9b8b5a] {\n  border-radius: 25px;\n}\ndiv.userdata[data-v-0f9b8b5a] {\n  margin-top: 15%;\n}\ndiv.name[data-v-0f9b8b5a] {\n  font-size: 1.2rem;\n  font-family: fantasy;\n}\nimg.tweetpic[data-v-0f9b8b5a] {\n  border-radius: 20px;\n}\n.upload[data-v-0f9b8b5a]:hover {\n  cursor: pointer;\n  color: red;\n\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.heart[data-v-0f9b8b5a]:hover {\n  cursor: pointer;\n  color: red;\n  background-color: rgba(255, 0, 0, 0.05);\n  border-radius: 40px;\n}\n.sync[data-v-0f9b8b5a]:hover {\n  cursor: pointer;\n  color: rgba(0, 255, 0, 0.676);\n\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.retweet[data-v-0f9b8b5a] {\n  color: rgba(0, 184, 0);\n}\n.comment[data-v-0f9b8b5a]:hover {\n  cursor: pointer;\n  color: rgba(0, 109, 251, 0.676);\n  background-color: rgba(0, 255, 0, 0.05);\n  border-radius: 40px;\n}\n.post[data-v-0f9b8b5a]:hover {\n  cursor: pointer;\n  background-color: rgba(88, 166, 255, 0.074);\n}\n.routemain[data-v-0f9b8b5a] {\n  text-decoration: none;\n}\n.modal-content[data-v-0f9b8b5a] {\n  border-radius: 40px;\n}\n.deleteoption[data-v-0f9b8b5a]:hover {\n  background-color: rgb(0, 172, 238, 0.07);\n}\n", ""]);
 
 // exports
 
@@ -67780,6 +68021,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Tweet.vue?vue&type=style&index=0&id=4683c2d4&scoped=true&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Tweet.vue?vue&type=style&index=0&id=4683c2d4&scoped=true&lang=css& ***!
@@ -68480,25 +68751,15 @@ var render = function() {
                     attrs: { to: { name: "trend", params: { trend: index } } }
                   },
                   [
-                    _c(
-                      "span",
-                      {
-                        on: {
-                          click: function($event) {
-                            return _vm.exploreit(index)
-                          }
-                        }
-                      },
-                      [
-                        _c("div", [_vm._v("Trending in pakistan")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "font-weight-bold" }, [
-                          _vm._v(_vm._s(index))
-                        ]),
-                        _vm._v(" "),
-                        _c("div", [_vm._v(_vm._s(trends.length) + " Tweets")])
-                      ]
-                    )
+                    _c("span", [
+                      _c("div", [_vm._v("Trending in pakistan")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "font-weight-bold" }, [
+                        _vm._v(_vm._s(index))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(trends.length) + " Tweets")])
+                    ])
                   ]
                 )
               ],
@@ -71401,6 +71662,352 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "col-md-8 col-sm-10 col-11 col-xl-7 border p-0 m-0 border-bottom-0"
+      },
+      _vm._l(_vm.trendstweets, function(data, index) {
+        return _c(
+          "div",
+          { staticClass: "pt-2 border-bottom post" },
+          [
+            _c("div", { staticClass: "mx-3 d-flex" }, [
+              _c("img", {
+                staticClass: "mr-2 rounded rounded-circle",
+                attrs: { src: data.user.profile, width: "50px", height: "50px" }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                [
+                  _c(
+                    "span",
+                    { staticClass: "font-weight-bolder" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-dark",
+                          attrs: {
+                            to: {
+                              name: "profile",
+                              params: { username: data.user.username }
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(data.user.name))]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-muted" }, [
+                    _vm._v(_vm._s("@" + data.user.username))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "text-muted ml-2 position-relative" },
+                    [_vm._v(_vm._s(_vm._f("date")(data.tweet.created_at)))]
+                  ),
+                  _vm._v(" "),
+                  data.user.id == _vm.user.id
+                    ? _c("span", [
+                        _c("i", {
+                          staticClass:
+                            "fas fa-chevron-down deleteoption position-absolute p-2 rounded-circle",
+                          staticStyle: { right: "15px" },
+                          attrs: {
+                            id: "dropdownMenu2",
+                            "data-toggle": "dropdown",
+                            "aria-haspopup": "true",
+                            "aria-expanded": "false"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "dropdown-menu",
+                            attrs: { "aria-labelledby": "dropdownMenu2" }
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "dropdown-item text-danger",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deletemodel()
+                                  }
+                                }
+                              },
+                              [_vm._v("Delete")]
+                            )
+                          ]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal fade bd-example-modal-sm",
+                      attrs: {
+                        id: "deletemodel",
+                        tabindex: "-1",
+                        role: "dialog",
+                        "aria-labelledby": "exampleModalCenterTitle",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "modal-dialog modal-dialog-centered modal-sm",
+                          attrs: { role: "document" }
+                        },
+                        [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c("h4", { staticClass: "text-center" }, [
+                                _vm._v("Delete Tweet")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "text-center" }, [
+                                _vm._v(
+                                  "This can’t be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results."
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "mx-auto text-center mt-3" },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-primary mr-2",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deletemodel()
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Cancel")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger ml-2",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deletetweet(
+                                            data.tweet.id,
+                                            index
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Delete")]
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "routemain",
+                      attrs: {
+                        to: {
+                          name: "showpost",
+                          params: {
+                            username: data.user.username,
+                            id: data.tweet.id
+                          }
+                        }
+                      }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "text-dark",
+                        domProps: {
+                          innerHTML: _vm._s(
+                            _vm.$options.filters.hashBold(data.tweet.tweet)
+                          )
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("img", {
+                          staticClass: "tweetpic my-2 border",
+                          attrs: {
+                            src: data.tweet.tweetpicture,
+                            width: "100%",
+                            alt: "",
+                            srcset: ""
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "d-flex justify-content-around mb-2 mx-4" },
+              [
+                _c("div", [
+                  _c("i", {
+                    staticClass: "far fa-comment comment fa-lg p-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.commentmodel(index)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  data.comments
+                    ? _c("span", [_vm._v(_vm._s(data.comments))])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  data.retweeted
+                    ? _c("span", [
+                        _c("i", {
+                          staticClass:
+                            "fas fa-sync-alt sync fa-lg p-2 text-success",
+                          on: {
+                            click: function($event) {
+                              return _vm.retweet(data.tweet.id, index)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        data.retweet
+                          ? _c("span", { staticClass: "text-success" }, [
+                              _vm._v(_vm._s(data.retweet))
+                            ])
+                          : _vm._e()
+                      ])
+                    : _c("span", [
+                        _c("i", {
+                          staticClass: "fas fa-sync sync fa-lg p-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.retweet(data.tweet.id, index)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        data.retweet
+                          ? _c("span", { staticClass: "text-dark" }, [
+                              _vm._v(_vm._s(data.retweet))
+                            ])
+                          : _vm._e()
+                      ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  data.liked
+                    ? _c("span", [
+                        _c("i", {
+                          staticClass:
+                            "fas fa-heart heart text-danger fa-lg p-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.likepost(data.tweet.id, index)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        data.likes
+                          ? _c("span", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(data.likes))
+                            ])
+                          : _vm._e()
+                      ])
+                    : _c("span", [
+                        _c("i", {
+                          staticClass: "far fa-heart heart fa-lg p-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.likepost(data.tweet.id, index)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        data.likes
+                          ? _c("span", { staticClass: "text-dark" }, [
+                              _vm._v(_vm._s(data.likes))
+                            ])
+                          : _vm._e()
+                      ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0, true)
+              ]
+            ),
+            _vm._v(" "),
+            _c("postcomment", {
+              attrs: { post: _vm.trendstweets[index], indexid: index }
+            })
+          ],
+          1
+        )
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("i", { staticClass: "fas fa-upload upload fa-lg p-2" })
     ])
   }
 ]
@@ -87861,8 +88468,7 @@ var app = new Vue({
     }).leaving(function (user) {
       _this.setleaveonlineusers(user);
     });
-  },
-  watch: function watch() {}
+  }
 });
 
 /***/ }),
@@ -89147,6 +89753,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/TrendingPosts.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/TrendingPosts.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TrendingPosts_vue_vue_type_template_id_0f9b8b5a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true& */ "./resources/js/components/TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true&");
+/* harmony import */ var _TrendingPosts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TrendingPosts.vue?vue&type=script&lang=js& */ "./resources/js/components/TrendingPosts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TrendingPosts_vue_vue_type_style_index_0_id_0f9b8b5a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css& */ "./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TrendingPosts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TrendingPosts_vue_vue_type_template_id_0f9b8b5a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TrendingPosts_vue_vue_type_template_id_0f9b8b5a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "0f9b8b5a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/TrendingPosts.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/TrendingPosts.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/TrendingPosts.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TrendingPosts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_style_index_0_id_0f9b8b5a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=style&index=0&id=0f9b8b5a&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_style_index_0_id_0f9b8b5a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_style_index_0_id_0f9b8b5a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_style_index_0_id_0f9b8b5a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_style_index_0_id_0f9b8b5a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_style_index_0_id_0f9b8b5a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_template_id_0f9b8b5a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TrendingPosts.vue?vue&type=template&id=0f9b8b5a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_template_id_0f9b8b5a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TrendingPosts_vue_vue_type_template_id_0f9b8b5a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Tweet.vue":
 /*!*******************************************!*\
   !*** ./resources/js/components/Tweet.vue ***!
@@ -89324,7 +90017,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MessageFriends__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/MessageFriends */ "./resources/js/components/MessageFriends.vue");
 /* harmony import */ var _components_Notification__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Notification */ "./resources/js/components/Notification.vue");
 /* harmony import */ var _components_ShowPost__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/ShowPost */ "./resources/js/components/ShowPost.vue");
-/* harmony import */ var _components_Posts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Posts */ "./resources/js/components/Posts.vue");
+/* harmony import */ var _components_TrendingPosts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/TrendingPosts */ "./resources/js/components/TrendingPosts.vue");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 
 
@@ -89339,13 +90032,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_12__["default"]);
-var Foo = {
-  template: '<div>foo</div>'
-};
-var Bar = {
-  template: '<div>bar</div>'
-};
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_12__["default"]); // const Foo = {
+//     template: '<div>foo</div>'
+// }
+// const Bar = {
+//     template: '<div>bar</div>'
+// }
+
 var routes = [{
   path: '/',
   component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -89356,7 +90049,7 @@ var routes = [{
   name: 'notifications'
 }, {
   path: '/trending/:trend',
-  component: _components_Posts__WEBPACK_IMPORTED_MODULE_11__["default"],
+  component: _components_TrendingPosts__WEBPACK_IMPORTED_MODULE_11__["default"],
   name: 'trend'
 }, {
   path: '/:username/status/:id',

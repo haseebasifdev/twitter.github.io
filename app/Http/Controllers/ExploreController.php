@@ -6,6 +6,13 @@ use App\Explore;
 use App\Post;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Collection;
+
+use App\Comment;
+use App\Like;
+use App\Retweet;
+use App\User;
+
 class ExploreController extends Controller
 {
     /**
@@ -53,8 +60,29 @@ class ExploreController extends Controller
     public function show(Request $request)
     {
         // return ($request);
-        $postid=Explore::where('hashtag',$request->tag)->pluck('post_id');
-        $posts=Post::whereIn('id',$postid)->get();
+        $postid = Explore::where('hashtag', $request->tag)->pluck('post_id');
+        $posts = Post::whereIn('id', $postid)->get();
+        $likes = [];
+        $liked = [];
+        $comments = [];
+        for ($i = 0; $i < $posts->count(); $i++) {
+            $user = User::find($posts[$i]->user_id);
+            $likes = Like::where('post_id', $posts[$i]->id)->count();
+            $liked = Like::where('post_id', $posts[$i]->id)->where('user_id', auth()->id())->exists();
+            $retweeted = Retweet::where('post_id', $posts[$i]->id)->where('user_id', auth()->id())->exists();
+            $retweets = Retweet::where('post_id', $posts[$i]->id)->where('user_id', auth()->id())->count();
+            $comments = Comment::where('post_id', $posts[$i]->id)->count();
+            $posts[$i] = new Collection([
+                "tweet" => $posts[$i],
+                "user" => $user,
+                "likes" => $likes,
+                "liked" => $liked,
+                "retweeted" => $retweeted,
+                "retweet" => $retweets,
+                "comments" => $comments
+
+            ]);
+        };
         return $posts;
     }
 

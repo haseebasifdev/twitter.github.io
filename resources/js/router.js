@@ -9,16 +9,16 @@ import Message from './components/Message'
 import MessageFriends from './components/MessageFriends'
 import Notification from './components/Notification'
 import ShowPost from './components/ShowPost'
-import Posts from './components/Posts'
+import TrendingPosts from './components/TrendingPosts'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-const Foo = {
-    template: '<div>foo</div>'
-}
-const Bar = {
-    template: '<div>bar</div>'
-}
+// const Foo = {
+//     template: '<div>foo</div>'
+// }
+// const Bar = {
+//     template: '<div>bar</div>'
+// }
 
 const routes = [{
         path: '/',
@@ -33,7 +33,7 @@ const routes = [{
     },
     {
         path: '/trending/:trend',
-        component: Posts,
+        component: TrendingPosts,
         name: 'trend'
     },
     {

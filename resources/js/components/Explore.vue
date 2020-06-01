@@ -23,7 +23,8 @@
       <ul class="list-group">
         <li class="p-2 border-bottom trend" v-for="(trends,index) in explore">
           <router-link :to="{name:'trend',params: { trend: index }}" class="text-dark trending">
-            <span @click="exploreit(index)">
+            <span
+            >
               <div>Trending in pakistan</div>
               <div class="font-weight-bold">{{index}}</div>
               <div>{{trends.length}} Tweets</div>
@@ -104,14 +105,14 @@ export default {
       };
       this.$store.dispatch("unfollow", data);
     },
-    exploreit(hashtag) {
-      this.search = hashtag;
-      console.log(hashtag);
-      var data={
-        tag:hashtag
-      }
-      this.$store.dispatch("Trendingtweets",data);
-    }
+    // exploreit(hashtag) {
+    //   this.search = hashtag;
+    //   console.log(hashtag);
+    //   var data={
+    //     tag:hashtag
+    //   }
+    //   this.$store.dispatch("Trendingtweets",data);
+    // }
   },
 
   mounted() {
