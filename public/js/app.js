@@ -3056,7 +3056,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     tweet: _Tweet__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ["user"],
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(["resetcountnote"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["notification"])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(["resetcountnote"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["notification", "resetcountnotification"])), {}, {
     // tweetmodel() {
     //   console.log("clicked");
     //   $("#tweet").modal("show");
@@ -3065,9 +3065,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch("explore");
     },
     resetnotification: function resetnotification() {
-      console.log("Notification cicked");
-      localStorage.removeItem("notifications");
-      this.resetcountnote();
+      console.log("Notification cicked"); // localStorage.removeItem("notifications");
+
+      this.resetcountnotification();
       this.notification();
     }
   }),
@@ -3096,6 +3096,25 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9340,7 +9359,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-6a4ce154] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-6a4ce154] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-6a4ce154]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-6a4ce154]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.received[data-v-6a4ce154] {\n  /* background-color: aqua; */\n  border-radius: 1rem;\n  /* padding: 10px 15px; */\n}\n.sender[data-v-6a4ce154] {\n  background-color: rgba(0, 255, 0, 0.664);\n}\n.received[data-v-6a4ce154] {\n  max-width: 60%;\n\n  display: inline-block;\n}\nul[data-v-6a4ce154] {\n  list-style-type: none;\n}\nli.li[data-v-6a4ce154]:hover {\n  background-color: rgba(89, 119, 255, 0.05);\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-6a4ce154] {\n  border-radius: 30px;\n}\nbutton.following:hover span[data-v-6a4ce154] {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  display: none;\n}\nbutton.following[data-v-6a4ce154]:hover {\n  background: rgb(219, 28, 28);\n  border: 1px solid rgb(219, 28, 28);\n}\nbutton.following[data-v-6a4ce154]:hover:before {\n  /* background: rgb(219, 28, 28);\nborder: none; */\n  content: \"Unfollow\";\n}\n.received[data-v-6a4ce154] {\n  /* background-color: aqua; */\n  border-radius: 1rem;\n  /* padding: 10px 15px; */\n}\n.sender[data-v-6a4ce154] {\n  background-color: rgba(0, 255, 0, 0.664);\n}\n.received[data-v-6a4ce154] {\n  max-width: 60%;\n\n  display: inline-block;\n}\nul[data-v-6a4ce154] {\n  list-style-type: none;\n}\ndiv.li[data-v-6a4ce154]:hover {\n  background-color: rgba(5, 9, 26, 0.15);\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -69914,30 +69933,62 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _vm._l(_vm.notifications, function(notification) {
-            return _c("li", { staticClass: "li p-2 d-flex border-top" }, [
-              _c("i", { staticClass: "fas fa-star fa-2x text-primary mr-2" }),
-              _vm._v(" "),
-              _c("div", [
-                _c("img", {
-                  staticClass: "rounded-circle mb-2",
-                  attrs: {
-                    src: notification.user.profile,
-                    width: "40px",
-                    height: "40px",
-                    alt: "",
-                    srcset: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("b", [_vm._v(_vm._s(notification.user.name))]),
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(notification.notifications.type) +
-                      "\n          "
-                  )
-                ])
-              ])
+            return _c("li", { staticClass: "border-top" }, [
+              notification.read == true
+                ? _c("div", { staticClass: "li d-flex p-2" }, [
+                    _c("i", {
+                      staticClass: "fas fa-star fa-2x text-primary mr-2"
+                    }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("img", {
+                        staticClass: "rounded-circle mb-2",
+                        attrs: {
+                          src: notification.user.profile,
+                          width: "40px",
+                          height: "40px",
+                          alt: "",
+                          srcset: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("b", [_vm._v(_vm._s(notification.user.name))]),
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(notification.notifications.type) +
+                            "\n          "
+                        )
+                      ])
+                    ])
+                  ])
+                : _c("div", { staticClass: "li d-flex bg-light  p-2" }, [
+                    _c("i", {
+                      staticClass: "fas fa-star fa-2x text-primary mr-2"
+                    }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("img", {
+                        staticClass: "rounded-circle mb-2",
+                        attrs: {
+                          src: notification.user.profile,
+                          width: "40px",
+                          height: "40px",
+                          alt: "",
+                          srcset: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("b", [_vm._v(_vm._s(notification.user.name))]),
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(notification.notifications.type) +
+                            "\n          "
+                        )
+                      ])
+                    ])
+                  ])
             ])
           })
         ],
@@ -88433,36 +88484,20 @@ var app = new Vue({
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
   store: _store_store__WEBPACK_IMPORTED_MODULE_1__["default"],
   el: '#app',
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(["alluser"])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapMutations"])(['setcountnote', "setonlineusers", "setleaveonlineusers", "setjoinonlineusers"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(["alluser", "unreadnotification"])), Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapMutations"])(['setcountnote', "setonlineusers", "setleaveonlineusers", "setjoinonlineusers"])),
   mounted: function mounted() {
     console.log("Width", $(window).width());
-    Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(["countnote"]);
-    console.log("loca storage ength", JSON.parse(localStorage.getItem('notifications')).length);
-    this.setcountnote(JSON.parse(localStorage.getItem('notifications')).length);
+    Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(["countnote"]); // console.log("loca storage ength", (JSON.parse(localStorage.getItem('notifications')).length));
+    // this.setcountnote((JSON.parse(localStorage.getItem('notifications')).length));
+
+    this.unreadnotification();
   },
   created: function created() {
     var _this = this;
 
     var from = $('meta[name="userid"]').attr("content");
     Echo["private"]("notification." + from).listen("BroadcastNotification", function (e) {
-      console.log("Notification", e); // this.setnewnotifications(e.notification);
-
       _this.setcountnote(1);
-
-      var a = [];
-
-      if (localStorage.getItem('notifications')) {
-        console.log("If condision");
-
-        for (var index = 0; index <= JSON.parse(localStorage.getItem('notifications')).length; index++) {
-          a.push(index + 1);
-        }
-
-        localStorage.setItem('notifications', JSON.stringify(a));
-      } else {
-        var b = [0];
-        localStorage.setItem('notifications', JSON.stringify(b));
-      }
     });
     var from = $('meta[name="username"]').attr("content");
     Echo.join("Online").here(function (users) {
@@ -90367,8 +90402,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         } else {
           state.tweet.retweet++;
           state.tweet.retweeted = !state.tweet.retweeted;
-        } // state.tweet.retweeted = !state.tweet.retweeted
-
+        }
       } else if (data.flag == 3) {
         if (state.trendstweets[data.index].retweeted) {
           state.trendstweets[data.index].retweet--;
@@ -90384,9 +90418,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         } else {
           state.usertweet[data.index].retweet++;
           state.usertweet[data.index].retweeted = !state.usertweet[data.index].retweeted;
-        }
+        } // console.log(state.usertweet[index].retweeted, state.usertweet[index].retweet)
 
-        console.log(state.usertweet[index].retweeted, state.usertweet[index].retweet);
       }
     }
   },
@@ -90593,24 +90626,25 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                 commit = _ref7.commit;
                 _context7.prev = 1;
                 commit('setretweetedpost', payload);
-                _context7.next = 5;
+                console.log("Retweet");
+                _context7.next = 6;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/retweet', payload);
 
-              case 5:
-                _context7.next = 10;
+              case 6:
+                _context7.next = 11;
                 break;
 
-              case 7:
-                _context7.prev = 7;
+              case 8:
+                _context7.prev = 8;
                 _context7.t0 = _context7["catch"](1);
                 console.log(_context7.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context7.stop();
             }
           }
-        }, _callee7, null, [[1, 7]]);
+        }, _callee7, null, [[1, 8]]);
       }));
 
       function retweetpost(_x9, _x10) {
@@ -90889,6 +90923,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 
               case 4:
                 response = _context15.sent;
+                // const response = await axios.get('/show');
                 commit('setnotifications', response.data);
                 _context15.next = 11;
                 break;
@@ -90912,8 +90947,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 
       return notification;
     }(),
-    showtweet: function () {
-      var _showtweet = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16(_ref16, payload) {
+    unreadnotification: function () {
+      var _unreadnotification = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16(_ref16) {
         var commit, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context16) {
           while (1) {
@@ -90922,11 +90957,11 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                 commit = _ref16.commit;
                 _context16.prev = 1;
                 _context16.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/post/' + payload);
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/show');
 
               case 4:
                 response = _context16.sent;
-                commit('settweet', response.data);
+                commit('setcountnote', response.data);
                 _context16.next = 11;
                 break;
 
@@ -90943,14 +90978,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         }, _callee16, null, [[1, 8]]);
       }));
 
-      function showtweet(_x26, _x27) {
-        return _showtweet.apply(this, arguments);
+      function unreadnotification(_x26) {
+        return _unreadnotification.apply(this, arguments);
       }
 
-      return showtweet;
+      return unreadnotification;
     }(),
-    showtweets: function () {
-      var _showtweets = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17(_ref17, payload) {
+    showtweet: function () {
+      var _showtweet = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17(_ref17, payload) {
         var commit, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee17$(_context17) {
           while (1) {
@@ -90959,11 +90994,11 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                 commit = _ref17.commit;
                 _context17.prev = 1;
                 _context17.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/posts/' + payload);
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/post/' + payload);
 
               case 4:
                 response = _context17.sent;
-                commit('setusertweet', response.data);
+                commit('settweet', response.data);
                 _context17.next = 11;
                 break;
 
@@ -90980,14 +91015,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         }, _callee17, null, [[1, 8]]);
       }));
 
-      function showtweets(_x28, _x29) {
-        return _showtweets.apply(this, arguments);
+      function showtweet(_x27, _x28) {
+        return _showtweet.apply(this, arguments);
       }
 
-      return showtweets;
+      return showtweet;
     }(),
-    showprofile: function () {
-      var _showprofile = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18(_ref18, payload) {
+    showtweets: function () {
+      var _showtweets = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18(_ref18, payload) {
         var commit, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee18$(_context18) {
           while (1) {
@@ -90996,11 +91031,11 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                 commit = _ref18.commit;
                 _context18.prev = 1;
                 _context18.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/user/' + payload);
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/posts/' + payload);
 
               case 4:
                 response = _context18.sent;
-                commit('setshowprofile', response.data);
+                commit('setusertweet', response.data);
                 _context18.next = 11;
                 break;
 
@@ -91017,14 +91052,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         }, _callee18, null, [[1, 8]]);
       }));
 
-      function showprofile(_x30, _x31) {
-        return _showprofile.apply(this, arguments);
+      function showtweets(_x29, _x30) {
+        return _showtweets.apply(this, arguments);
       }
 
-      return showprofile;
+      return showtweets;
     }(),
-    deletetweet: function () {
-      var _deletetweet = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee19(_ref19, payload) {
+    showprofile: function () {
+      var _showprofile = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee19(_ref19, payload) {
         var commit, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee19$(_context19) {
           while (1) {
@@ -91032,12 +91067,12 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
               case 0:
                 commit = _ref19.commit;
                 _context19.prev = 1;
-                commit('removeTweet', payload.index);
-                _context19.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/deletepost/' + payload.post_id);
+                _context19.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/user/' + payload);
 
-              case 5:
+              case 4:
                 response = _context19.sent;
+                commit('setshowprofile', response.data);
                 _context19.next = 11;
                 break;
 
@@ -91054,50 +91089,52 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         }, _callee19, null, [[1, 8]]);
       }));
 
-      function deletetweet(_x32, _x33) {
-        return _deletetweet.apply(this, arguments);
+      function showprofile(_x31, _x32) {
+        return _showprofile.apply(this, arguments);
       }
 
-      return deletetweet;
+      return showprofile;
     }(),
-    hashtag: function () {
-      var _hashtag = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee20(_ref20, payload) {
-        var commit;
+    deletetweet: function () {
+      var _deletetweet = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee20(_ref20, payload) {
+        var commit, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee20$(_context20) {
           while (1) {
             switch (_context20.prev = _context20.next) {
               case 0:
                 commit = _ref20.commit;
                 _context20.prev = 1;
-                _context20.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('explore', payload);
+                commit('removeTweet', payload.index);
+                _context20.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/deletepost/' + payload.post_id);
 
-              case 4:
-                _context20.next = 9;
+              case 5:
+                response = _context20.sent;
+                _context20.next = 11;
                 break;
 
-              case 6:
-                _context20.prev = 6;
+              case 8:
+                _context20.prev = 8;
                 _context20.t0 = _context20["catch"](1);
-                console.error();
+                console.log(_context20.t0);
 
-              case 9:
+              case 11:
               case "end":
                 return _context20.stop();
             }
           }
-        }, _callee20, null, [[1, 6]]);
+        }, _callee20, null, [[1, 8]]);
       }));
 
-      function hashtag(_x34, _x35) {
-        return _hashtag.apply(this, arguments);
+      function deletetweet(_x33, _x34) {
+        return _deletetweet.apply(this, arguments);
       }
 
-      return hashtag;
+      return deletetweet;
     }(),
-    explore: function () {
-      var _explore = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee21(_ref21) {
-        var commit, res;
+    hashtag: function () {
+      var _hashtag = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee21(_ref21, payload) {
+        var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee21$(_context21) {
           while (1) {
             switch (_context21.prev = _context21.next) {
@@ -91105,35 +91142,33 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                 commit = _ref21.commit;
                 _context21.prev = 1;
                 _context21.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('explore');
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('explore', payload);
 
               case 4:
-                res = _context21.sent;
-                commit('explore', res.data);
-                _context21.next = 11;
+                _context21.next = 9;
                 break;
 
-              case 8:
-                _context21.prev = 8;
+              case 6:
+                _context21.prev = 6;
                 _context21.t0 = _context21["catch"](1);
                 console.error();
 
-              case 11:
+              case 9:
               case "end":
                 return _context21.stop();
             }
           }
-        }, _callee21, null, [[1, 8]]);
+        }, _callee21, null, [[1, 6]]);
       }));
 
-      function explore(_x36) {
-        return _explore.apply(this, arguments);
+      function hashtag(_x35, _x36) {
+        return _hashtag.apply(this, arguments);
       }
 
-      return explore;
+      return hashtag;
     }(),
-    Trendingtweets: function () {
-      var _Trendingtweets = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee22(_ref22, payload) {
+    explore: function () {
+      var _explore = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee22(_ref22) {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee22$(_context22) {
           while (1) {
@@ -91141,31 +91176,105 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
               case 0:
                 commit = _ref22.commit;
                 _context22.prev = 1;
-                console.log("Before Exploring", payload);
-                _context22.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/trending/', payload);
+                _context22.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('explore');
 
-              case 5:
+              case 4:
                 res = _context22.sent;
-                console.log("After Explore", res.data);
-                commit('trendstweets', res.data);
-                _context22.next = 13;
+                commit('explore', res.data);
+                _context22.next = 11;
                 break;
 
-              case 10:
-                _context22.prev = 10;
+              case 8:
+                _context22.prev = 8;
                 _context22.t0 = _context22["catch"](1);
                 console.error();
 
-              case 13:
+              case 11:
               case "end":
                 return _context22.stop();
             }
           }
-        }, _callee22, null, [[1, 10]]);
+        }, _callee22, null, [[1, 8]]);
       }));
 
-      function Trendingtweets(_x37, _x38) {
+      function explore(_x37) {
+        return _explore.apply(this, arguments);
+      }
+
+      return explore;
+    }(),
+    resetcountnotification: function () {
+      var _resetcountnotification = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee23(_ref23) {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee23$(_context23) {
+          while (1) {
+            switch (_context23.prev = _context23.next) {
+              case 0:
+                commit = _ref23.commit;
+                _context23.prev = 1;
+                commit('resetcountnote');
+                _context23.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/reset');
+
+              case 5:
+                res = _context23.sent;
+                _context23.next = 11;
+                break;
+
+              case 8:
+                _context23.prev = 8;
+                _context23.t0 = _context23["catch"](1);
+                console.error();
+
+              case 11:
+              case "end":
+                return _context23.stop();
+            }
+          }
+        }, _callee23, null, [[1, 8]]);
+      }));
+
+      function resetcountnotification(_x38) {
+        return _resetcountnotification.apply(this, arguments);
+      }
+
+      return resetcountnotification;
+    }(),
+    Trendingtweets: function () {
+      var _Trendingtweets = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee24(_ref24, payload) {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee24$(_context24) {
+          while (1) {
+            switch (_context24.prev = _context24.next) {
+              case 0:
+                commit = _ref24.commit;
+                _context24.prev = 1;
+                console.log("Before Exploring", payload);
+                _context24.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/trending/', payload);
+
+              case 5:
+                res = _context24.sent;
+                console.log("After Explore", res.data);
+                commit('trendstweets', res.data);
+                _context24.next = 13;
+                break;
+
+              case 10:
+                _context24.prev = 10;
+                _context24.t0 = _context24["catch"](1);
+                console.error();
+
+              case 13:
+              case "end":
+                return _context24.stop();
+            }
+          }
+        }, _callee24, null, [[1, 10]]);
+      }));
+
+      function Trendingtweets(_x39, _x40) {
         return _Trendingtweets.apply(this, arguments);
       }
 

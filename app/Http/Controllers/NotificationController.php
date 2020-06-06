@@ -54,9 +54,18 @@ class NotificationController extends Controller
      * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function show(Notification $notification)
+    public function show()
     {
-        //
+
+        $notifications = Notification::where('to', auth()->id())->where('newnote', true)->count();
+        // for ($i = 0; $i < $notifications->count(); $i++) {
+        //     $user = User::find($notifications[$i]->from);
+        //     $notifications[$i] = new Collection([
+        //         "user" => $user,
+        //         "notifications" => $notifications[$i],
+        //     ]);
+        // }
+        return $notifications;
     }
 
     /**
@@ -65,9 +74,14 @@ class NotificationController extends Controller
      * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function edit(Notification $notification)
+    public function edit()
     {
-        //
+
+        $notifications = Notification::where('to', auth()->id())->where('newnote', true)->get();
+        for ($i = 0; $i < $notifications->count(); $i++) {
+            $notifications[$i]->newnote = false;
+            $notifications[$i]->save();
+        }
     }
 
     /**

@@ -30,35 +30,22 @@ const app = new Vue({
     store,
     el: '#app',
     methods: {
-        ...mapActions(["alluser"]),
+        ...mapActions(["alluser", "unreadnotification"]),
         ...mapMutations(['setcountnote', "setonlineusers", "setleaveonlineusers", "setjoinonlineusers"]),
     },
     mounted() {
-        console.log("Width",$(window).width());
+        console.log("Width", $(window).width());
         mapState(["countnote"]);
-        console.log("loca storage ength", (JSON.parse(localStorage.getItem('notifications')).length));
-        this.setcountnote((JSON.parse(localStorage.getItem('notifications')).length));
+        // console.log("loca storage ength", (JSON.parse(localStorage.getItem('notifications')).length));
+        // this.setcountnote((JSON.parse(localStorage.getItem('notifications')).length));
+        this.unreadnotification()
     },
     created() {
 
         var from = $('meta[name="userid"]').attr("content");
         Echo.private("notification." + from).listen("BroadcastNotification", e => {
-            console.log("Notification", e);
-            // this.setnewnotifications(e.notification);
             this.setcountnote(1);
-            var a = [];
-            if (localStorage.getItem('notifications')) {
-                console.log("If condision")
-                for (let index = 0; index <= (JSON.parse(localStorage.getItem('notifications')).length); index++) {
 
-                    a.push(index + 1);
-                }
-                localStorage.setItem('notifications', JSON.stringify(a));
-
-            } else {
-                var b = [0]
-                localStorage.setItem('notifications', JSON.stringify(b));
-            }
         });
         var from = $('meta[name="username"]').attr("content");
         Echo.join("Online")

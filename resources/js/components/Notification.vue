@@ -5,9 +5,10 @@
         <li class="my-2 p-2">
           <h3 class="font-weight-bolder">Notifications</h3>
         </li>
-        <li class="li p-2 d-flex border-top" v-for="notification in notifications">
+        <li class="border-top" v-for="notification in notifications">
+          <div v-if="notification.read==true" class="li d-flex p-2">
           <i class="fas fa-star fa-2x text-primary mr-2"></i>
-          <div>
+          <div >
             <img
               :src="notification.user.profile"
               width="40px"
@@ -20,6 +21,24 @@
               <b>{{notification.user.name}}</b>
               {{notification.notifications.type}}
             </div>
+          </div>
+          </div>
+          <div v-else class="li d-flex bg-light  p-2">
+          <i class="fas fa-star fa-2x text-primary mr-2"></i>
+          <div >
+            <img
+              :src="notification.user.profile"
+              width="40px"
+              height="40px"
+              class="rounded-circle mb-2"
+              alt
+              srcset
+            />
+            <div>
+              <b>{{notification.user.name}}</b>
+              {{notification.notifications.type}}
+            </div>
+          </div>
           </div>
         </li>
       </ul>
@@ -84,8 +103,8 @@ border: none; */
 ul {
   list-style-type: none;
 }
-li.li:hover {
-  background-color: rgba(89, 119, 255, 0.05);
+div.li:hover {
+  background-color: rgba(5, 9, 26, 0.15);
   cursor: pointer;
 }
 </style>

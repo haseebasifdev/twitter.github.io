@@ -19,7 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->foreignId('from');
             $table->string('type');
             $table->boolean('read')->default(false);
-            
+            $table->boolean('newnote')->default(true);
             $table->foreign('from')
                 ->references('id')
                 ->on('users')

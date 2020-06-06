@@ -130,7 +130,7 @@ export default {
   methods: {
     
     ...mapMutations(["resetcountnote"]),
-    ...mapActions(["notification"]),
+    ...mapActions(["notification","resetcountnotification"]),
     // tweetmodel() {
     //   console.log("clicked");
     //   $("#tweet").modal("show");
@@ -141,8 +141,8 @@ export default {
     },
     resetnotification() {
       console.log("Notification cicked");
-      localStorage.removeItem("notifications");
-      this.resetcountnote();
+      // localStorage.removeItem("notifications");
+      this.resetcountnotification();
       this.notification();
     }
   },

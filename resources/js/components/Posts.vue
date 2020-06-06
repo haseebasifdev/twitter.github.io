@@ -187,6 +187,7 @@ export default {
         index: indexid,
         flag: 1
       };
+      
       this.$store.dispatch("retweetpost", data);
     },
 

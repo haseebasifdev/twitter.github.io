@@ -151,9 +151,8 @@ export default new Vuex.Store({
                     state.tweet.retweet++;
                     state.tweet.retweeted = (!state.tweet.retweeted);
                 }
-                // state.tweet.retweeted = !state.tweet.retweeted
-
-            } else if (data.flag == 3) {
+            } 
+            else if (data.flag == 3) {
                 if (state.trendstweets[data.index].retweeted) {
 
                     state.trendstweets[data.index].retweet--;
@@ -177,7 +176,7 @@ export default new Vuex.Store({
                     state.usertweet[data.index].retweet++;
                     state.usertweet[data.index].retweeted = (!state.usertweet[data.index].retweeted);
                 }
-                console.log(state.usertweet[index].retweeted, state.usertweet[index].retweet)
+                // console.log(state.usertweet[index].retweeted, state.usertweet[index].retweet)
             }
         },
     },
@@ -244,6 +243,7 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 commit('setretweetedpost', payload);
+                console.log("Retweet");
                 await axios.post('/retweet', payload);
 
 
@@ -339,8 +339,21 @@ export default new Vuex.Store({
         }, payload) => {
             try {
                 const response = await axios.get('/index', payload);
-
+                // const response = await axios.get('/show');
                 commit('setnotifications', response.data);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        unreadnotification: async ({
+            commit
+        }) => {
+            try {
+                // const response = await axios.get('/index', payload);
+                const response = await axios.get('/show');
+                commit('setcountnote', response.data);
 
 
             } catch (err) {
@@ -415,6 +428,17 @@ export default new Vuex.Store({
                 var res = await axios.get('explore');
                 commit('explore', res.data);
 
+            } catch (err) {
+                console.error();
+
+            }
+        },
+        resetcountnotification: async ({
+            commit
+        }) => {
+            try {
+                commit('resetcountnote');
+                var res = await axios.get('/reset');
             } catch (err) {
                 console.error();
 
