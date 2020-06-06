@@ -1,40 +1,36 @@
 <template>
   <div class="row">
-    
     <div class="col-md-11 col-xl-8">
-      <div class=" border-bottom post border">
+      <div class="border-bottom post border">
         <!-- <ul><li>Tweet</li></ul> -->
-        <nav
-      class="navbar navbar-expand-lg navbar-light sticky-top bg-white border-bottom"
-    >
-      <div class="navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <div class=" mr-4  d-flex">
-            <!-- <li class="nav-item mr-4"> -->
-            <router-link :to="{name:'home'}" class="nav-link font-weight-bold">
-              <i class="fas fa-arrow-left text-primary fa-lg mr-3"></i>
-              
-            </router-link>
-            <h4 class=" my-auto">Tweet</h4>
-            <!-- </li> -->
-          </div>
-          <div>
-            <!-- <li class="nav-item p-0 m-0"> -->
-            <!-- <div style="font-size:" class="font-weight-bolder m-0 p-0">{{user.name}}</div> -->
-            <!-- <div class="m-0 p-0">Tweets {{usertweet.length}}</div> -->
-          </div>
-          <!-- </li> -->
-        </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white border-bottom">
+          <div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <div class="mr-4 d-flex">
+                <!-- <li class="nav-item mr-4"> -->
+                <router-link :to="{name:'home'}" class="nav-link font-weight-bold">
+                  <i class="fas fa-arrow-left text-primary fa-lg mr-3"></i>
+                </router-link>
+                <h4 class="my-auto">Tweet</h4>
+                <!-- </li> -->
+              </div>
+              <div>
+                <!-- <li class="nav-item p-0 m-0"> -->
+                <!-- <div style="font-size:" class="font-weight-bolder m-0 p-0">{{user.name}}</div> -->
+                <!-- <div class="m-0 p-0">Tweets {{usertweet.length}}</div> -->
+              </div>
+              <!-- </li> -->
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-        </form>-->
-      </div>
-    </nav>
+            </form>-->
+          </div>
+        </nav>
         <div class="mx-3 d-flex mt-2">
           <!-- profile -->
           <img
@@ -222,7 +218,8 @@ export default {
     likepost() {
       var data = {
         post_id: this.tweet.tweet.id,
-        index: -1
+        index: null,
+        flag: 2
       };
       this.$store.dispatch("likepost", data);
     },
@@ -241,7 +238,8 @@ export default {
         post_id: this.tweet.tweet.id,
         comment: this.tweetreply,
         created_at: new Date(),
-        index: -1
+        index: -1,
+        flag:2
       };
       // var currentDate = new Date();
       // console.log(this.tweet.tweet.created_at);

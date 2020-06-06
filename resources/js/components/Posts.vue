@@ -91,7 +91,10 @@
         </div>
         <div>
           <span v-if="data.retweeted">
-            <i class="fas fa-sync-alt sync fa-lg p-2 text-success" @click="retweet(data.tweet.id,index)"></i>
+            <i
+              class="fas fa-sync-alt sync fa-lg p-2 text-success"
+              @click="retweet(data.tweet.id,index)"
+            ></i>
             <span v-if="data.retweet" class="text-success">{{data.retweet}}</span>
           </span>
           <span v-else>
@@ -148,7 +151,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["user","trendstweets"])
+    ...mapState(["user", "trendstweets"])
   },
   methods: {
     ...mapActions(["fetchusertweet", "fetchuser"]),
@@ -172,7 +175,8 @@ export default {
     likepost(postid, indexid) {
       var data = {
         post_id: postid,
-        index: indexid
+        index: indexid,
+        flag: 1
       };
       this.$store.dispatch("likepost", data);
     },
@@ -180,7 +184,8 @@ export default {
     retweet(postid, indexid) {
       var data = {
         post_id: postid,
-        index: indexid
+        index: indexid,
+        flag: 1
       };
       this.$store.dispatch("retweetpost", data);
     },

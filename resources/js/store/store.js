@@ -98,8 +98,8 @@ export default new Vuex.Store({
             }
 
         },
-        setlikedpost: (state, index) => {
-            if (index == -1) {
+        setlikedpost: (state, data) => {
+            if (data.flag == 2) {
                 if (state.tweet.liked) {
 
                     state.tweet.likes--;
@@ -112,23 +112,35 @@ export default new Vuex.Store({
                 }
                 // state.tweet.liked = !state.tweet.liked
 
-            } else {
+            } else if (data.flag == 3) {
 
-                if (state.usertweet[index].liked) {
+                if (state.trendstweets[data.index].liked) {
 
-                    state.usertweet[index].likes--;
-                    state.usertweet[index].liked = (!state.usertweet[index].liked);
+                    state.trendstweets[data.index].likes--;
+                    state.trendstweets[data.index].liked = (!state.trendstweets[data.index].liked);
 
                 } else {
 
-                    state.usertweet[index].likes++;
-                    state.usertweet[index].liked = (!state.usertweet[index].liked);
+                    state.trendstweets[data.index].likes++;
+                    state.trendstweets[data.index].liked = (!state.trendstweets[data.index].liked);
                 }
-                console.log(state.usertweet[index].liked, state.usertweet[index].likes)
+            } else {
+
+                if (state.usertweet[data.index].liked) {
+
+                    state.usertweet[data.index].likes--;
+                    state.usertweet[data.index].liked = (!state.usertweet[data.index].liked);
+
+                } else {
+
+                    state.usertweet[data.index].likes++;
+                    state.usertweet[data.index].liked = (!state.usertweet[data.index].liked);
+                }
+                // console.log(state.usertweet[data.index].liked, state.usertweet[data.index].likes)
             }
         },
-        setretweetedpost: (state, index) => {
-            if (index == -1) {
+        setretweetedpost: (state, data) => {
+            if (data.flag == 2) {
                 if (state.tweet.retweeted) {
 
                     state.tweet.retweet--;
@@ -141,17 +153,29 @@ export default new Vuex.Store({
                 }
                 // state.tweet.retweeted = !state.tweet.retweeted
 
-            } else {
+            } else if (data.flag == 3) {
+                if (state.trendstweets[data.index].retweeted) {
 
-                if (state.usertweet[index].retweeted) {
-
-                    state.usertweet[index].retweet--;
-                    state.usertweet[index].retweeted = (!state.usertweet[index].retweeted);
+                    state.trendstweets[data.index].retweet--;
+                    state.trendstweets[data.index].retweeted = (!state.trendstweets[data.index].retweeted);
 
                 } else {
 
-                    state.usertweet[index].retweet++;
-                    state.usertweet[index].retweeted = (!state.usertweet[index].retweeted);
+                    state.trendstweets[data.index].retweet++;
+                    state.trendstweets[data.index].retweeted = (!state.trendstweets[data.index].retweeted);
+                }
+
+            } else {
+
+                if (state.usertweet[data.index].retweeted) {
+
+                    state.usertweet[data.index].retweet--;
+                    state.usertweet[data.index].retweeted = (!state.usertweet[data.index].retweeted);
+
+                } else {
+
+                    state.usertweet[data.index].retweet++;
+                    state.usertweet[data.index].retweeted = (!state.usertweet[data.index].retweeted);
                 }
                 console.log(state.usertweet[index].retweeted, state.usertweet[index].retweet)
             }
@@ -207,7 +231,7 @@ export default new Vuex.Store({
             commit
         }, payload) => {
             try {
-                commit('setlikedpost', payload.index);
+                commit('setlikedpost', payload);
                 await axios.post('/like', payload);
 
 
@@ -219,7 +243,7 @@ export default new Vuex.Store({
             commit
         }, payload) => {
             try {
-                commit('setretweetedpost', payload.index);
+                commit('setretweetedpost', payload);
                 await axios.post('/retweet', payload);
 
 
@@ -400,9 +424,9 @@ export default new Vuex.Store({
             commit
         }, payload) => {
             try {
-                console.log("Before Exploring",payload);
-                var res = await axios.post('/trending/' , payload);
-                console.log("After Explore",res.data);
+                console.log("Before Exploring", payload);
+                var res = await axios.post('/trending/', payload);
+                console.log("After Explore", res.data);
                 commit('trendstweets', res.data);
 
             } catch (err) {

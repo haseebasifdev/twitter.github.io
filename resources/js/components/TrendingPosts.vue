@@ -188,7 +188,7 @@ export default {
       var data = {
         post_id: postid,
         index: indexid,
-        flag:1
+        flag:3
       };
       this.$store.dispatch("likepost", data);
     },
@@ -196,7 +196,8 @@ export default {
     retweet(postid, indexid) {
       var data = {
         post_id: postid,
-        index: indexid
+        index: indexid,
+        flag:3
       };
       this.$store.dispatch("retweetpost", data);
     },

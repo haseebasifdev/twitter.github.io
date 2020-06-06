@@ -3430,6 +3430,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3473,14 +3476,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     likepost: function likepost(postid, indexid) {
       var data = {
         post_id: postid,
-        index: indexid
+        index: indexid,
+        flag: 1
       };
       this.$store.dispatch("likepost", data);
     },
     retweet: function retweet(postid, indexid) {
       var data = {
         post_id: postid,
-        index: indexid
+        index: indexid,
+        flag: 1
       };
       this.$store.dispatch("retweetpost", data);
     },
@@ -4098,10 +4103,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4117,7 +4118,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     likepost: function likepost() {
       var data = {
         post_id: this.tweet.tweet.id,
-        index: -1
+        index: null,
+        flag: 2
       };
       this.$store.dispatch("likepost", data);
     },
@@ -4136,7 +4138,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         post_id: this.tweet.tweet.id,
         comment: this.tweetreply,
         created_at: new Date(),
-        index: -1
+        index: -1,
+        flag: 2
       }; // var currentDate = new Date();
       // console.log(this.tweet.tweet.created_at);
       // console.log(currentDate);
@@ -4361,14 +4364,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var data = {
         post_id: postid,
         index: indexid,
-        flag: 1
+        flag: 3
       };
       this.$store.dispatch("likepost", data);
     },
     retweet: function retweet(postid, indexid) {
       var data = {
         post_id: postid,
-        index: indexid
+        index: indexid,
+        flag: 3
       };
       this.$store.dispatch("retweetpost", data);
     },
@@ -71241,7 +71245,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-md-11 col-xl-8" }, [
-      _c("div", { staticClass: " border-bottom post border" }, [
+      _c("div", { staticClass: "border-bottom post border" }, [
         _c(
           "nav",
           {
@@ -71259,7 +71263,7 @@ var render = function() {
                 _c("ul", { staticClass: "navbar-nav" }, [
                   _c(
                     "div",
-                    { staticClass: " mr-4  d-flex" },
+                    { staticClass: "mr-4 d-flex" },
                     [
                       _c(
                         "router-link",
@@ -71275,7 +71279,7 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _c("h4", { staticClass: " my-auto" }, [_vm._v("Tweet")])
+                      _c("h4", { staticClass: "my-auto" }, [_vm._v("Tweet")])
                     ],
                     1
                   ),
@@ -90326,8 +90330,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         state.allusers[index].following = !state.allusers[index].following;
       }
     },
-    setlikedpost: function setlikedpost(state, index) {
-      if (index == -1) {
+    setlikedpost: function setlikedpost(state, data) {
+      if (data.flag == 2) {
         if (state.tweet.liked) {
           state.tweet.likes--;
           state.tweet.liked = !state.tweet.liked;
@@ -90336,20 +90340,27 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
           state.tweet.liked = !state.tweet.liked;
         } // state.tweet.liked = !state.tweet.liked
 
-      } else {
-        if (state.usertweet[index].liked) {
-          state.usertweet[index].likes--;
-          state.usertweet[index].liked = !state.usertweet[index].liked;
+      } else if (data.flag == 3) {
+        if (state.trendstweets[data.index].liked) {
+          state.trendstweets[data.index].likes--;
+          state.trendstweets[data.index].liked = !state.trendstweets[data.index].liked;
         } else {
-          state.usertweet[index].likes++;
-          state.usertweet[index].liked = !state.usertweet[index].liked;
+          state.trendstweets[data.index].likes++;
+          state.trendstweets[data.index].liked = !state.trendstweets[data.index].liked;
         }
+      } else {
+        if (state.usertweet[data.index].liked) {
+          state.usertweet[data.index].likes--;
+          state.usertweet[data.index].liked = !state.usertweet[data.index].liked;
+        } else {
+          state.usertweet[data.index].likes++;
+          state.usertweet[data.index].liked = !state.usertweet[data.index].liked;
+        } // console.log(state.usertweet[data.index].liked, state.usertweet[data.index].likes)
 
-        console.log(state.usertweet[index].liked, state.usertweet[index].likes);
       }
     },
-    setretweetedpost: function setretweetedpost(state, index) {
-      if (index == -1) {
+    setretweetedpost: function setretweetedpost(state, data) {
+      if (data.flag == 2) {
         if (state.tweet.retweeted) {
           state.tweet.retweet--;
           state.tweet.retweeted = !state.tweet.retweeted;
@@ -90358,13 +90369,21 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
           state.tweet.retweeted = !state.tweet.retweeted;
         } // state.tweet.retweeted = !state.tweet.retweeted
 
-      } else {
-        if (state.usertweet[index].retweeted) {
-          state.usertweet[index].retweet--;
-          state.usertweet[index].retweeted = !state.usertweet[index].retweeted;
+      } else if (data.flag == 3) {
+        if (state.trendstweets[data.index].retweeted) {
+          state.trendstweets[data.index].retweet--;
+          state.trendstweets[data.index].retweeted = !state.trendstweets[data.index].retweeted;
         } else {
-          state.usertweet[index].retweet++;
-          state.usertweet[index].retweeted = !state.usertweet[index].retweeted;
+          state.trendstweets[data.index].retweet++;
+          state.trendstweets[data.index].retweeted = !state.trendstweets[data.index].retweeted;
+        }
+      } else {
+        if (state.usertweet[data.index].retweeted) {
+          state.usertweet[data.index].retweet--;
+          state.usertweet[data.index].retweeted = !state.usertweet[data.index].retweeted;
+        } else {
+          state.usertweet[data.index].retweet++;
+          state.usertweet[data.index].retweeted = !state.usertweet[data.index].retweeted;
         }
 
         console.log(state.usertweet[index].retweeted, state.usertweet[index].retweet);
@@ -90537,7 +90556,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
               case 0:
                 commit = _ref6.commit;
                 _context6.prev = 1;
-                commit('setlikedpost', payload.index);
+                commit('setlikedpost', payload);
                 _context6.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/like', payload);
 
@@ -90573,7 +90592,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
               case 0:
                 commit = _ref7.commit;
                 _context7.prev = 1;
-                commit('setretweetedpost', payload.index);
+                commit('setretweetedpost', payload);
                 _context7.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('/retweet', payload);
 
