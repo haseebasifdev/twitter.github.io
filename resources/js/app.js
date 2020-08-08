@@ -4,6 +4,13 @@ window.Vue = require('vue');
 import router from './router'
 import store from './store/store'
 import moment from 'moment'
+import VueProgressBar from 'vue-progressbar'
+
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '2px'
+})
 Vue.component('navbar', require('./components/Navbar.vue').default);
 Vue.component('routerset', require('./components/routerset.vue').default);
 Vue.filter('date', function (value) {

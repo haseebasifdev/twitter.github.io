@@ -27,7 +27,7 @@
               style=" right:15px"
             ></i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item text-danger" @click="deletemodel()" type="button">Delete</button>
+              <button class="dropdown-item text-danger" @click="deletemodel(data.tweet.id,index)" type="button">Delete</button>
             </div>
           </span>
           <!-- <button
@@ -56,7 +56,7 @@
                     <button class="btn btn-primary mr-2" @click="deletemodel()">Cancel</button>
                     <button
                       class="btn btn-danger ml-2"
-                      @click="deletetweet(data.tweet.id,index)"
+                      @click="deletetweet()"
                     >Delete</button>
                   </div>
                 </div>
@@ -135,7 +135,10 @@ export default {
   name: "post",
   props: ["usertweet"],
   data() {
-    return {};
+    return {
+      post_id:'',
+      indexid:''
+    };
   },
   filters: {
     hashBold: function(value) {
@@ -155,7 +158,10 @@ export default {
   },
   methods: {
     ...mapActions(["fetchusertweet", "fetchuser"]),
-    deletemodel() {
+    deletemodel(postid,indexid) {
+      this.post_id=postid;
+      this.indexid=indexid;
+      // alert(id)
       $("#deletemodel").modal("toggle");
       // var data = {
       //   post_id: postid,
@@ -163,13 +169,14 @@ export default {
       // };
       // this.$store.dispatch("deletetweet", data);
     },
-    deletetweet(postid, indexid) {
+    deletetweet() {
       // $("#deletemodel").modal("show");
       var data = {
-        post_id: postid,
-        index: indexid
+        post_id: this.post_id,
+        index: this.indexid
       };
       this.$store.dispatch("deletetweet", data);
+      // alert(data.index)
       $("#deletemodel").modal("toggle");
     },
     likepost(postid, indexid) {

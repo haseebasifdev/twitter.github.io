@@ -23,7 +23,7 @@
             </div>
           </div>
           </div>
-          <div v-else class="li d-flex bg-light  p-2">
+          <div v-else class="li d-flex   p-2">
           <i class="fas fa-star fa-2x text-primary mr-2"></i>
           <div >
             <img

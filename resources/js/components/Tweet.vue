@@ -83,6 +83,7 @@ export default {
       this.picture = "";
     },
     tweetit() {
+      this.$Progress.start()
       if (this.tweet.length <= 255) {
         var post = {
           tweet: this.tweet,
