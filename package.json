@@ -30,7 +30,7 @@
         "emojionearea": "^3.0.0",
         "fs": "0.0.1-security",
         "laravel-echo": "^1.7.0",
-        "moment": "^2.25.3",
+        "moment": "^2.29.2",
         "pusher-js": "^6.0.2",
         "vue-localstorage": "^0.6.2",
         "vue-progressbar": "^0.7.5",
