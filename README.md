@@ -1,14 +1,14 @@
-## Real Time Twitter Clone 
-Some main features of clone is given below
+## Real-Time Twitter Clone 
+Some main features of the clone are given below
 - **Responsive**
-- **Update Profile Pictue**
+- **Update Profile Picture**
 - **Update User Information**
-- **Can Tweet with picture or text**
+- **Can Tweet with a picture or text**
 - **Chat with Friends In Real Time**
-- **User can see other user is online or not**
+- **User can see whether another user is online or not**
 - **Like and Comment on tweet**
 - **Follow and unfollow other user**
-- **Real Time Notification for Like a post,Comment on post and follow other user**
+- **Real Time Notification for Like a post, Comment on a post, and follow other users**
 - **User Timeline**
 - **Visit Other User profile**
 ## Installation
